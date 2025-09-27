@@ -132,8 +132,8 @@ public class CompositeFunctionTest {
         MathFunction sqr = new SqrFunction();
         MathFunction identity = new IdentityFunction();
 
-        CompositeFunction leftId = new CompositeFunction(identity, sqr);  // identity → sqr = sqr
-        CompositeFunction rightId = new CompositeFunction(sqr, identity); // sqr → identity = sqr
+        CompositeFunction leftId = new CompositeFunction(identity, sqr);  // identity -> sqr = sqr
+        CompositeFunction rightId = new CompositeFunction(sqr, identity); // sqr -> identity = sqr
 
         double x = 3.14;
         assertEquals(sqr.apply(x), leftId.apply(x), 1e-9);
