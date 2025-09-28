@@ -2,10 +2,10 @@ package ru.ssau.tk.cheefkeef.laba2.functions;
 
 import java.util.Arrays;
 
-public class ArrayTabulatedFunction extends AbstractTabulatedFunction {
-    private final double[] xValues;
-    private final double[] yValues;
-    private final int count;
+public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Removable {
+    private double[] xValues;
+    private double[] yValues;
+    private int count;
 
     public ArrayTabulatedFunction(double[] xValues, double[] yValues) {
         if (xValues.length != yValues.length || xValues.length == 0)
@@ -116,5 +116,22 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction {
         }
         return interpolate(x, xValues[floorIndex], xValues[floorIndex + 1],
                 yValues[floorIndex], yValues[floorIndex + 1]);
+    }
+
+    @Override
+    public void remove(int index) {
+        if (index < 0 || index >= count) throw new IndexOutOfBoundsException();
+        double[] newX = new double[count - 1];
+        double[] newY = new double[count - 1];
+
+        System.arraycopy(xValues, 0, newX, 0, index);
+        System.arraycopy(yValues, 0, newY, 0, index);
+
+        System.arraycopy(xValues, index + 1, newX, index, count - index - 1);
+        System.arraycopy(yValues, index + 1, newY, index, count - index - 1);
+
+        xValues = newX;
+        yValues = newY;
+        count--;
     }
 }
