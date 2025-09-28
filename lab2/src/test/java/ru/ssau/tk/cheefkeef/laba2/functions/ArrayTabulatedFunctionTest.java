@@ -74,4 +74,12 @@ class ArrayTabulatedFunctionTest {
         ArrayTabulatedFunction f = new ArrayTabulatedFunction(new double[]{0.0, 2.0}, new double[]{0.0, 4.0});
         assertEquals(2.0, f.apply(1.0), 1e-10); // линейная интерполяция
     }
+
+    @Test
+    void remove_middle() {
+        ArrayTabulatedFunction f = new ArrayTabulatedFunction(new double[]{1.0, 2.0, 3.0}, new double[]{1.0, 4.0, 9.0});
+        f.remove(1);
+        assertEquals(2, f.getCount());
+        assertEquals(3.0, f.getX(1));
+    }
 }
