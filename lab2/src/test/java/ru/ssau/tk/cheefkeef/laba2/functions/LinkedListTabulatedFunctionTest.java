@@ -71,8 +71,7 @@ class LinkedListTabulatedFunctionTest {
         double[] y = {0.0, 4.0}; // y = x^2
         LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(x, y);
 
-        assertEquals(1.0, func.apply(1.0), 1e-10); // (0,0) и (2,4) → в 1: y=2? Нет!
-        // Но интерполяция линейная: y = 0 + (4-0)*(1-0)/(2-0) = 2.0
+        assertEquals(2.0, func.apply(1.0), 1e-10); // y = 0 + (4-0)*(1-0)/(2-0) = 2.0
         assertEquals(2.0, func.apply(1.0), 1e-10);
     }
 
