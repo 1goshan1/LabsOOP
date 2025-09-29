@@ -146,4 +146,88 @@ class LinkedListTabulatedFunctionTest {
         assertEquals(5.0, func.getY(1));
         assertEquals(3, func.getCount()); // без увеличения
     }
+    @Test
+    void testRemoveSingleElement() {
+        LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(
+                new double[]{1.0}, new double[]{2.0}
+        );
+        assertEquals(1, func.getCount());
+
+        func.remove(0);
+        assertEquals(0, func.getCount());
+    }
+
+    @Test
+    void testRemoveFirstElement() {
+        LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(
+                new double[]{1.0, 2.0, 3.0}, new double[]{10, 20, 30}
+        );
+        func.remove(0);
+        assertEquals(2, func.getCount());
+        assertEquals(2.0, func.getX(0));
+        assertEquals(20, func.getY(0));
+        assertEquals(3.0, func.rightBound());
+    }
+
+    @Test
+    void testRemoveLastElement() {
+        LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(
+                new double[]{1.0, 2.0, 3.0}, new double[]{10, 20, 30}
+        );
+        func.remove(2);
+        assertEquals(2, func.getCount());
+        assertEquals(2.0, func.rightBound());
+        assertEquals(20, func.getY(1));
+    }
+
+    @Test
+    void testRemoveMiddleElement() {
+        LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(
+                new double[]{1.0, 2.0, 3.0, 4.0}, new double[]{10, 20, 30, 40}
+        );
+        func.remove(1); // удаляем x=2.0
+        assertEquals(3, func.getCount());
+        assertEquals(1.0, func.getX(0));
+        assertEquals(3.0, func.getX(1));
+        assertEquals(4.0, func.getX(2));
+        assertEquals(30, func.getY(1));
+    }
+
+    @Test
+    void testRemoveInvalidIndexThrowsException() {
+        LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(
+                new double[]{1.0, 2.0}, new double[]{10, 20}
+        );
+
+        assertThrows(IndexOutOfBoundsException.class, () -> func.remove(-1));
+        assertThrows(IndexOutOfBoundsException.class, () -> func.remove(2));
+        assertThrows(IndexOutOfBoundsException.class, () -> func.remove(5));
+    }
+
+    @Test
+    void testRemoveFromEmptyList() {
+        // Создать пустой список невозможно через конструкторы, но можно через remove до конца
+        LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(
+                new double[]{5.0}, new double[]{50}
+        );
+        func.remove(0);
+        assertEquals(0, func.getCount());
+
+        // Нельзя вызвать remove(0) снова, потому что count == 0 -> IndexOutOfBoundsException
+        assertThrows(IndexOutOfBoundsException.class, () -> func.remove(0));
+    }
+
+    @Test
+    void testBoundsAfterRemoval() {
+        LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(
+                new double[]{0.0, 1.0, 2.0, 3.0}, new double[]{0, 1, 2, 3}
+        );
+        func.remove(0); // удаляем левую границу
+        assertEquals(1.0, func.leftBound());
+        assertEquals(3.0, func.rightBound());
+
+        func.remove(2); // удаляем правую границу (теперь индекс 2 — последний)
+        assertEquals(1.0, func.leftBound());
+        assertEquals(2.0, func.rightBound());
+    }
 }

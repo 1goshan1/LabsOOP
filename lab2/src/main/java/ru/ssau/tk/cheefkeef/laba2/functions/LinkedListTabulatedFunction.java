@@ -1,8 +1,6 @@
 package ru.ssau.tk.cheefkeef.laba2.functions;
 
-import java.util.Arrays;
-
-public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Insertable { // a lot of explanation so I'll change to русский, но вообще комменты - это уточнение задания
+public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removable { // a lot of explanation so I'll change to русский, но вообще комменты - это уточнение задания
     // чтобы защита легче пошла
     private static class Node {
         public Node next;
@@ -275,5 +273,34 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
             head.prev = newNode;
             count++;
         }
+    }
+    @Override
+    public void remove(int index) {
+        if (index < 0 || index >= count) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + count);
+        }
+
+        if (count == 1) {
+            // Удаляем единственный узел — список становится пустым
+            head = null;
+            count = 0;
+            return;
+        }
+
+        Node toRemove = getNode(index);
+
+        // Обновляем связи соседей
+        toRemove.prev.next = toRemove.next;
+        toRemove.next.prev = toRemove.prev;
+
+        // Если удаляем голову — перемещаем head на следующий узел
+        if (toRemove == head) {
+            head = toRemove.next;
+        }
+
+        count--;
+
+        toRemove.next = null;
+        toRemove.prev = null;
     }
 }
