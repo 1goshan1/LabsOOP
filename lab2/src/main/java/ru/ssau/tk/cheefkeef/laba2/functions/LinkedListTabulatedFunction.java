@@ -2,7 +2,7 @@ package ru.ssau.tk.cheefkeef.laba2.functions;
 
 import java.util.Arrays;
 
-public class LinkedListTabulatedFunction extends AbstractTabulatedFunction { // a lot of explanation so I'll change to русский, но вообще комменты - это уточнение задания
+public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Insertable { // a lot of explanation so I'll change to русский, но вообще комменты - это уточнение задания
     // чтобы защита легче пошла
     private static class Node {
         public Node next;
@@ -214,5 +214,66 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction { // 
         double y0 = getY(floorIndex);
         double y1 = getY(floorIndex + 1);
         return interpolate(x, x0, x1, y0, y1);
+    }
+
+    @Override
+    public void insert(double x, double y) {
+        if (head == null) {
+            // Список пуст — просто добавляем узел
+            addNode(x, y);
+            return;
+        }
+
+        // Проверяем, не нужно ли вставить в начало (x < всех существующих)
+        if (x < head.x) {
+            Node newNode = new Node(x, y);
+            Node last = head.prev;
+            // Вставка перед head
+            newNode.next = head;
+            newNode.prev = last;
+            head.prev = newNode;
+            last.next = newNode;
+            head = newNode; // Обновляем голову
+            count++;
+            return;
+        }
+
+        // Проходим по списку, чтобы найти подходящее место
+        Node current = head;
+        do {
+            if (current.x == x) {
+                // Заменяем значение y, если x уже существует
+                current.y = y;
+                return;
+            }
+            if (current.next.x > x) {
+                // Нашли интервал: current.x < x < current.next.x
+                Node newNode = new Node(x, y);
+                newNode.next = current.next;
+                newNode.prev = current;
+                current.next.prev = newNode;
+                current.next = newNode;
+                count++;
+                return;
+            }
+            current = current.next;
+        } while (current != head);
+
+        // Если x больше всех — добавляем в конец (после last)
+        // Но в циклическом списке "конец" — это head.prev
+        // Однако, если мы дошли до head снова, значит x >= последнего
+        // Проверим, не равен ли он последнему
+        if (head.prev.x == x) {
+            head.prev.y = y;
+        } else {
+            // Добавляем после последнего узла
+            Node last = head.prev;
+            Node newNode = new Node(x, y);
+            newNode.next = head;
+            newNode.prev = last;
+            last.next = newNode;
+            head.prev = newNode;
+            count++;
+        }
     }
 }

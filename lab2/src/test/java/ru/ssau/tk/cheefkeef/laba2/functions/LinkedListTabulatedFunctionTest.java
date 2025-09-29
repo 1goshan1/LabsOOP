@@ -113,4 +113,37 @@ class LinkedListTabulatedFunctionTest {
             assertEquals(5.0, func.getY(i));
         }
     }
+
+    @Test
+    void testInsertAtBeginning() {
+        LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(
+                new double[]{1.0, 2.0, 3.0}, new double[]{1.0, 4.0, 9.0}
+        );
+        func.insert(0.5, 0.25);
+        assertEquals(0.5, func.getX(0));
+        assertEquals(0.25, func.getY(0));
+        assertEquals(4, func.getCount());
+        assertEquals(0.5, func.leftBound());
+    }
+
+    @Test
+    void testInsertAtEnd() {
+        LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(
+                new double[]{1.0, 2.0}, new double[]{1.0, 4.0}
+        );
+        func.insert(3.0, 9.0);
+        assertEquals(3.0, func.getX(2));
+        assertEquals(9.0, func.getY(2));
+        assertEquals(3.0, func.rightBound());
+    }
+
+    @Test
+    void testInsertExistingX() {
+        LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(
+                new double[]{1.0, 2.0, 3.0}, new double[]{1.0, 4.0, 9.0}
+        );
+        func.insert(2.0, 5.0);
+        assertEquals(5.0, func.getY(1));
+        assertEquals(3, func.getCount()); // без увеличения
+    }
 }
