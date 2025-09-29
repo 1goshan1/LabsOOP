@@ -82,4 +82,39 @@ class ArrayTabulatedFunctionTest {
         assertEquals(2, f.getCount());
         assertEquals(3.0, f.getX(1));
     }
+
+    @Test
+    void testInsertNewValue() {
+        double[] x = {1.0, 2.0, 4.0};
+        double[] y = {10.0, 20.0, 40.0};
+        ArrayTabulatedFunction func = new ArrayTabulatedFunction(x, y);
+
+        func.insert(3.0, 30.0);
+
+        assertEquals(4, func.getCount());
+        assertEquals(3.0, func.getX(2));
+        assertEquals(30.0, func.getY(2));
+    }
+
+    @Test
+    void testInsertExistingX() {
+        double[] x = {1.0, 2.0, 3.0};
+        double[] y = {10.0, 20.0, 30.0};
+        ArrayTabulatedFunction func = new ArrayTabulatedFunction(x, y);
+
+        func.insert(2.0, 25.0);
+
+        assertEquals(3, func.getCount());
+        assertEquals(25.0, func.getY(1));
+    }
+
+    @Test
+    void testInsertIntoSingleElement() {
+        ArrayTabulatedFunction func = new ArrayTabulatedFunction(
+                new double[]{2.0}, new double[]{20.0}
+        );
+        func.insert(1.0, 10.0);
+        assertEquals(1.0, func.getX(0));
+        assertEquals(2.0, func.getX(1));
+    }
 }
