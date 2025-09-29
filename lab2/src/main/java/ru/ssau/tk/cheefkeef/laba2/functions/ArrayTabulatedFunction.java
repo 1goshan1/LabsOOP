@@ -2,7 +2,7 @@ package ru.ssau.tk.cheefkeef.laba2.functions;
 
 import java.util.Arrays;
 
-public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Removable {
+public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Removable, Insertable {
     private double[] xValues;
     private double[] yValues;
     private int count;
@@ -133,5 +133,34 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
         xValues = newX;
         yValues = newY;
         count--;
+    }
+    @Override
+    public void insert(double x, double y) {
+        int existingIndex = indexOfX(x);
+        if (existingIndex != -1) {
+            yValues[existingIndex] = y;
+            return;
+        }
+
+        int insertIndex = 0;
+        while (insertIndex < count && xValues[insertIndex] < x) {
+            insertIndex++;
+        }
+
+        double[] newX = new double[count + 1];
+        double[] newY = new double[count + 1];
+
+        System.arraycopy(xValues, 0, newX, 0, insertIndex);
+        System.arraycopy(yValues, 0, newY, 0, insertIndex);
+
+        newX[insertIndex] = x;
+        newY[insertIndex] = y;
+
+        System.arraycopy(xValues, insertIndex, newX, insertIndex + 1, count - insertIndex);
+        System.arraycopy(yValues, insertIndex, newY, insertIndex + 1, count - insertIndex);
+
+        xValues = newX;
+        yValues = newY;
+        count++;
     }
 }
