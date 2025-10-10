@@ -1,5 +1,7 @@
 package ru.ssau.tk.cheefkeef.laba2.functions;
 
+import ru.ssau.tk.cheefkeef.laba2.exceptions.InterpolationException;
+
 import java.util.Arrays;
 
 public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Removable, Insertable {
@@ -10,6 +12,9 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
     public ArrayTabulatedFunction(double[] xValues, double[] yValues) {
         if (xValues.length != yValues.length || xValues.length == 0)
             throw new IllegalArgumentException("Arrays must be non-empty and of equal length");
+        AbstractTabulatedFunction.checkLengthIsTheSame(xValues, yValues);
+        AbstractTabulatedFunction.checkSorted(xValues);
+
         this.count = xValues.length;
         this.xValues = Arrays.copyOf(xValues, count);
         this.yValues = Arrays.copyOf(yValues, count);
@@ -114,6 +119,12 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
         if (floorIndex == count - 1) {
             return yValues[floorIndex];
         }
+
+        // x0 < x < x1 <=> x0 < x and x < x1
+        if (!(xValues[floorIndex] <= x && x <= xValues[floorIndex + 1])) {
+            throw new InterpolationException("Illegal x value");
+        }
+
         return interpolate(x, xValues[floorIndex], xValues[floorIndex + 1],
                 yValues[floorIndex], yValues[floorIndex + 1]);
     }

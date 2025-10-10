@@ -1,6 +1,8 @@
 package ru.ssau.tk.cheefkeef.laba2.functions;
 
 import org.junit.jupiter.api.Test;
+import ru.ssau.tk.cheefkeef.laba2.exceptions.InterpolationException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ArrayTabulatedFunctionTest {
@@ -116,5 +118,21 @@ class ArrayTabulatedFunctionTest {
         func.insert(1.0, 10.0);
         assertEquals(1.0, func.getX(0));
         assertEquals(2.0, func.getX(1));
+    }
+
+    @Test
+    void testInterpolateXNotEx() {
+        double[] x = {1.0, 2.0, 4.0, 5.0, 6.0};
+        double[] y = {10.0, 20.0, 40.0, 80.0, 160.0};
+        ArrayTabulatedFunction func = new ArrayTabulatedFunction(x, y);
+        assertThrows(InterpolationException.class, () -> func.interpolate(2.5, 1));
+    }
+
+    @Test
+    void testInterpolateXEx() {
+        double[] x = {1.0, 2.0, 4.0, 5.0, 6.0};
+        double[] y = {10.0, 20.0, 40.0, 80.0, 160.0};
+        ArrayTabulatedFunction func = new ArrayTabulatedFunction(x, y);
+        assertThrows(InterpolationException.class, () -> func.interpolate(2.5, 3));
     }
 }

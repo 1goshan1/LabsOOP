@@ -1,6 +1,8 @@
 package ru.ssau.tk.cheefkeef.laba2.functions;
 
 import org.junit.jupiter.api.Test;
+import ru.ssau.tk.cheefkeef.laba2.exceptions.InterpolationException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class LinkedListTabulatedFunctionTest {
@@ -229,5 +231,21 @@ class LinkedListTabulatedFunctionTest {
         func.remove(2); // удаляем правую границу (теперь индекс 2 — последний)
         assertEquals(1.0, func.leftBound());
         assertEquals(2.0, func.rightBound());
+    }
+
+    @Test
+    void testInterpolateXNotEx() {
+        LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(
+                new double[]{0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0}, new double[]{0, 1, 2, 3, 4, 5, 6}
+        );
+        assertThrows(InterpolationException.class, () -> func.interpolate(2.5, 2));
+    }
+
+    @Test
+    void testInterpolateXEx() {
+        LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(
+                new double[]{0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0}, new double[]{0, 1, 2, 3, 4, 5, 6}
+        );
+        assertThrows(InterpolationException.class, () -> func.interpolate(2.5, 3));
     }
 }

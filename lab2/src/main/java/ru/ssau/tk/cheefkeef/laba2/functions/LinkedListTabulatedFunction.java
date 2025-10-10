@@ -1,5 +1,7 @@
 package ru.ssau.tk.cheefkeef.laba2.functions;
 
+import ru.ssau.tk.cheefkeef.laba2.exceptions.InterpolationException;
+
 public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removable { // a lot of explanation so I'll change to русский, но вообще комменты - это уточнение задания
     // чтобы защита легче пошла
     private static class Node {
@@ -43,6 +45,8 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
         if (xValues.length == 0) {
             throw new IllegalArgumentException("Arrays must not be empty");
         }
+        AbstractTabulatedFunction.checkLengthIsTheSame(xValues, yValues);
+        AbstractTabulatedFunction.checkSorted(xValues);
         // Предполагается, что xValues упорядочены и без дубликатов
         for (int i = 0; i < xValues.length; i++) {
             addNode(xValues[i], yValues[i]);
@@ -209,6 +213,11 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
         }
         double x0 = getX(floorIndex);
         double x1 = getX(floorIndex + 1);
+
+        if (!(x0 <= x && x <= x1)) {
+            throw new InterpolationException("Illegal x value");
+        }
+
         double y0 = getY(floorIndex);
         double y1 = getY(floorIndex + 1);
         return interpolate(x, x0, x1, y0, y1);
