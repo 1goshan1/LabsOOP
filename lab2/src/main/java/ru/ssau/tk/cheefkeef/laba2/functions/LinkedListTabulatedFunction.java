@@ -44,12 +44,12 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
         if (xValues.length != yValues.length) {
             throw new IllegalArgumentException("Arrays must have the same length");
         }
-        if (xValues.length == 0) {
-            throw new IllegalArgumentException("Arrays must not be empty");
+        if (xValues.length < 2) {
+            throw new IllegalArgumentException("Length must be at least 2");
         }
         AbstractTabulatedFunction.checkLengthIsTheSame(xValues, yValues);
         AbstractTabulatedFunction.checkSorted(xValues);
-        // Предполагается, что xValues упорядочены и без дубликатов
+
         for (int i = 0; i < xValues.length; i++) {
             addNode(xValues[i], yValues[i]);
         }
@@ -57,8 +57,8 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
 
     // Конструктор 2: из функции и интервала
     public LinkedListTabulatedFunction(MathFunction source, double xFrom, double xTo, int count) {
-        if (count <= 0) {
-            throw new IllegalArgumentException("Count must be positive");
+        if (count < 2) {
+            throw new IllegalArgumentException("Count must be at least 2");
         }
         if (xFrom > xTo) {
             double temp = xFrom;
@@ -166,7 +166,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
     @Override
     protected int floorIndexOfX(double x) {
         if (x < leftBound()) {
-            return -1;
+            throw new IllegalArgumentException("X is less than left bound");
         }
         if (x >= rightBound()) {
             return count - 1;
@@ -185,9 +185,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
 
     @Override
     protected double extrapolateLeft(double x) {
-        if (count == 1) {
-            return getY(0);
-        }
+        // count > 2 v konstruktore
         double x0 = getX(0);
         double x1 = getX(1);
         double y0 = getY(0);
@@ -197,9 +195,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
 
     @Override
     protected double extrapolateRight(double x) {
-        if (count == 1) {
-            return getY(0);
-        }
+        // count > 2 v konstruktore
         int n = count - 1;
         double xn_1 = getX(n - 1);
         double xn = getX(n);
@@ -210,9 +206,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
 
     @Override
     protected double interpolate(double x, int floorIndex) {
-        if (count == 1) {
-            return getY(0);
-        }
+        // count > 2 v konstruktore
         double x0 = getX(floorIndex);
         double x1 = getX(floorIndex + 1);
 
@@ -291,11 +285,10 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + count);
         }
 
-        if (count == 1) {
-            // Удаляем единственный узел — список становится пустым
-            head = null;
-            count = 0;
-            return;
+        // count > 2 v konstruktore
+
+        if (count <= 2){
+            throw new IllegalStateException("Cannot remove point, cause we need at least 2 points");
         }
 
         Node toRemove = getNode(index);

@@ -22,6 +22,22 @@ class LinkedListTabulatedFunctionTest {
     }
 
     @Test
+    void testConstructorFromArraysThrowsExceptionForSinglePoint() {
+        double[] x = {5.0};
+        double[] y = {25.0};
+
+        assertThrows(IllegalArgumentException.class, () -> new LinkedListTabulatedFunction(x, y));
+    }
+
+    @Test
+    void testConstructorFromArraysThrowsExceptionForEmptyArrays() {
+        double[] x = {};
+        double[] y = {};
+
+        assertThrows(IllegalArgumentException.class, () -> new LinkedListTabulatedFunction(x, y));
+    }
+
+    @Test
     void testConstructorFromFunction() {
         MathFunction sqr = new SqrFunction();
         LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(sqr, 0.0, 2.0, 3);
@@ -36,13 +52,10 @@ class LinkedListTabulatedFunctionTest {
     }
 
     @Test
-    void testSinglePoint() {
-        LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(new double[]{5.0}, new double[]{25.0});
-        assertEquals(1, func.getCount());
-        assertEquals(5.0, func.leftBound());
-        assertEquals(5.0, func.rightBound());
-        assertEquals(25.0, func.apply(100.0)); // экстраполяция → возвращает 25
-        assertEquals(25.0, func.apply(0.0));
+    void testConstructorFromFunctionThrowsExceptionForSinglePoint() {
+        MathFunction sqr = new SqrFunction();
+
+        assertThrows(IllegalArgumentException.class, () -> new LinkedListTabulatedFunction(sqr, 0.0, 2.0, 1));
     }
 
     @Test
@@ -55,6 +68,36 @@ class LinkedListTabulatedFunctionTest {
     }
 
     @Test
+    void testSetYThrowsExceptionForInvalidIndex() {
+        double[] x = {0.0, 1.0};
+        double[] y = {0.0, 1.0};
+        LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(x, y);
+
+        assertThrows(IndexOutOfBoundsException.class, () -> func.setY(-1, 5.0));
+        assertThrows(IndexOutOfBoundsException.class, () -> func.setY(2, 5.0));
+    }
+
+    @Test
+    void testGetXThrowsExceptionForInvalidIndex() {
+        double[] x = {0.0, 1.0};
+        double[] y = {0.0, 1.0};
+        LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(x, y);
+
+        assertThrows(IndexOutOfBoundsException.class, () -> func.getX(-1));
+        assertThrows(IndexOutOfBoundsException.class, () -> func.getX(2));
+    }
+
+    @Test
+    void testGetYThrowsExceptionForInvalidIndex() {
+        double[] x = {0.0, 1.0};
+        double[] y = {0.0, 1.0};
+        LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(x, y);
+
+        assertThrows(IndexOutOfBoundsException.class, () -> func.getY(-1));
+        assertThrows(IndexOutOfBoundsException.class, () -> func.getY(2));
+    }
+
+    @Test
     void testFloorIndexOfX() {
         double[] x = {0.0, 1.0, 2.0, 3.0};
         double[] y = {0.0, 1.0, 4.0, 9.0};
@@ -64,17 +107,24 @@ class LinkedListTabulatedFunctionTest {
         assertEquals(1, func.floorIndexOfX(1.9));
         assertEquals(3, func.floorIndexOfX(3.0));
         assertEquals(3, func.floorIndexOfX(10.0));
-        assertEquals(-1, func.floorIndexOfX(-1.0));
+    }
+
+    @Test
+    void testFloorIndexOfXThrowsExceptionForXLessThanLeftBound() {
+        double[] x = {1.0, 2.0, 3.0};
+        double[] y = {1.0, 4.0, 9.0};
+        LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(x, y);
+
+        assertThrows(IllegalArgumentException.class, () -> func.floorIndexOfX(0.5));
     }
 
     @Test
     void testInterpolation() {
         double[] x = {0.0, 2.0};
-        double[] y = {0.0, 4.0}; // y = x^2
+        double[] y = {0.0, 4.0}; // y = 2x
         LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(x, y);
 
         assertEquals(2.0, func.apply(1.0), 1e-10); // y = 0 + (4-0)*(1-0)/(2-0) = 2.0
-        assertEquals(2.0, func.apply(1.0), 1e-10);
     }
 
     @Test
@@ -148,16 +198,6 @@ class LinkedListTabulatedFunctionTest {
         assertEquals(5.0, func.getY(1));
         assertEquals(3, func.getCount()); // без увеличения
     }
-    @Test
-    void testRemoveSingleElement() {
-        LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(
-                new double[]{1.0}, new double[]{2.0}
-        );
-        assertEquals(1, func.getCount());
-
-        func.remove(0);
-        assertEquals(0, func.getCount());
-    }
 
     @Test
     void testRemoveFirstElement() {
@@ -196,6 +236,20 @@ class LinkedListTabulatedFunctionTest {
     }
 
     @Test
+    void testRemoveThrowsExceptionWhenOnlyTwoPointsLeft() {
+        LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(
+                new double[]{1.0, 2.0, 3.0}, new double[]{10, 20, 30}
+        );
+
+        // После удаления останется 2 точки - это допустимо
+        func.remove(0);
+        assertEquals(2, func.getCount());
+
+        // Теперь попытка удалить еще одну точку должна вызвать исключение
+        assertThrows(IllegalStateException.class, () -> func.remove(0));
+    }
+
+    @Test
     void testRemoveInvalidIndexThrowsException() {
         LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(
                 new double[]{1.0, 2.0}, new double[]{10, 20}
@@ -204,19 +258,6 @@ class LinkedListTabulatedFunctionTest {
         assertThrows(IndexOutOfBoundsException.class, () -> func.remove(-1));
         assertThrows(IndexOutOfBoundsException.class, () -> func.remove(2));
         assertThrows(IndexOutOfBoundsException.class, () -> func.remove(5));
-    }
-
-    @Test
-    void testRemoveFromEmptyList() {
-        // Создать пустой список невозможно через конструкторы, но можно через remove до конца
-        LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(
-                new double[]{5.0}, new double[]{50}
-        );
-        func.remove(0);
-        assertEquals(0, func.getCount());
-
-        // Нельзя вызвать remove(0) снова, потому что count == 0 -> IndexOutOfBoundsException
-        assertThrows(IndexOutOfBoundsException.class, () -> func.remove(0));
     }
 
     @Test

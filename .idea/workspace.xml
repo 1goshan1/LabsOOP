@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39e2e6aa-65c5-4953-ae88-51a1bbb00bae" name="Changes" comment="Added interface TabulatedFunction">
-      <change beforePath="$PROJECT_DIR$/.idea/LabsOOP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LabsOOP.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="39e2e6aa-65c5-4953-ae88-51a1bbb00bae" name="Changes" comment="Added exceptions and reworked tests due to them for LinkedListTabulatedFunction">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/functions/LinkedListTabulatedFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/functions/LinkedListTabulatedFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/test/java/ru/ssau/tk/cheefkeef/laba2/functions/LinkedListTabulatedFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/test/java/ru/ssau/tk/cheefkeef/laba2/functions/LinkedListTabulatedFunctionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +47,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "JUnit.All in LabsOOP.executor": "Run",
+    "JUnit.ru.ssau.tk.cheefkeef.laba2.functions in LabsOOP.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -62,7 +62,7 @@
     ]
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.All in LabsOOP">
     <configuration name="All in LabsOOP" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LabsOOP" />
       <option name="PACKAGE_NAME" value="" />
@@ -71,9 +71,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ru.ssau.tk.cheefkeef.laba2.functions in LabsOOP" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LabsOOP" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.ssau.tk.cheefkeef.laba2.functions.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.ssau.tk.cheefkeef.laba2.functions" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in LabsOOP" />
+        <item itemvalue="JUnit.ru.ssau.tk.cheefkeef.laba2.functions in LabsOOP" />
       </list>
     </recent_temporary>
   </component>
@@ -149,7 +164,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759000175470</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Implemented Removable into LinkedListTabulatedFunction and added tests">
+      <option name="closed" value="true" />
+      <created>1759164715661</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1759164715661</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Implemented Removable into LinkedListTabulatedFunction and added tests">
+      <option name="closed" value="true" />
+      <created>1759164750072</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1759164750072</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -171,6 +202,11 @@
     <MESSAGE value="Added CompositeFunctionTest(mb I'll change it, need to ask teacher)" />
     <MESSAGE value="Added TabulatedFunction" />
     <MESSAGE value="Added interface TabulatedFunction" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added interface TabulatedFunction" />
+    <MESSAGE value="Implemented Removable into LinkedListTabulatedFunction and added tests" />
+    <MESSAGE value="Added exceptions and reworked tests due to them for LinkedListTabulatedFunction" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added exceptions and reworked tests due to them for LinkedListTabulatedFunction" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/LabsOOP$All_in_LabsOOP.ic" NAME="All in LabsOOP Coverage Results" MODIFIED="1759242207406" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
   </component>
 </project>
