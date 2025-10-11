@@ -1,6 +1,8 @@
 package ru.ssau.tk.cheefkeef.laba2.functions;
 
-public interface TabulatedFunction extends MathFunction {
+import java.util.Iterator;
+
+public interface TabulatedFunction extends MathFunction, Iterable<Point> {
     int getCount();
 
     double getX(int index);
@@ -16,4 +18,7 @@ public interface TabulatedFunction extends MathFunction {
     double leftBound();
 
     double rightBound();
+
+    @Override
+    Iterator<Point> iterator();
 }

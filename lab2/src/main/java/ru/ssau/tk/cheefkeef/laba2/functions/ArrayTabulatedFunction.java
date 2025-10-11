@@ -2,6 +2,7 @@ package ru.ssau.tk.cheefkeef.laba2.functions;
 
 import ru.ssau.tk.cheefkeef.laba2.exceptions.InterpolationException;
 
+import java.util.Iterator;
 import java.util.Arrays;
 
 public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Removable, Insertable {
@@ -173,5 +174,10 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
         xValues = newX;
         yValues = newY;
         count++;
+    }
+
+    @Override
+    public Iterator<Point> iterator() {
+        throw new UnsupportedOperationException("Iterator is not supported");
     }
 }

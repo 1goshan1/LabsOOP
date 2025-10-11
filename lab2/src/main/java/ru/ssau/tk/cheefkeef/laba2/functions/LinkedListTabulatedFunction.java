@@ -2,6 +2,8 @@ package ru.ssau.tk.cheefkeef.laba2.functions;
 
 import ru.ssau.tk.cheefkeef.laba2.exceptions.InterpolationException;
 
+import java.util.Iterator;
+
 public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removable { // a lot of explanation so I'll change to русский, но вообще комменты - это уточнение задания
     // чтобы защита легче пошла
     private static class Node {
@@ -311,5 +313,10 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
 
         toRemove.next = null;
         toRemove.prev = null;
+    }
+
+    @Override
+    public Iterator<Point> iterator() {
+        throw new UnsupportedOperationException("Iterator is not supported");
     }
 }
