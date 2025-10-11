@@ -3,6 +3,8 @@ package ru.ssau.tk.cheefkeef.laba2.functions;
 import org.junit.jupiter.api.Test;
 import ru.ssau.tk.cheefkeef.laba2.exceptions.InterpolationException;
 
+import java.util.Iterator;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ArrayTabulatedFunctionTest {
@@ -134,5 +136,43 @@ class ArrayTabulatedFunctionTest {
         double[] y = {10.0, 20.0, 40.0, 80.0, 160.0};
         ArrayTabulatedFunction func = new ArrayTabulatedFunction(x, y);
         assertThrows(InterpolationException.class, () -> func.interpolate(2.5, 3));
+    }
+
+    @Test
+    public void testIterator() {
+        ArrayTabulatedFunction func = new ArrayTabulatedFunction(
+                new double[]{1.0, 2.0, 3.0, 4.0}, new double[]{10.0, 20.0, 30.0, 40.0}
+        );
+
+        assertTrue(func.iterator().hasNext());
+        //assertThrows(java.util.NoSuchElementException.class, () -> func.iterator().next());
+    }
+
+    @Test
+    public void testIteratorEx() {
+        ArrayTabulatedFunction func = new ArrayTabulatedFunction(
+                new double[]{1.0, 2.0, 3.0, 4.0}, new double[]{10.0, 20.0, 30.0, 40.0}
+        );
+
+        Iterator<Point> it = func.iterator();
+        it.next();
+        it.next();
+        it.next();
+        it.next();
+
+        assertFalse(it.hasNext());
+        assertThrows(java.util.NoSuchElementException.class, () -> it.next());
+    }
+
+    @Test
+    public void testIteratorNext() {
+        ArrayTabulatedFunction func = new ArrayTabulatedFunction(
+                new double[]{1.0, 2.0, 3.0, 4.0}, new double[]{10.0, 20.0, 30.0, 40.0}
+        );
+
+        Iterator<Point> it = func.iterator();
+        it.next();
+
+        assertEquals(2.0, it.next().x);
     }
 }
