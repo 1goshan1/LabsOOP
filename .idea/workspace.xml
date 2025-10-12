@@ -4,15 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39e2e6aa-65c5-4953-ae88-51a1bbb00bae" name="Changes" comment="Added exceptions and reworked tests due to them for LinkedListTabulatedFunction">
+    <list default="true" id="39e2e6aa-65c5-4953-ae88-51a1bbb00bae" name="Changes" comment="Implemented iterator() in LinkedListTabulatedFunction and added tests">
+      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/functions/factory/ArrayTabulatedFunctionFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/functions/factory/LinkedListTabulatedFunctionFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/functions/factory/TabulatedFunctionFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab2/src/test/java/ru/ssau/tk/cheefkeef/laba2/functions/factory/TabulatedFunctionFactoryTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/functions/ArrayTabulatedFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/functions/ArrayTabulatedFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab2/src/test/java/ru/ssau/tk/cheefkeef/laba2/functions/ArrayTabulatedFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/test/java/ru/ssau/tk/cheefkeef/laba2/functions/ArrayTabulatedFunctionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -51,6 +60,8 @@
     "JUnit.ArrayTabulatedFunctionTest.getX.executor": "Run",
     "JUnit.ArrayTabulatedFunctionTest.getXWithInvalidIndex.executor": "Run",
     "JUnit.ArrayTabulatedFunctionTest.getY.executor": "Run",
+    "JUnit.LinkedListTabulatedFunctionTest.executor": "Run",
+    "JUnit.TabulatedFunctionFactoryTest.executor": "Run",
     "JUnit.ru.ssau.tk.cheefkeef.laba2.functions in LabsOOP.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -66,43 +77,16 @@
     ]
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.All in LabsOOP">
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="ru.ssau.tk.cheefkeef.laba2.functions.factory" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.TabulatedFunctionFactoryTest">
     <configuration name="All in LabsOOP" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LabsOOP" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ArrayTabulatedFunctionTest.getCount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="LabsOOP" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.ssau.tk.cheefkeef.laba2.functions.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ru.ssau.tk.cheefkeef.laba2.functions" />
-      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.cheefkeef.laba2.functions.ArrayTabulatedFunctionTest" />
-      <option name="METHOD_NAME" value="getCount" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ArrayTabulatedFunctionTest.getX" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="LabsOOP" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.ssau.tk.cheefkeef.laba2.functions.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ru.ssau.tk.cheefkeef.laba2.functions" />
-      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.cheefkeef.laba2.functions.ArrayTabulatedFunctionTest" />
-      <option name="METHOD_NAME" value="getX" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -139,13 +123,43 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="LinkedListTabulatedFunctionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LabsOOP" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.ssau.tk.cheefkeef.laba2.functions.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.ssau.tk.cheefkeef.laba2.functions" />
+      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.cheefkeef.laba2.functions.LinkedListTabulatedFunctionTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TabulatedFunctionFactoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LabsOOP" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.ssau.tk.cheefkeef.laba2.functions.factory.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.ssau.tk.cheefkeef.laba2.functions.factory" />
+      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.cheefkeef.laba2.functions.factory.TabulatedFunctionFactoryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TabulatedFunctionFactoryTest" />
+        <item itemvalue="JUnit.LinkedListTabulatedFunctionTest" />
         <item itemvalue="JUnit.All in LabsOOP" />
         <item itemvalue="JUnit.ArrayTabulatedFunctionTest.getY" />
         <item itemvalue="JUnit.ArrayTabulatedFunctionTest.getXWithInvalidIndex" />
-        <item itemvalue="JUnit.ArrayTabulatedFunctionTest.getX" />
-        <item itemvalue="JUnit.ArrayTabulatedFunctionTest.getCount" />
       </list>
     </recent_temporary>
   </component>
@@ -245,7 +259,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760193234841</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Added exceptions and reworked tests due to them for ArrayTabulatedFunction">
+      <option name="closed" value="true" />
+      <created>1760293174818</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1760293174818</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Implemented iterator() in LinkedListTabulatedFunction and added tests">
+      <option name="closed" value="true" />
+      <created>1760297151249</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1760297151249</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -269,22 +299,9 @@
     <MESSAGE value="Added interface TabulatedFunction" />
     <MESSAGE value="Implemented Removable into LinkedListTabulatedFunction and added tests" />
     <MESSAGE value="Added exceptions and reworked tests due to them for LinkedListTabulatedFunction" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added exceptions and reworked tests due to them for LinkedListTabulatedFunction" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/lab2/src/test/java/ru/ssau/tk/cheefkeef/laba2/functions/ArrayTabulatedFunctionTest.java</url>
-          <line>27</line>
-          <properties class="ru.ssau.tk.cheefkeef.laba2.functions.ArrayTabulatedFunctionTest" method="getCount">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Added exceptions and reworked tests due to them for ArrayTabulatedFunction" />
+    <MESSAGE value="Implemented iterator() in LinkedListTabulatedFunction and added tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented iterator() in LinkedListTabulatedFunction and added tests" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/LabsOOP$All_in_LabsOOP.ic" NAME="All in LabsOOP Coverage Results" MODIFIED="1759242207406" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
