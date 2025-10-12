@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39e2e6aa-65c5-4953-ae88-51a1bbb00bae" name="Changes" comment="Created interface TabulatedFunctionFactory and implemented create() in LinkedListTabulatedFunctionFactory and ArrayTabulatedFunctionFactory, added tests">
-      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/operations/DifferentialOperator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/operations/TabulatedDifferentialOperator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab2/src/test/java/ru/ssau/tk/cheefkeef/laba2/operations/TabulatedDifferentialOperator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="39e2e6aa-65c5-4953-ae88-51a1bbb00bae" name="Changes" comment="Created interface DifferentialOperator and implemented derive() in TabulatedDifferentialOperator and added tests" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,7 +50,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "JUnit.All in LabsOOP.executor": "Run",
+    "JUnit.All in LabsOOP.executor": "Coverage",
     "JUnit.ArrayTabulatedFunctionTest.getCount.executor": "Run",
     "JUnit.ArrayTabulatedFunctionTest.getX.executor": "Run",
     "JUnit.ArrayTabulatedFunctionTest.getXWithInvalidIndex.executor": "Run",
@@ -93,21 +88,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LinkedListTabulatedFunctionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="LabsOOP" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.ssau.tk.cheefkeef.laba2.functions.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ru.ssau.tk.cheefkeef.laba2.functions" />
-      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.cheefkeef.laba2.functions.LinkedListTabulatedFunctionTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="TabulatedDifferentialOperatorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LabsOOP" />
       <extension name="coverage">
@@ -139,6 +119,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TabulatedDifferentialOperatorTest.testSetFactory" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LabsOOP" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.ssau.tk.cheefkeef.laba2.operations.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.ssau.tk.cheefkeef.laba2.operations" />
+      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.cheefkeef.laba2.operations.TabulatedDifferentialOperatorTest" />
+      <option name="METHOD_NAME" value="testSetFactory" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TabulatedFunctionFactoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LabsOOP" />
       <extension name="coverage">
@@ -157,10 +153,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in LabsOOP" />
+        <item itemvalue="JUnit.TabulatedDifferentialOperatorTest.testSetFactory" />
         <item itemvalue="JUnit.TabulatedDifferentialOperatorTest.testDeriveSinglePoint" />
         <item itemvalue="JUnit.TabulatedDifferentialOperatorTest" />
         <item itemvalue="JUnit.TabulatedFunctionFactoryTest" />
-        <item itemvalue="JUnit.LinkedListTabulatedFunctionTest" />
       </list>
     </recent_temporary>
   </component>
@@ -284,7 +280,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760298640515</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Created interface DifferentialOperator and implemented derive() in TabulatedDifferentialOperator and added tests">
+      <option name="closed" value="true" />
+      <created>1760304727096</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1760304727096</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -311,7 +315,8 @@
     <MESSAGE value="Added exceptions and reworked tests due to them for ArrayTabulatedFunction" />
     <MESSAGE value="Implemented iterator() in LinkedListTabulatedFunction and added tests" />
     <MESSAGE value="Created interface TabulatedFunctionFactory and implemented create() in LinkedListTabulatedFunctionFactory and ArrayTabulatedFunctionFactory, added tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created interface TabulatedFunctionFactory and implemented create() in LinkedListTabulatedFunctionFactory and ArrayTabulatedFunctionFactory, added tests" />
+    <MESSAGE value="Created interface DifferentialOperator and implemented derive() in TabulatedDifferentialOperator and added tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created interface DifferentialOperator and implemented derive() in TabulatedDifferentialOperator and added tests" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/LabsOOP$All_in_LabsOOP.ic" NAME="All in LabsOOP Coverage Results" MODIFIED="1759242207406" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />

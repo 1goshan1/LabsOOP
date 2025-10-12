@@ -151,4 +151,20 @@ class TabulatedDifferentialOperatorTest {
         assertNotNull(operator.getFactory());
         assertTrue(operator.getFactory() instanceof ArrayTabulatedFunctionFactory);
     }
+
+    @Test
+    void testSetFactory() {
+        double[] xValues = {0.0, 1.0, 2.0};
+        double[] yValues = {0.0, 1.0, 4.0};
+        TabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
+
+        TabulatedDifferentialOperator operator = new TabulatedDifferentialOperator();
+
+        TabulatedFunctionFactory linkedListFactory = new LinkedListTabulatedFunctionFactory();
+        operator.setFactory(linkedListFactory);
+
+        TabulatedFunction derivative = operator.derive(function);
+
+        assertTrue(derivative instanceof LinkedListTabulatedFunction);
+    }
 }
