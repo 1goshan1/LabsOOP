@@ -3,6 +3,8 @@ package ru.ssau.tk.cheefkeef.laba2.functions;
 import org.junit.jupiter.api.Test;
 import ru.ssau.tk.cheefkeef.laba2.exceptions.InterpolationException;
 
+import java.util.Iterator;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class LinkedListTabulatedFunctionTest {
@@ -288,5 +290,50 @@ class LinkedListTabulatedFunctionTest {
                 new double[]{0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0}, new double[]{0, 1, 2, 3, 4, 5, 6}
         );
         assertThrows(InterpolationException.class, () -> func.interpolate(2.5, 3));
+    }
+    @Test
+    void testIteratorOrder() {
+        double[] x = {0.5, 1.5, 2.5};
+        double[] y = {5.0, 15.0, 25.0};
+        LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(x, y);
+
+        Iterator<Point> iterator = func.iterator();
+
+        Point first = iterator.next();
+        assertEquals(0.5, first.x, 1e-10);
+        assertEquals(5.0, first.y, 1e-10);
+
+        Point second = iterator.next();
+        assertEquals(1.5, second.x, 1e-10);
+        assertEquals(15.0, second.y, 1e-10);
+
+        Point third = iterator.next();
+        assertEquals(2.5, third.x, 1e-10);
+        assertEquals(25.0, third.y, 1e-10);
+    }
+
+    @Test
+    void testMultipleIteratorsIndependent() {
+        LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(
+                new double[]{1.0, 2.0, 3.0}, new double[]{10.0, 20.0, 30.0}
+        );
+
+        Iterator<Point> iterator1 = func.iterator();
+        Iterator<Point> iterator2 = func.iterator();
+
+        Point point1 = iterator1.next();
+        Point point2 = iterator2.next();
+
+        assertEquals(point1.x, point2.x, 1e-10);
+        assertEquals(point1.y, point2.y, 1e-10);
+
+        iterator1.next();
+
+        assertTrue(iterator1.hasNext());
+        assertTrue(iterator2.hasNext());
+
+        Point point3 = iterator2.next();
+        assertEquals(2.0, point3.x, 1e-10);
+        assertEquals(20.0, point3.y, 1e-10);
     }
 }
