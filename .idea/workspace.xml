@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39e2e6aa-65c5-4953-ae88-51a1bbb00bae" name="Changes" comment="Implemented iterator() in LinkedListTabulatedFunction and added tests">
-      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/functions/factory/ArrayTabulatedFunctionFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/functions/factory/LinkedListTabulatedFunctionFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/functions/factory/TabulatedFunctionFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab2/src/test/java/ru/ssau/tk/cheefkeef/laba2/functions/factory/TabulatedFunctionFactoryTest.java" afterDir="false" />
+    <list default="true" id="39e2e6aa-65c5-4953-ae88-51a1bbb00bae" name="Changes" comment="Created interface TabulatedFunctionFactory and implemented create() in LinkedListTabulatedFunctionFactory and ArrayTabulatedFunctionFactory, added tests">
+      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/operations/DifferentialOperator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/operations/TabulatedDifferentialOperator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab2/src/test/java/ru/ssau/tk/cheefkeef/laba2/operations/TabulatedDifferentialOperator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,6 +18,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -61,6 +61,8 @@
     "JUnit.ArrayTabulatedFunctionTest.getXWithInvalidIndex.executor": "Run",
     "JUnit.ArrayTabulatedFunctionTest.getY.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.executor": "Run",
+    "JUnit.TabulatedDifferentialOperatorTest.executor": "Run",
+    "JUnit.TabulatedDifferentialOperatorTest.testDeriveSinglePoint.executor": "Run",
     "JUnit.TabulatedFunctionFactoryTest.executor": "Run",
     "JUnit.ru.ssau.tk.cheefkeef.laba2.functions in LabsOOP.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
@@ -82,43 +84,11 @@
       <recent name="ru.ssau.tk.cheefkeef.laba2.functions.factory" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TabulatedFunctionFactoryTest">
+  <component name="RunManager" selected="JUnit.All in LabsOOP">
     <configuration name="All in LabsOOP" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LabsOOP" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ArrayTabulatedFunctionTest.getXWithInvalidIndex" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="LabsOOP" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.ssau.tk.cheefkeef.laba2.functions.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ru.ssau.tk.cheefkeef.laba2.functions" />
-      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.cheefkeef.laba2.functions.ArrayTabulatedFunctionTest" />
-      <option name="METHOD_NAME" value="getXWithInvalidIndex" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ArrayTabulatedFunctionTest.getY" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="LabsOOP" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.ssau.tk.cheefkeef.laba2.functions.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ru.ssau.tk.cheefkeef.laba2.functions" />
-      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.cheefkeef.laba2.functions.ArrayTabulatedFunctionTest" />
-      <option name="METHOD_NAME" value="getY" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -134,6 +104,37 @@
       <option name="PACKAGE_NAME" value="ru.ssau.tk.cheefkeef.laba2.functions" />
       <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.cheefkeef.laba2.functions.LinkedListTabulatedFunctionTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TabulatedDifferentialOperatorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LabsOOP" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.ssau.tk.cheefkeef.laba2.operations.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.ssau.tk.cheefkeef.laba2.operations" />
+      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.cheefkeef.laba2.operations.TabulatedDifferentialOperatorTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TabulatedDifferentialOperatorTest.testDeriveSinglePoint" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LabsOOP" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.ssau.tk.cheefkeef.laba2.operations.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.ssau.tk.cheefkeef.laba2.operations" />
+      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.cheefkeef.laba2.operations.TabulatedDifferentialOperatorTest" />
+      <option name="METHOD_NAME" value="testDeriveSinglePoint" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -155,11 +156,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in LabsOOP" />
+        <item itemvalue="JUnit.TabulatedDifferentialOperatorTest.testDeriveSinglePoint" />
+        <item itemvalue="JUnit.TabulatedDifferentialOperatorTest" />
         <item itemvalue="JUnit.TabulatedFunctionFactoryTest" />
         <item itemvalue="JUnit.LinkedListTabulatedFunctionTest" />
-        <item itemvalue="JUnit.All in LabsOOP" />
-        <item itemvalue="JUnit.ArrayTabulatedFunctionTest.getY" />
-        <item itemvalue="JUnit.ArrayTabulatedFunctionTest.getXWithInvalidIndex" />
       </list>
     </recent_temporary>
   </component>
@@ -275,7 +276,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760297151249</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Created interface TabulatedFunctionFactory and implemented create() in LinkedListTabulatedFunctionFactory and ArrayTabulatedFunctionFactory, added tests">
+      <option name="closed" value="true" />
+      <created>1760298640515</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1760298640515</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -301,7 +310,8 @@
     <MESSAGE value="Added exceptions and reworked tests due to them for LinkedListTabulatedFunction" />
     <MESSAGE value="Added exceptions and reworked tests due to them for ArrayTabulatedFunction" />
     <MESSAGE value="Implemented iterator() in LinkedListTabulatedFunction and added tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented iterator() in LinkedListTabulatedFunction and added tests" />
+    <MESSAGE value="Created interface TabulatedFunctionFactory and implemented create() in LinkedListTabulatedFunctionFactory and ArrayTabulatedFunctionFactory, added tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created interface TabulatedFunctionFactory and implemented create() in LinkedListTabulatedFunctionFactory and ArrayTabulatedFunctionFactory, added tests" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/LabsOOP$All_in_LabsOOP.ic" NAME="All in LabsOOP Coverage Results" MODIFIED="1759242207406" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
