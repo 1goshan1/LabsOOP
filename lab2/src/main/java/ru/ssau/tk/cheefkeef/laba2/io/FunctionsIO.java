@@ -3,10 +3,7 @@ package ru.ssau.tk.cheefkeef.laba2.io;
 import ru.ssau.tk.cheefkeef.laba2.functions.TabulatedFunction;
 import ru.ssau.tk.cheefkeef.laba2.functions.factory.TabulatedFunctionFactory;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.PrintWriter;
-import java.io.IOException;
+import java.io.*;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Locale;
@@ -74,5 +71,11 @@ public final class FunctionsIO {
         }
 
         return factory.create(xValues, yValues);
+    }
+
+    public static void serialize(BufferedOutputStream stream, TabulatedFunction function) throws IOException {
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(stream);
+        objectOutputStream.writeObject(function);
+        objectOutputStream.flush();
     }
 }
