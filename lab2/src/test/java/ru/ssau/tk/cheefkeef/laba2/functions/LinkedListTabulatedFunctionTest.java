@@ -328,4 +328,22 @@ class LinkedListTabulatedFunctionTest {
         assertEquals(2.0, point3.x, 1e-10);
         assertEquals(20.0, point3.y, 1e-10);
     }
+
+    @Test
+    void testIndefOfY() {
+        LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(
+                new double[]{1.0, 2.0, 3.0}, new double[]{10.0, 20.0, 30.0}
+        );
+
+        assertEquals(1, func.indexOfY(20.0));
+    }
+
+    @Test
+    void testIndefOfYNot() {
+        LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(
+                new double[]{1.0, 2.0, 3.0}, new double[]{10.0, 20.0, 30.0}
+        );
+
+        assertEquals(-1, func.indexOfY(1337.0));
+    }
 }
