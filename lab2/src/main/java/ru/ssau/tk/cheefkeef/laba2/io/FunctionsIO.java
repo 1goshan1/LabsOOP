@@ -1,9 +1,15 @@
 package ru.ssau.tk.cheefkeef.laba2.io;
 
 import ru.ssau.tk.cheefkeef.laba2.functions.TabulatedFunction;
+import ru.ssau.tk.cheefkeef.laba2.functions.factory.TabulatedFunctionFactory;
+
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.PrintWriter;
 import java.io.IOException;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.Locale;
 
 public final class FunctionsIO {
 
@@ -22,5 +28,51 @@ public final class FunctionsIO {
         }
 
         printWriter.flush();
+    }
+
+    public static TabulatedFunction readTabulatedFunction(BufferedReader reader, TabulatedFunctionFactory factory)
+            throws IOException {
+        String countLine = reader.readLine();
+        if (countLine == null) {
+            throw new IOException("File is empty");
+        }
+
+        int count;
+        try {
+            count = Integer.parseInt(countLine.trim());
+        } catch (NumberFormatException e) {
+            throw new IOException("Invalid count format: " + countLine, e);
+        }
+
+        if (count <= 0) {
+            throw new IOException("Count must be positive");
+        }
+
+        double[] xValues = new double[count];
+        double[] yValues = new double[count];
+
+        // Создаём форматтер для русской локали (запятая как десятичный разделитель)
+        NumberFormat numberFormat = NumberFormat.getInstance(Locale.forLanguageTag("ru"));
+
+        for (int i = 0; i < count; i++) {
+            String line = reader.readLine();
+            if (line == null) {
+                throw new IOException("Unexpected end of file at line " + (i + 2));
+            }
+
+            String[] parts = line.trim().split(" ");
+            if (parts.length != 2) {
+                throw new IOException("Invalid line format at line " + (i + 2) + ": " + line);
+            }
+
+            try {
+                xValues[i] = numberFormat.parse(parts[0]).doubleValue();
+                yValues[i] = numberFormat.parse(parts[1]).doubleValue();
+            } catch (ParseException e) {
+                throw new IOException("Failed to parse number at line " + (i + 2) + ": " + line, e);
+            }
+        }
+
+        return factory.create(xValues, yValues);
     }
 }
