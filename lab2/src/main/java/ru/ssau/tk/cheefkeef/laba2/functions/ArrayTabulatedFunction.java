@@ -2,13 +2,16 @@ package ru.ssau.tk.cheefkeef.laba2.functions;
 
 import ru.ssau.tk.cheefkeef.laba2.exceptions.InterpolationException;
 
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.Arrays;
 
-public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Removable, Insertable {
+public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Removable, Insertable, Serializable {
     private double[] xValues;
     private double[] yValues;
     private int count;
+
+    private static final long serialVersionUID = 1601243305971609374L;
 
     public ArrayTabulatedFunction(double[] xValues, double[] yValues) {
         if (xValues.length != yValues.length || xValues.length == 0)
