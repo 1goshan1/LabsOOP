@@ -70,8 +70,8 @@ public class TabulatedFunctionOperationServiceTest {
 
     @Test
     public void testInconsistentCount() {
-        TabulatedFunction f1 = new ArrayTabulatedFunction(new double[]{1, 2}, new double[]{1, 2});
-        TabulatedFunction f2 = new ArrayTabulatedFunction(new double[]{1}, new double[]{1});
+        TabulatedFunction f1 = new ArrayTabulatedFunction(new double[]{1, 2, 3}, new double[]{1, 2, 3});
+        TabulatedFunction f2 = new ArrayTabulatedFunction(new double[]{1, 2}, new double[]{1, 2});
 
         TabulatedFunctionOperationService service = new TabulatedFunctionOperationService();
         assertThrows(InconsistentFunctionsException.class, () -> {
@@ -105,6 +105,6 @@ public class TabulatedFunctionOperationServiceTest {
         TabulatedFunction result = service.add(f1, f2);
         assertTrue(result instanceof LinkedListTabulatedFunction);
     }
-    
+
 
 }
