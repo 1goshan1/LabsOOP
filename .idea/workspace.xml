@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39e2e6aa-65c5-4953-ae88-51a1bbb00bae" name="Changes" comment="added multiply and divide in TabulatedFunctionOperationService and tests for them">
+      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/io/TabulatedFunctionFileOutputStream.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/io/FunctionsIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/io/FunctionsIO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +55,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.ArrayTabulatedFunctionSerialization.executor": "Run",
+    "Application.TabulatedFunctionFileOutputStream.executor": "Run",
     "JUnit.AbstractTabulatedFunctionTest.executor": "Run",
     "JUnit.AbstractTabulatedFunctionTest.testToString_ArrayTabulatedFunction.executor": "Run",
     "JUnit.AbstractTabulatedFunctionTest.testToString_LinkedListTabulatedFunction.executor": "Run",
@@ -67,6 +72,7 @@
     "JUnit.TabulatedFunctionFactoryTest.executor": "Run",
     "JUnit.TabulatedFunctionOperationServiceTest.executor": "Run",
     "JUnit.TabulatedFunctionOperationServiceTest.testGetFactory.executor": "Run",
+    "JUnit.TabulatedFunctionOperationServiceTest.testInconsistentCount.executor": "Run",
     "JUnit.ru.ssau.tk.cheefkeef.laba2.functions in LabsOOP.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -87,35 +93,37 @@
       <recent name="ru.ssau.tk.cheefkeef.laba2.functions.factory" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TabulatedFunctionOperationServiceTest">
-    <configuration name="AbstractTabulatedFunctionTest.testToString_ArrayTabulatedFunction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.TabulatedFunctionFileOutputStream">
+    <configuration name="ArrayTabulatedFunctionSerialization" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.cheefkeef.laba2.io.ArrayTabulatedFunctionSerialization" />
       <module name="LabsOOP" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.ssau.tk.cheefkeef.laba2.functions.*" />
+          <option name="PATTERN" value="ru.ssau.tk.cheefkeef.laba2.io.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="ru.ssau.tk.cheefkeef.laba2.functions" />
-      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.cheefkeef.laba2.functions.AbstractTabulatedFunctionTest" />
-      <option name="METHOD_NAME" value="testToString_ArrayTabulatedFunction" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AbstractTabulatedFunctionTest.testToString_LinkedListTabulatedFunction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TabulatedFunctionFileOutputStream" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.cheefkeef.laba2.io.TabulatedFunctionFileOutputStream" />
       <module name="LabsOOP" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.ssau.tk.cheefkeef.laba2.functions.*" />
+          <option name="PATTERN" value="ru.ssau.tk.cheefkeef.laba2.io.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="ru.ssau.tk.cheefkeef.laba2.functions" />
-      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.cheefkeef.laba2.functions.AbstractTabulatedFunctionTest" />
-      <option name="METHOD_NAME" value="testToString_LinkedListTabulatedFunction" />
-      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in LabsOOP" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LabsOOP" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -131,22 +139,6 @@
       <option name="PACKAGE_NAME" value="ru.ssau.tk.cheefkeef.laba2.operations" />
       <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.cheefkeef.laba2.operations.TabulatedFunctionOperationServiceTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TabulatedFunctionOperationServiceTest.testGetFactory" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="LabsOOP" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.ssau.tk.cheefkeef.laba2.operations.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ru.ssau.tk.cheefkeef.laba2.operations" />
-      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.cheefkeef.laba2.operations.TabulatedFunctionOperationServiceTest" />
-      <option name="METHOD_NAME" value="testGetFactory" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -169,11 +161,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TabulatedFunctionFileOutputStream" />
+        <item itemvalue="Application.ArrayTabulatedFunctionSerialization" />
+        <item itemvalue="JUnit.All in LabsOOP" />
         <item itemvalue="JUnit.TabulatedFunctionOperationServiceTest" />
         <item itemvalue="JUnit.TabulatedFunctionOperationServiceTest.testInconsistentCount" />
-        <item itemvalue="JUnit.TabulatedFunctionOperationServiceTest.testGetFactory" />
-        <item itemvalue="JUnit.AbstractTabulatedFunctionTest.testToString_ArrayTabulatedFunction" />
-        <item itemvalue="JUnit.AbstractTabulatedFunctionTest.testToString_LinkedListTabulatedFunction" />
       </list>
     </recent_temporary>
   </component>
@@ -329,7 +321,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760368295943</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="added multiply and divide in TabulatedFunctionOperationService and tests for them">
+      <option name="closed" value="true" />
+      <created>1760368728912</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1760368728912</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

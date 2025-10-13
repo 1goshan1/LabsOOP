@@ -27,6 +27,20 @@ public final class FunctionsIO {
         printWriter.flush();
     }
 
+    public static void writeTabulatedFunction(BufferedOutputStream outputStream, TabulatedFunction function)
+            throws IOException {
+        DataOutputStream dataOutputStream = new DataOutputStream(outputStream);
+        int count = function.getCount();
+        dataOutputStream.writeInt(count);
+
+        for (int i = 0; i < count; i++) {
+            dataOutputStream.writeDouble(function.getX(i));
+            dataOutputStream.writeDouble(function.getY(i));
+        }
+
+        dataOutputStream.flush();
+    }
+
     public static TabulatedFunction readTabulatedFunction(BufferedReader reader, TabulatedFunctionFactory factory)
             throws IOException {
         String countLine = reader.readLine();
