@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39e2e6aa-65c5-4953-ae88-51a1bbb00bae" name="Changes" comment="got rid off useless if and covered setFactory">
+    <list default="true" id="39e2e6aa-65c5-4953-ae88-51a1bbb00bae" name="Changes" comment="added multiply and divide in TabulatedFunctionOperationService and tests for them. Also, Kirill, check constructor(&gt;2 length)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/functions/AbstractTabulatedFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/functions/AbstractTabulatedFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab2/src/test/java/ru/ssau/tk/cheefkeef/laba2/functions/AbstractTabulatedFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/test/java/ru/ssau/tk/cheefkeef/laba2/functions/AbstractTabulatedFunctionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/operations/TabulatedFunctionOperationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/operations/TabulatedFunctionOperationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/test/java/ru/ssau/tk/cheefkeef/laba2/operations/TabulatedFunctionOperationServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/test/java/ru/ssau/tk/cheefkeef/laba2/operations/TabulatedFunctionOperationServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +55,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "JUnit.AbstractTabulatedFunctionTest.executor": "Run",
+    "JUnit.AbstractTabulatedFunctionTest.testToString_ArrayTabulatedFunction.executor": "Run",
+    "JUnit.AbstractTabulatedFunctionTest.testToString_LinkedListTabulatedFunction.executor": "Run",
     "JUnit.All in LabsOOP.executor": "Coverage",
     "JUnit.ArrayTabulatedFunctionTest.getCount.executor": "Run",
     "JUnit.ArrayTabulatedFunctionTest.getX.executor": "Run",
@@ -65,6 +67,8 @@
     "JUnit.TabulatedDifferentialOperatorTest.testDeriveSinglePoint.executor": "Run",
     "JUnit.TabulatedDifferentialOperatorTest.testSetFactory.executor": "Run",
     "JUnit.TabulatedFunctionFactoryTest.executor": "Run",
+    "JUnit.TabulatedFunctionOperationServiceTest.executor": "Run",
+    "JUnit.TabulatedFunctionOperationServiceTest.testGetFactory.executor": "Run",
     "JUnit.ru.ssau.tk.cheefkeef.laba2.functions in LabsOOP.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -85,7 +89,7 @@
       <recent name="ru.ssau.tk.cheefkeef.laba2.functions.factory" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AbstractTabulatedFunctionTest.testToString_ArrayTabulatedFunction">
+  <component name="RunManager" selected="JUnit.TabulatedFunctionOperationServiceTest.testGetFactory">
     <configuration name="AbstractTabulatedFunctionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LabsOOP" />
       <extension name="coverage">
@@ -133,15 +137,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="All in LabsOOP" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="LabsOOP" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TabulatedDifferentialOperatorTest.testSetFactory" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TabulatedFunctionOperationServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LabsOOP" />
       <extension name="coverage">
         <pattern>
@@ -150,8 +146,23 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="ru.ssau.tk.cheefkeef.laba2.operations" />
-      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.cheefkeef.laba2.operations.TabulatedDifferentialOperatorTest" />
-      <option name="METHOD_NAME" value="testSetFactory" />
+      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.cheefkeef.laba2.operations.TabulatedFunctionOperationServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TabulatedFunctionOperationServiceTest.testGetFactory" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LabsOOP" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.ssau.tk.cheefkeef.laba2.operations.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.ssau.tk.cheefkeef.laba2.operations" />
+      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.cheefkeef.laba2.operations.TabulatedFunctionOperationServiceTest" />
+      <option name="METHOD_NAME" value="testGetFactory" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -159,11 +170,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TabulatedFunctionOperationServiceTest.testGetFactory" />
+        <item itemvalue="JUnit.TabulatedFunctionOperationServiceTest" />
         <item itemvalue="JUnit.AbstractTabulatedFunctionTest.testToString_ArrayTabulatedFunction" />
         <item itemvalue="JUnit.AbstractTabulatedFunctionTest.testToString_LinkedListTabulatedFunction" />
         <item itemvalue="JUnit.AbstractTabulatedFunctionTest" />
-        <item itemvalue="JUnit.All in LabsOOP" />
-        <item itemvalue="JUnit.TabulatedDifferentialOperatorTest.testSetFactory" />
       </list>
     </recent_temporary>
   </component>
@@ -303,7 +314,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760305109761</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="implemented toString() in AbstractTabulatedFunction and added tests">
+      <option name="closed" value="true" />
+      <created>1760366505363</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1760366505364</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -332,7 +351,9 @@
     <MESSAGE value="Created interface TabulatedFunctionFactory and implemented create() in LinkedListTabulatedFunctionFactory and ArrayTabulatedFunctionFactory, added tests" />
     <MESSAGE value="Created interface DifferentialOperator and implemented derive() in TabulatedDifferentialOperator and added tests" />
     <MESSAGE value="got rid off useless if and covered setFactory" />
-    <option name="LAST_COMMIT_MESSAGE" value="got rid off useless if and covered setFactory" />
+    <MESSAGE value="implemented toString() in AbstractTabulatedFunction and added tests" />
+    <MESSAGE value="added multiply and divide in TabulatedFunctionOperationService and tests for them. Also, Kirill, check constructor(&gt;2 length)" />
+    <option name="LAST_COMMIT_MESSAGE" value="added multiply and divide in TabulatedFunctionOperationService and tests for them. Also, Kirill, check constructor(&gt;2 length)" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/LabsOOP$All_in_LabsOOP.ic" NAME="All in LabsOOP Coverage Results" MODIFIED="1760305022206" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
