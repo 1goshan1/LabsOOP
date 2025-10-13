@@ -177,14 +177,6 @@ class ArrayTabulatedFunctionTest {
     }
 
     @Test
-    void testInterpolateXNotEx() {
-        double[] x = {1.0, 2.0, 4.0, 5.0, 6.0};
-        double[] y = {10.0, 20.0, 40.0, 80.0, 160.0};
-        ArrayTabulatedFunction func = new ArrayTabulatedFunction(x, y);
-        assertThrows(InterpolationException.class, () -> func.interpolate(2.5, 1));
-    }
-
-    @Test
     void testInterpolateXEx() {
         double[] x = {1.0, 2.0, 4.0, 5.0, 6.0};
         double[] y = {10.0, 20.0, 40.0, 80.0, 160.0};
@@ -227,5 +219,113 @@ class ArrayTabulatedFunctionTest {
         it.next();
 
         assertEquals(2.0, it.next().x);
+    }
+    @Test
+    void constructorFromFunction_throwsWhenCountLessThan2() {
+        // Act & Assert
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> new ArrayTabulatedFunction(new SqrFunction(), 0.0, 1.0, 1)
+        );
+        assertEquals("Count is less than minimum", exception.getMessage());
+    }
+
+    @Test
+    void constructorFromFunction_handlesXFromGreaterThanXTo() {
+        double xFrom = 2.0;
+        double xTo = 0.0;
+        int count = 3;
+
+        ArrayTabulatedFunction f = new ArrayTabulatedFunction(new SqrFunction(), xFrom, xTo, count);
+
+        assertEquals(0.0, f.leftBound());
+        assertEquals(2.0, f.rightBound());
+        assertEquals(3, f.getCount());
+        assertEquals(0.0, f.getX(0));   // 0.0² = 0.0
+        assertEquals(1.0, f.getX(1));   // 1.0² = 1.0
+        assertEquals(2.0, f.getX(2));   // 2.0² = 4.0
+        assertEquals(4.0, f.getY(2));
+    }
+
+    @Test
+    void constructorFromFunction_handlesXFromEqualsXTo() {
+        double x = 5.0;
+        int count = 4;
+
+        ArrayTabulatedFunction f = new ArrayTabulatedFunction(new SqrFunction(), x, x, count);
+
+        assertEquals(4, f.getCount());
+        for (int i = 0; i < 4; i++) {
+            assertEquals(5.0, f.getX(i));
+            assertEquals(25.0, f.getY(i));
+        }
+    }
+
+    @Test
+    void getY_throwsIllegalArgumentExceptionOnInvalidIndex() {
+        ArrayTabulatedFunction f = new ArrayTabulatedFunction(
+                new double[]{1.0, 2.0},
+                new double[]{10.0, 20.0}
+        );
+
+        assertThrows(IllegalArgumentException.class, () -> f.getY(-1));
+
+        assertThrows(IllegalArgumentException.class, () -> f.getY(2));
+        assertThrows(IllegalArgumentException.class, () -> f.getY(5));
+    }
+
+    @Test
+    void interpolate_returnsLastYValue_whenFloorIndexIsLast() {
+        ArrayTabulatedFunction f = new ArrayTabulatedFunction(
+                new double[]{0.0, 1.0, 2.0},
+                new double[]{0.0, 1.0, 4.0}
+        );
+
+        double result = f.interpolate(2.0, 2);
+
+        assertEquals(4.0, result, 1e-10);
+    }
+
+    @Test
+    void interpolate_throwsInterpolationException_whenXIsOutsideInterval() {
+        ArrayTabulatedFunction f = new ArrayTabulatedFunction(
+                new double[]{0.0, 1.0, 2.0},
+                new double[]{0.0, 1.0, 4.0}
+        );
+
+        assertThrows(InterpolationException.class, () -> f.interpolate(1.5, 0));
+    }
+
+    @Test
+    void remove_throwsIllegalArgumentExceptionOnInvalidIndex() {
+        ArrayTabulatedFunction f = new ArrayTabulatedFunction(
+                new double[]{1.0, 2.0, 3.0},
+                new double[]{10.0, 20.0, 30.0}
+        );
+
+        assertThrows(IllegalArgumentException.class, () -> f.remove(-1));
+    }
+    @Test
+    void apply_extrapolatesLeft_whenXLessThanLeftBound() {
+        ArrayTabulatedFunction f = new ArrayTabulatedFunction(
+                new double[]{1.0, 2.0},
+                new double[]{1.0, 4.0}
+        );
+
+        double result = f.apply(0.0);
+
+        assertEquals(-2.0, result, 1e-10);
+    }
+
+    @Test
+    void apply_extrapolatesRight_whenXGreaterThanRightBound() {
+        ArrayTabulatedFunction f = new ArrayTabulatedFunction(
+                new double[]{1.0, 2.0},
+                new double[]{1.0, 4.0}
+        );
+
+        double result = f.apply(3.0);
+
+        assertEquals(7.0, result, 1e-10);
     }
 }

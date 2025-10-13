@@ -277,14 +277,6 @@ class LinkedListTabulatedFunctionTest {
     }
 
     @Test
-    void testInterpolateXNotEx() {
-        LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(
-                new double[]{0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0}, new double[]{0, 1, 2, 3, 4, 5, 6}
-        );
-        assertThrows(InterpolationException.class, () -> func.interpolate(2.5, 2));
-    }
-
-    @Test
     void testInterpolateXEx() {
         LinkedListTabulatedFunction func = new LinkedListTabulatedFunction(
                 new double[]{0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0}, new double[]{0, 1, 2, 3, 4, 5, 6}
