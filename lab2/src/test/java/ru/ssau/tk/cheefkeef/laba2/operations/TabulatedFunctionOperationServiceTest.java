@@ -6,7 +6,9 @@ import ru.ssau.tk.cheefkeef.laba2.functions.ArrayTabulatedFunction;
 import ru.ssau.tk.cheefkeef.laba2.functions.LinkedListTabulatedFunction;
 import ru.ssau.tk.cheefkeef.laba2.functions.Point;
 import ru.ssau.tk.cheefkeef.laba2.functions.TabulatedFunction;
+import ru.ssau.tk.cheefkeef.laba2.functions.factory.ArrayTabulatedFunctionFactory;
 import ru.ssau.tk.cheefkeef.laba2.functions.factory.LinkedListTabulatedFunctionFactory;
+import ru.ssau.tk.cheefkeef.laba2.functions.factory.TabulatedFunctionFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -182,6 +184,15 @@ public class TabulatedFunctionOperationServiceTest {
         assertThrows(ArithmeticException.class, () -> {
             service.divide(f1, f2);
         });
+    }
+
+    @Test
+    void testGetFactory_returnsDefaultFactory_whenCreatedWithDefaultConstructor() {
+        TabulatedFunctionOperationService service = new TabulatedFunctionOperationService();
+        TabulatedFunctionFactory factory = service.getFactory();
+
+        assertNotNull(factory);
+        assertTrue(factory instanceof ArrayTabulatedFunctionFactory);
     }
 
 }
