@@ -14,7 +14,6 @@ public final class FunctionsIO {
         throw new UnsupportedOperationException("Utility class FunctionsIO cannot be instantiated");
     }
 
-
     public static void writeTabulatedFunction(BufferedWriter writer, TabulatedFunction function) throws IOException {
         PrintWriter printWriter = new PrintWriter(writer);
         int count = function.getCount();
@@ -87,6 +86,26 @@ public final class FunctionsIO {
         return factory.create(xValues, yValues);
     }
 
+    public static TabulatedFunction readTabulatedFunction(BufferedInputStream inputStream, TabulatedFunctionFactory factory)
+            throws IOException {
+        DataInputStream dataInputStream = new DataInputStream(inputStream);
+        int count = dataInputStream.readInt();
+
+        if (count <= 0) {
+            throw new IOException("Count must be positive");
+        }
+
+        double[] xValues = new double[count];
+        double[] yValues = new double[count];
+
+        for (int i = 0; i < count; i++) {
+            xValues[i] = dataInputStream.readDouble();
+            yValues[i] = dataInputStream.readDouble();
+        }
+
+        return factory.create(xValues, yValues);
+    }
+
     public static void serialize(BufferedOutputStream stream, TabulatedFunction function) throws IOException {
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(stream);
         objectOutputStream.writeObject(function);
@@ -97,6 +116,5 @@ public final class FunctionsIO {
         ObjectInputStream objectInputStream = new ObjectInputStream(stream);
         return (TabulatedFunction) objectInputStream.readObject();
     }
-
 
 }
