@@ -2,11 +2,16 @@ package ru.ssau.tk.cheefkeef.laba2.functions;
 
 import ru.ssau.tk.cheefkeef.laba2.exceptions.InterpolationException;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
-public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removable { // a lot of explanation so I'll change to русский, но вообще комменты - это уточнение задания
+public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removable, Serializable { // a lot of explanation so I'll change to русский, но вообще комменты - это уточнение задания
     // чтобы защита легче пошла
-    private static class Node {
+    private static class Node implements Serializable {
+        @Serial
+        private static final long serialVersionUID = -1039477163003185482L;
         public Node next;
         public Node prev;
         public double x;
@@ -17,7 +22,8 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
             this.y = y;
         }
     }
-
+    @Serial
+    private static final long serialVersionUID = 5602953659205222970L;
     private Node head;
     protected int count; // защищённое поле, как в ArrayTabulatedFunction
 
@@ -322,7 +328,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
             @Override
             public Point next() {
                 if (!hasNext()) {
-                    throw new java.util.NoSuchElementException("No more elements in the list");
+                    throw new NoSuchElementException("No more elements in the list");
                 }
 
                 Point point = new Point(currentNode.x, currentNode.y);

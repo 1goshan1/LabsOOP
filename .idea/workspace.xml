@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39e2e6aa-65c5-4953-ae88-51a1bbb00bae" name="Changes" comment="added writeTabulatedFunction with BufferedOutputStream, TabulatedFunctionFileOutputStream(kind of a test cause contains main())">
-      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/io/TabulatedFunctionFileInputStream.java" afterDir="false" />
+    <list default="true" id="39e2e6aa-65c5-4953-ae88-51a1bbb00bae" name="Changes" comment="added readTabulatedFunction with BufferedInputStream, TabulatedFunctionFileInputStream(kind of a test cause contains main())">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/io/FunctionsIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/io/FunctionsIO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/functions/LinkedListTabulatedFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/functions/LinkedListTabulatedFunction.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +79,7 @@
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Admin/IdeaProjects/LabsOOP",
-    "settings.editor.selected.configurable": "copyright.profiles"
+    "settings.editor.selected.configurable": "Errors"
   },
   "keyToStringList": {
     "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
@@ -334,7 +333,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760377368558</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="added readTabulatedFunction with BufferedInputStream, TabulatedFunctionFileInputStream(kind of a test cause contains main())">
+      <option name="closed" value="true" />
+      <created>1760378080710</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1760378080710</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -367,7 +374,8 @@
     <MESSAGE value="added multiply and divide in TabulatedFunctionOperationService and tests for them. Also, Kirill, check constructor(&gt;2 length)" />
     <MESSAGE value="added multiply and divide in TabulatedFunctionOperationService and tests for them" />
     <MESSAGE value="added writeTabulatedFunction with BufferedOutputStream, TabulatedFunctionFileOutputStream(kind of a test cause contains main())" />
-    <option name="LAST_COMMIT_MESSAGE" value="added writeTabulatedFunction with BufferedOutputStream, TabulatedFunctionFileOutputStream(kind of a test cause contains main())" />
+    <MESSAGE value="added readTabulatedFunction with BufferedInputStream, TabulatedFunctionFileInputStream(kind of a test cause contains main())" />
+    <option name="LAST_COMMIT_MESSAGE" value="added readTabulatedFunction with BufferedInputStream, TabulatedFunctionFileInputStream(kind of a test cause contains main())" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/LabsOOP$All_in_LabsOOP.ic" NAME="All in LabsOOP Coverage Results" MODIFIED="1760305022206" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
