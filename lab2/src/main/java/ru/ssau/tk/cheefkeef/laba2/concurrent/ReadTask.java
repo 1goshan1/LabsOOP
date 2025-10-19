@@ -14,9 +14,11 @@ public class ReadTask implements Runnable {
     public void run() {
         int count = function.getCount();
         for (int i = 0; i < count; ++i) {
+            synchronized (function) {
                 double x = function.getX(i);
                 double y = function.getY(i);
                 System.out.printf("After read: i = %d, x = %f, y = %f%n", i, x, y); // %d = i, %f = x, next %f = y, %n = \n no diff
+            }
         }
     }
 }

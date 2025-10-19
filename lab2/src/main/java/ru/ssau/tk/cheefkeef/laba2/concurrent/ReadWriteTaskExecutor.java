@@ -18,5 +18,12 @@ public class ReadWriteTaskExecutor {
 
         readerThread.start();
         writerThread.start();
+
+        try {
+            readerThread.join();   // ждём завершения чтения
+            writerThread.join();   // ждём завершения записи
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 }
