@@ -88,4 +88,62 @@ public class SynchronizedTabulatedFunctionTest {
             new SynchronizedTabulatedFunction(null);
         });
     }
+
+    @Test
+    public void testDoSynchronouslyWithReturnValue() {
+        TabulatedFunction original = new ArrayTabulatedFunction(
+                new double[]{1, 2, 3}, new double[]{10, 20, 30}
+        );
+        SynchronizedTabulatedFunction syncFunc = new SynchronizedTabulatedFunction(original);
+
+        // найти среднее значение y
+        Double average = syncFunc.doSynchronously(func -> {
+            double sum = 0;
+            for (int i = 0; i < func.getCount(); i++) {
+                sum += func.getY(i);
+            }
+            return sum / func.getCount();
+        });
+
+        assertEquals(20.0, average, 1e-10);
+    }
+
+    @Test
+    public void testDoSynchronouslyWithVoid() {
+        TabulatedFunction original = new ArrayTabulatedFunction(
+                new double[]{1, 2}, new double[]{10, 20}
+        );
+        SynchronizedTabulatedFunction syncFunc = new SynchronizedTabulatedFunction(original);
+
+        //  умножить все y на 2
+        syncFunc.doSynchronously(func -> {
+            for (int i = 0; i < func.getCount(); i++) {
+                func.setY(i, func.getY(i) * 2);
+            }
+            return null;
+        });
+
+        assertEquals(20.0, syncFunc.getY(0), 1e-10);
+        assertEquals(40.0, syncFunc.getY(1), 1e-10);
+    }
+
+    @Test
+    public void testDoSynchronouslyComplexOperation() {
+        TabulatedFunction original = new ArrayTabulatedFunction(
+                new double[]{0, 1, 2}, new double[]{0, 1, 4}
+        );
+        SynchronizedTabulatedFunction syncFunc = new SynchronizedTabulatedFunction(original);
+
+        // вычислить производную в точке и вернуть как строку
+        String result = syncFunc.doSynchronously(func -> {
+            double x0 = func.getX(1);
+            double y0 = func.getY(1);
+            double x1 = func.getX(2);
+            double y1 = func.getY(2);
+            double derivative = (y1 - y0) / (x1 - x0);
+            return String.format("f'(%f) = %f", x0, derivative);
+        });
+
+        assertEquals("f'(1,000000) = 3,000000", result);
+    }
 }

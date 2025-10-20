@@ -1,5 +1,6 @@
 package ru.ssau.tk.cheefkeef.laba2.concurrent;
 
+import ru.ssau.tk.cheefkeef.laba2.functions.MathFunction;
 import ru.ssau.tk.cheefkeef.laba2.functions.Point;
 import ru.ssau.tk.cheefkeef.laba2.functions.TabulatedFunction;
 
@@ -8,12 +9,22 @@ import java.util.Objects;
 
 public class SynchronizedTabulatedFunction implements TabulatedFunction {
 
+    // Вложенный функциональный интерфейс
+    @FunctionalInterface
+    public interface Operation<T> {
+        T apply(SynchronizedTabulatedFunction function);
+    }
+
     private final TabulatedFunction delegate;
-    private final Object mutex;
 
     public SynchronizedTabulatedFunction(TabulatedFunction delegate) {
         this.delegate = Objects.requireNonNull(delegate, "Delegate must not be null");
-        this.mutex = this;
+    }
+
+    public <T> T doSynchronously(Operation<? extends T> operation) {
+        synchronized (this) {
+            return operation.apply(this);
+        }
     }
 
     @Override
@@ -68,21 +79,21 @@ public class SynchronizedTabulatedFunction implements TabulatedFunction {
 
     @Override
     public boolean equals(Object obj) {
-        synchronized (mutex) {
+        synchronized (this) {
             return delegate.equals(obj);
         }
     }
 
     @Override
     public int hashCode() {
-        synchronized (mutex) {
+        synchronized (this) {
             return delegate.hashCode();
         }
     }
 
     @Override
     public String toString() {
-        synchronized (mutex) {
+        synchronized (this) {
             return delegate.toString();
         }
     }
