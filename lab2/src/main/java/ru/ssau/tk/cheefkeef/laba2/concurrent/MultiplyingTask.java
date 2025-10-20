@@ -14,8 +14,10 @@ public class MultiplyingTask implements Runnable {
     public void run() {
         int count = func.getCount();
         for (int i = 0; i < count; i++) {
-            double y = func.getY(i);
-            func.setY(i, y * 2);
+            synchronized (func) {
+                double y = func.getY(i);
+                func.setY(i, y * 2);
+            }
         }
         System.out.println("Поток " + Thread.currentThread().getName() + " завершил выполнение задачи.");
     }
