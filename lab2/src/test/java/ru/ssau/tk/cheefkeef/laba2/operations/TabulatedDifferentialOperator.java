@@ -1,6 +1,7 @@
 package ru.ssau.tk.cheefkeef.laba2.operations;
 
 import org.junit.jupiter.api.Test;
+import ru.ssau.tk.cheefkeef.laba2.concurrent.SynchronizedTabulatedFunction;
 import ru.ssau.tk.cheefkeef.laba2.functions.*;
 import ru.ssau.tk.cheefkeef.laba2.functions.factory.*;
 
@@ -166,5 +167,61 @@ class TabulatedDifferentialOperatorTest {
         TabulatedFunction derivative = operator.derive(function);
 
         assertTrue(derivative instanceof LinkedListTabulatedFunction);
+    }
+
+    @Test
+    public void testDeriveSynchronouslyWithRegularFunction() {
+        // Исходная функция: f(x) = x^2
+        TabulatedFunction function = new ArrayTabulatedFunction(
+                new double[]{0.0, 1.0, 2.0, 3.0},
+                new double[]{0.0, 1.0, 4.0, 9.0}
+        );
+
+        TabulatedDifferentialOperator operator = new TabulatedDifferentialOperator();
+        TabulatedFunction derivative = operator.deriveSynchronously(function);
+
+        // Ожидаем: f'(x) ≈ [1, 2, 4, 5] (с учётом разностной схемы)
+        assertEquals(4, derivative.getCount());
+        assertEquals(1.0, derivative.getY(0), 1e-10); // (1-0)/(1-0) = 1
+        assertEquals(2.0, derivative.getY(1), 1e-10); // (4-0)/(2-0) = 2
+        assertEquals(4.0, derivative.getY(2), 1e-10); // (9-1)/(3-1) = 4
+        assertEquals(5.0, derivative.getY(3), 1e-10); // (9-4)/(3-2) = 5
+    }
+
+    @Test
+    public void testDeriveSynchronouslyWithSynchronizedFunction() {
+        TabulatedFunction base = new LinkedListTabulatedFunction(
+                new double[]{1.0, 2.0, 3.0},
+                new double[]{1.0, 4.0, 9.0}
+        );
+        SynchronizedTabulatedFunction syncFunc = new SynchronizedTabulatedFunction(base);
+
+        TabulatedDifferentialOperator operator = new TabulatedDifferentialOperator(
+                new LinkedListTabulatedFunctionFactory()
+        );
+        TabulatedFunction derivative = operator.deriveSynchronously(syncFunc);
+
+        assertEquals(3, derivative.getCount());
+        assertEquals(3.0, derivative.getY(0), 1e-10); // (4-1)/(2-1) = 3
+        assertEquals(4.0, derivative.getY(1), 1e-10); // (9-1)/(3-1) = 4
+        assertEquals(5.0, derivative.getY(2), 1e-10); // (9-4)/(3-2) = 5
+    }
+
+    @Test
+    public void testDeriveSynchronouslyConsistency() {
+        TabulatedFunction function = new ArrayTabulatedFunction(
+                new double[]{0, 1, 2}, new double[]{0, 1, 4}
+        );
+
+        TabulatedDifferentialOperator operator = new TabulatedDifferentialOperator();
+
+        TabulatedFunction normal = operator.derive(function);
+        TabulatedFunction sync = operator.deriveSynchronously(function);
+
+        // Результаты должны быть идентичны
+        assertEquals(normal.getCount(), sync.getCount());
+        for (int i = 0; i < normal.getCount(); i++) {
+            assertEquals(normal.getY(i), sync.getY(i), 1e-10);
+        }
     }
 }

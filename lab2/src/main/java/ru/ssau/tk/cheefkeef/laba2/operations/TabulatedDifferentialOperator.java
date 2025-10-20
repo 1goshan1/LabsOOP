@@ -1,5 +1,6 @@
 package ru.ssau.tk.cheefkeef.laba2.operations;
 
+import ru.ssau.tk.cheefkeef.laba2.concurrent.SynchronizedTabulatedFunction;
 import ru.ssau.tk.cheefkeef.laba2.functions.TabulatedFunction;
 import ru.ssau.tk.cheefkeef.laba2.functions.factory.ArrayTabulatedFunctionFactory;
 import ru.ssau.tk.cheefkeef.laba2.functions.factory.TabulatedFunctionFactory;
@@ -58,5 +59,22 @@ public class TabulatedDifferentialOperator implements DifferentialOperator<Tabul
         }
 
         return factory.create(xValues, yValues);
+    }
+
+    public TabulatedFunction deriveSynchronously(TabulatedFunction function) {
+        if (function == null) {
+            throw new IllegalArgumentException("Function must not be null");
+        }
+
+        // Если уже синхронизированная — используем как есть
+        SynchronizedTabulatedFunction syncFunction;
+        if (function instanceof SynchronizedTabulatedFunction) {
+            syncFunction = (SynchronizedTabulatedFunction) function;
+        } else {
+            syncFunction = new SynchronizedTabulatedFunction(function);
+        }
+
+        // Выполняем derive() внутри единого блока синхронизации
+        return syncFunction.doSynchronously(this::derive);
     }
 }
