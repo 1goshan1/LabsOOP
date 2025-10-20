@@ -1,10 +1,11 @@
 package ru.ssau.tk.cheefkeef.laba2.concurrent;
 
-import ru.ssau.tk.cheefkeef.laba2.functions.MathFunction;
 import ru.ssau.tk.cheefkeef.laba2.functions.Point;
 import ru.ssau.tk.cheefkeef.laba2.functions.TabulatedFunction;
+import ru.ssau.tk.cheefkeef.laba2.operations.TabulatedFunctionOperationService;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 
 public class SynchronizedTabulatedFunction implements TabulatedFunction {
@@ -73,11 +74,6 @@ public class SynchronizedTabulatedFunction implements TabulatedFunction {
     }
 
     @Override
-    public synchronized Iterator<Point> iterator() {
-        return delegate.iterator();
-    }
-
-    @Override
     public boolean equals(Object obj) {
         synchronized (this) {
             return delegate.equals(obj);
@@ -96,5 +92,29 @@ public class SynchronizedTabulatedFunction implements TabulatedFunction {
         synchronized (this) {
             return delegate.toString();
         }
+    }
+
+    @Override
+    public Iterator<Point> iterator() {
+        Point[] pointsCopy;
+        synchronized (this) {
+            pointsCopy = TabulatedFunctionOperationService.asPoints(delegate);
+        }
+        return new Iterator<Point>() {
+            private int index = 0;
+
+            @Override
+            public boolean hasNext() {
+                return index < pointsCopy.length;
+            }
+
+            @Override
+            public Point next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                return pointsCopy[index++];
+            }
+        };
     }
 }

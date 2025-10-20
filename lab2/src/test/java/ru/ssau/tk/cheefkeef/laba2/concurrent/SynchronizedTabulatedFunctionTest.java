@@ -3,7 +3,11 @@ package ru.ssau.tk.cheefkeef.laba2.concurrent;
 import org.junit.jupiter.api.Test;
 import ru.ssau.tk.cheefkeef.laba2.functions.ArrayTabulatedFunction;
 import ru.ssau.tk.cheefkeef.laba2.functions.LinkedListTabulatedFunction;
+import ru.ssau.tk.cheefkeef.laba2.functions.Point;
 import ru.ssau.tk.cheefkeef.laba2.functions.TabulatedFunction;
+
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -145,5 +149,83 @@ public class SynchronizedTabulatedFunctionTest {
         });
 
         assertEquals("f'(1,000000) = 3,000000", result);
+    }
+
+    @Test
+    void testIteratorReturnsCorrectPoints() {
+        double[] x = {1.0, 2.0, 3.0};
+        double[] y = {10.0, 20.0, 30.0};
+        TabulatedFunction base = new ArrayTabulatedFunction(x, y);
+        SynchronizedTabulatedFunction syncFunc = new SynchronizedTabulatedFunction(base);
+
+        Iterator<Point> it = syncFunc.iterator();
+        assertTrue(it.hasNext());
+        Point p1 = it.next();
+        assertEquals(1.0, p1.x, 1e-10);
+        assertEquals(10.0, p1.y, 1e-10);
+
+        assertTrue(it.hasNext());
+        Point p2 = it.next();
+        assertEquals(2.0, p2.x, 1e-10);
+        assertEquals(20.0, p2.y, 1e-10);
+
+        assertTrue(it.hasNext());
+        Point p3 = it.next();
+        assertEquals(3.0, p3.x, 1e-10);
+        assertEquals(30.0, p3.y, 1e-10);
+
+        assertFalse(it.hasNext());
+    }
+
+    @Test
+    void testIteratorWorksAfterModificationOfOriginal() {
+        double[] x = {1.0, 2.0};
+        double[] y = {1.0, 4.0};
+        ArrayTabulatedFunction base = new ArrayTabulatedFunction(x, y);
+        SynchronizedTabulatedFunction syncFunc = new SynchronizedTabulatedFunction(base);
+
+        // Получаем итератор ДО изменения
+        Iterator<Point> it = syncFunc.iterator();
+
+        // Меняем оригинальную функцию
+        base.setY(0, 999.0);
+        base.setY(1, 888.0);
+
+        // Итератор должен вернуть СТАРЫЕ значения
+        Point p1 = it.next();
+        Point p2 = it.next();
+        assertEquals(1.0, p1.x, 1e-10);
+        assertEquals(1.0, p1.y, 1e-10);
+        assertEquals(2.0, p2.x, 1e-10);
+        assertEquals(4.0, p2.y, 1e-10);
+        assertFalse(it.hasNext());
+    }
+
+    @Test
+    void testEmptyFunctionIterator() {
+        TabulatedFunction base = new ArrayTabulatedFunction(
+                new double[]{0.0, 1.0},
+                new double[]{0.0, 1.0}
+        );
+        SynchronizedTabulatedFunction sync = new SynchronizedTabulatedFunction(base);
+        Iterator<Point> it = sync.iterator();
+        assertTrue(it.hasNext());
+        it.next();
+        it.next();
+        assertFalse(it.hasNext());
+    }
+
+    @Test
+    void testIteratorThrowsNoSuchElementException() {
+        TabulatedFunction base = new LinkedListTabulatedFunction(
+                new double[]{1.0, 2.0}, new double[]{1.0, 2.0}
+        );
+        SynchronizedTabulatedFunction syncFunc = new SynchronizedTabulatedFunction(base);
+
+        Iterator<Point> it = syncFunc.iterator();
+        it.next();
+        it.next();
+        assertFalse(it.hasNext());
+        assertThrows(NoSuchElementException.class, it::next);
     }
 }
