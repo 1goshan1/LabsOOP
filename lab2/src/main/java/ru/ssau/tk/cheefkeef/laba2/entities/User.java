@@ -12,9 +12,8 @@ public class User {
     @Column(unique = true, nullable = false)
     private String login;
 
-    @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "role_enum")
-    private Role role = Role.USER;
+    @Column(nullable = false)
+    private String role = "user";
 
     @Column(nullable = false)
     private String password;
@@ -30,8 +29,8 @@ public class User {
     public void setId(Long id) { this.id = id; }
     public String getLogin() { return login; }
     public void setLogin(String login) { this.login = login; }
-    public Role getRole() { return role; }
-    public void setRole(Role role) { this.role = role; }
+    public String getRole() { return role; }
+    public void setRole(String role) { this.role = role; }
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
 }

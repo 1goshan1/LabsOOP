@@ -13,24 +13,24 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     // Поиск пользователя по логину
-    Optional<User> findByLogin(String login);
+    User findByLogin(String login);
 
     // Проверка существования пользователя по логину
     boolean existsByLogin(String login);
 
     // Поиск пользователей по роли
-    List<User> findByRole(Role role);
+    List<User> findByRole(String role);
 
     // Поиск пользователей по логину (частичное совпадение)
     List<User> findByLoginContainingIgnoreCase(String login);
 
     // Кастомный запрос для поиска по логину и роли
     @Query("SELECT u FROM User u WHERE u.login = :login AND u.role = :role")
-    Optional<User> findByLoginAndRole(@Param("login") String login, @Param("role") Role role);
+    Optional<User> findByLoginAndRole(@Param("login") String login, @Param("role") String role);
 
     // Кастомный запрос для подсчета пользователей по роли
     @Query("SELECT COUNT(u) FROM User u WHERE u.role = :role")
-    long countByRole(@Param("role") Role role);
+    long countByRole(@Param("role") String role);
 
     // Удаление пользователя по логину
     void deleteByLogin(String login);
