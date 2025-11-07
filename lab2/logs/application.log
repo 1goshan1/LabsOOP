@@ -323,3 +323,146 @@
 2025-11-07 19:23:06.479 [main] DEBUG r.s.t.c.laba2.jdbc.PointDAOTest - Создана синусоида y = 1.0*sin(1.0*x) с 21 точками
 2025-11-07 19:23:06.496 [main] INFO  r.s.t.c.laba2.jdbc.PointDAOTest - Симуляция математических функций завершена успешно
 2025-11-07 19:23:06.498 [main] INFO  r.s.t.c.laba2.jdbc.PointDAOTest - Завершение тестов PointDAO
+2025-11-07 23:10:46.702 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Инициализация тестового окружения UserDAO
+2025-11-07 23:10:46.840 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан тестовый пользователь: User{id=null, login='testuser_василий_кулаков_1762542646838', role=user, password='***'}
+2025-11-07 23:10:46.878 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: создание пользователя
+2025-11-07 23:10:47.173 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Успешно создан пользователь с ID: 1
+2025-11-07 23:10:47.180 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: поиск пользователя по ID
+2025-11-07 23:10:47.225 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Найден пользователь: User{id=1, login='testuser_василий_кулаков_1762542646838', role=user, password='***'}
+2025-11-07 23:10:47.227 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: поиск пользователя по логину
+2025-11-07 23:10:47.256 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Найден пользователь по логину testuser_василий_кулаков_1762542646838: User{id=1, login='testuser_василий_кулаков_1762542646838', role=user, password='***'}
+2025-11-07 23:10:47.262 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: получение всех пользователей
+2025-11-07 23:10:47.293 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Найдено 1 пользователей
+2025-11-07 23:10:47.296 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: поиск пользователей по роли
+2025-11-07 23:10:47.348 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: обновление пользователя
+2025-11-07 23:10:47.404 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: создание нескольких пользователей с Faker
+2025-11-07 23:10:47.434 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан случайный пользователь #1/5: User{id=2, login='testuser_макар_артемьева_1762542647406', role=user, password='***'}
+2025-11-07 23:10:47.517 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан случайный пользователь #2/5: User{id=3, login='testuser_валентин_родионова_1762542647436', role=admin, password='***'}
+2025-11-07 23:10:47.574 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан случайный пользователь #3/5: User{id=4, login='testuser_алексей_ильин_1762542647519', role=admin, password='***'}
+2025-11-07 23:10:47.607 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан случайный пользователь #4/5: User{id=5, login='testuser_регина_селиверстова_1762542647576', role=user, password='***'}
+2025-11-07 23:10:47.632 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан случайный пользователь #5/5: User{id=6, login='testuser_егор_егорова_1762542647608', role=admin, password='***'}
+2025-11-07 23:10:47.633 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Успешно создано 5 случайных пользователей
+2025-11-07 23:10:47.635 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: поиск по ролям после создания нескольких пользователей
+2025-11-07 23:10:47.677 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Найдено 0 администраторов и 0 обычных пользователей
+2025-11-07 23:10:47.678 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: удаление пользователя по логину
+2025-11-07 23:10:47.762 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Пользователь с логином testuser_анжелика_колобов_1762542647679 успешно удален
+2025-11-07 23:10:47.765 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: удаление основного тестового пользователя по ID
+2025-11-07 23:10:47.807 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Основной тестовый пользователь с ID 1 успешно удален
+2025-11-07 23:10:47.809 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: проверка граничных случаев
+2025-11-07 23:10:47.861 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Все граничные случаи обработаны корректно
+2025-11-07 23:10:47.862 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: создание пользователя со специальными символами
+2025-11-07 23:10:47.907 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Тест со специальными символами завершен успешно
+2025-11-07 23:10:47.909 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста производительности: поиск всех пользователей
+2025-11-07 23:10:47.925 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Поиск всех пользователей выполнен за 16 мс. Найдено 5 записей
+2025-11-07 23:10:47.929 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Завершение тестов UserDAO
+2025-11-07 23:11:59.616 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Инициализация тестового окружения UserDAO
+2025-11-07 23:11:59.702 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан тестовый пользователь: User{id=null, login='testuser_александр_горбунов_1762542719699', role=user, password='***'}
+2025-11-07 23:11:59.715 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: создание пользователя
+2025-11-07 23:12:00.055 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Успешно создан пользователь с ID: 9
+2025-11-07 23:12:00.061 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: поиск пользователя по ID
+2025-11-07 23:12:00.107 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Найден пользователь: User{id=9, login='testuser_александр_горбунов_1762542719699', role=user, password='***'}
+2025-11-07 23:12:00.109 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: поиск пользователя по логину
+2025-11-07 23:12:00.131 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Найден пользователь по логину testuser_александр_горбунов_1762542719699: User{id=9, login='testuser_александр_горбунов_1762542719699', role=user, password='***'}
+2025-11-07 23:12:00.132 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: получение всех пользователей
+2025-11-07 23:12:00.155 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Найдено 6 пользователей
+2025-11-07 23:12:00.156 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: поиск пользователей по роли
+2025-11-07 23:12:00.194 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: обновление пользователя
+2025-11-07 23:12:00.242 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: создание нескольких пользователей с Faker
+2025-11-07 23:12:00.265 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан случайный пользователь #1/5: User{id=10, login='testuser_роман_рябов_1762542720243', role=user, password='***'}
+2025-11-07 23:12:00.289 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан случайный пользователь #2/5: User{id=11, login='testuser_ангелина_лазарева_1762542720265', role=user, password='***'}
+2025-11-07 23:12:00.314 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан случайный пользователь #3/5: User{id=12, login='testuser_наталья_моисеева_1762542720289', role=user, password='***'}
+2025-11-07 23:12:00.339 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан случайный пользователь #4/5: User{id=13, login='testuser_алексей_журавлев_1762542720314', role=admin, password='***'}
+2025-11-07 23:12:00.364 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан случайный пользователь #5/5: User{id=14, login='testuser_оксана_суханова_1762542720339', role=admin, password='***'}
+2025-11-07 23:12:00.364 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Успешно создано 5 случайных пользователей
+2025-11-07 23:12:00.366 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: поиск по ролям после создания нескольких пользователей
+2025-11-07 23:12:00.400 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Найдено 0 администраторов и 0 обычных пользователей
+2025-11-07 23:12:00.401 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: удаление пользователя по логину
+2025-11-07 23:12:00.465 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Пользователь с логином testuser_тамара_симонова_1762542720402 успешно удален
+2025-11-07 23:12:00.467 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: удаление основного тестового пользователя по ID
+2025-11-07 23:12:00.503 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Основной тестовый пользователь с ID 9 успешно удален
+2025-11-07 23:12:00.505 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: проверка граничных случаев
+2025-11-07 23:12:00.557 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Все граничные случаи обработаны корректно
+2025-11-07 23:12:00.559 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: создание пользователя со специальными символами
+2025-11-07 23:12:00.673 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Тест со специальными символами завершен успешно
+2025-11-07 23:12:00.676 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста производительности: поиск всех пользователей
+2025-11-07 23:12:00.719 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Поиск всех пользователей выполнен за 43 мс. Найдено 10 записей
+2025-11-07 23:12:00.724 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Завершение тестов UserDAO
+2025-11-07 23:13:53.231 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Инициализация тестового окружения UserDAO
+2025-11-07 23:13:53.312 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан тестовый пользователь: User{id=null, login='testuser_ангелина_кузьмин_1762542833310', role=user, password='***'}
+2025-11-07 23:13:53.320 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: создание пользователя
+2025-11-07 23:13:53.594 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Успешно создан пользователь с ID: 17
+2025-11-07 23:13:53.601 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: поиск пользователя по ID
+2025-11-07 23:13:53.644 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Найден пользователь: User{id=17, login='testuser_ангелина_кузьмин_1762542833310', role=user, password='***'}
+2025-11-07 23:13:53.646 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: поиск пользователя по логину
+2025-11-07 23:13:53.671 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Найден пользователь по логину testuser_ангелина_кузьмин_1762542833310: User{id=17, login='testuser_ангелина_кузьмин_1762542833310', role=user, password='***'}
+2025-11-07 23:13:53.673 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: получение всех пользователей
+2025-11-07 23:13:53.696 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Найдено 11 пользователей
+2025-11-07 23:13:53.698 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: поиск пользователей по роли
+2025-11-07 23:13:53.732 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: обновление пользователя
+2025-11-07 23:13:53.780 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Пользователь успешно обновлен: User{id=17, login='testuser_алёна_андреева_1762542833733', role=admin, password='***'}
+2025-11-07 23:13:53.782 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: создание нескольких пользователей с Faker
+2025-11-07 23:13:53.811 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан случайный пользователь #1/5: User{id=18, login='testuser_алина_веселов_1762542833782', role=user, password='***'}
+2025-11-07 23:13:53.836 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан случайный пользователь #2/5: User{id=19, login='testuser_степан_комаров_1762542833811', role=user, password='***'}
+2025-11-07 23:13:53.861 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан случайный пользователь #3/5: User{id=20, login='testuser_елизавета_макарова_1762542833836', role=user, password='***'}
+2025-11-07 23:13:53.886 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан случайный пользователь #4/5: User{id=21, login='testuser_надежда_фомина_1762542833861', role=user, password='***'}
+2025-11-07 23:13:53.911 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан случайный пользователь #5/5: User{id=22, login='testuser_алла_исаев_1762542833886', role=admin, password='***'}
+2025-11-07 23:13:53.911 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Успешно создано 5 случайных пользователей
+2025-11-07 23:13:53.913 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: поиск по ролям после создания нескольких пользователей
+2025-11-07 23:13:53.947 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Найдено 0 администраторов и 0 обычных пользователей
+2025-11-07 23:13:53.949 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: удаление пользователя по логину
+2025-11-07 23:13:54.021 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Пользователь с логином testuser_виктор_федосеев_1762542833954 успешно удален
+2025-11-07 23:13:54.025 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: удаление основного тестового пользователя по ID
+2025-11-07 23:13:54.059 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Основной тестовый пользователь с ID 17 успешно удален
+2025-11-07 23:13:54.060 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: проверка граничных случаев
+2025-11-07 23:13:54.106 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Все граничные случаи обработаны корректно
+2025-11-07 23:13:54.108 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: создание пользователя со специальными символами
+2025-11-07 23:13:54.144 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Тест со специальными символами завершен успешно
+2025-11-07 23:13:54.145 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста производительности: поиск всех пользователей
+2025-11-07 23:13:54.161 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Поиск всех пользователей выполнен за 15 мс. Найдено 15 записей
+2025-11-07 23:13:54.163 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Завершение тестов UserDAO
+2025-11-07 23:15:58.831 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Инициализация тестового окружения UserDAO
+2025-11-07 23:15:58.920 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Завершение тестов UserDAO
+2025-11-07 23:16:07.226 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Инициализация тестового окружения UserDAO
+2025-11-07 23:16:07.304 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Завершение тестов UserDAO
+2025-11-07 23:17:12.959 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Инициализация тестового окружения UserDAO
+2025-11-07 23:17:13.042 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Завершение тестов UserDAO
+2025-11-07 23:17:38.432 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Инициализация тестового окружения UserDAO
+2025-11-07 23:17:38.512 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Завершение тестов UserDAO
+2025-11-07 23:20:00.938 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Инициализация тестового окружения UserDAO
+2025-11-07 23:20:01.022 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан тестовый пользователь: User{id=null, login='testuser_евгения_орлова_1762543201020', role=user, password='***'}
+2025-11-07 23:20:01.043 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Завершение тестов UserDAO
+2025-11-07 23:20:34.617 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Инициализация тестового окружения UserDAO
+2025-11-07 23:20:34.688 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан тестовый пользователь: User{id=null, login='testuser_валерий_боброва_1762543234686', role=user, password='***'}
+2025-11-07 23:20:34.708 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Завершение тестов UserDAO
+2025-11-07 23:21:43.155 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Инициализация тестового окружения UserDAO
+2025-11-07 23:21:43.230 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан тестовый пользователь: User{id=null, login='testuser_анна_рожков_1762543303228', role=user, password='***'}
+2025-11-07 23:21:43.238 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: создание пользователя
+2025-11-07 23:21:43.498 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Успешно создан пользователь с ID: 25
+2025-11-07 23:21:43.505 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: поиск пользователя по ID
+2025-11-07 23:21:43.552 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Найден пользователь: User{id=25, login='testuser_анна_рожков_1762543303228', role=user, password='***'}
+2025-11-07 23:21:43.555 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: поиск пользователя по логину
+2025-11-07 23:21:43.580 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Найден пользователь по логину testuser_анна_рожков_1762543303228: User{id=25, login='testuser_анна_рожков_1762543303228', role=user, password='***'}
+2025-11-07 23:21:43.583 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: получение всех пользователей
+2025-11-07 23:21:43.607 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Найдено 16 пользователей
+2025-11-07 23:21:43.609 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: обновление пользователя
+2025-11-07 23:21:43.659 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Пользователь успешно обновлен: User{id=25, login='testuser_наталья_соловьев_1762543303610', role=admin, password='***'}
+2025-11-07 23:21:43.660 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: создание нескольких пользователей с Faker
+2025-11-07 23:21:43.690 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан случайный пользователь #1/5: User{id=26, login='testuser_арина_рыбакова_1762543303661', role=admin, password='***'}
+2025-11-07 23:21:43.715 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан случайный пользователь #2/5: User{id=27, login='testuser_фёдор_ефимов_1762543303690', role=admin, password='***'}
+2025-11-07 23:21:43.739 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан случайный пользователь #3/5: User{id=28, login='testuser_никита_тарасов_1762543303716', role=admin, password='***'}
+2025-11-07 23:21:43.764 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан случайный пользователь #4/5: User{id=29, login='testuser_вероника_титов_1762543303740', role=user, password='***'}
+2025-11-07 23:21:43.790 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан случайный пользователь #5/5: User{id=30, login='testuser_виктор_фокина_1762543303765', role=user, password='***'}
+2025-11-07 23:21:43.790 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Успешно создано 5 случайных пользователей
+2025-11-07 23:21:43.792 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: поиск по ролям после создания нескольких пользователей
+2025-11-07 23:21:43.831 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Найдено 0 администраторов и 0 обычных пользователей
+2025-11-07 23:21:43.833 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: удаление пользователя по логину
+2025-11-07 23:21:43.899 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Пользователь с логином testuser_игорь_егорова_1762543303834 успешно удален
+2025-11-07 23:21:43.900 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: удаление основного тестового пользователя по ID
+2025-11-07 23:21:43.941 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Основной тестовый пользователь с ID 25 успешно удален
+2025-11-07 23:21:43.942 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: проверка граничных случаев
+2025-11-07 23:21:43.992 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Все граничные случаи обработаны корректно
+2025-11-07 23:21:43.994 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: создание пользователя со специальными символами
+2025-11-07 23:21:44.039 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Тест со специальными символами завершен успешно
+2025-11-07 23:21:44.041 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста производительности: поиск всех пользователей
+2025-11-07 23:21:44.057 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Поиск всех пользователей выполнен за 16 мс. Найдено 20 записей
+2025-11-07 23:21:44.059 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Завершение тестов UserDAO

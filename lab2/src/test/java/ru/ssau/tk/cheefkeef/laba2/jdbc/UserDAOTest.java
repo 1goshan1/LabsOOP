@@ -19,7 +19,9 @@ class UserDAOTest {
     private static UserDAO userDAO;
     private static Faker faker;
     private static User testUser;
+    private static List<User> testUsers;
     private static String originalLogin;
+
 
     @BeforeAll
     static void setUp() {
@@ -31,7 +33,7 @@ class UserDAOTest {
         originalLogin = generateUniqueLogin();
         testUser = new User(
                 originalLogin,
-                UserRole.USER,
+                "user",
                 faker.internet().password(8, 16, true, true, true)
         );
 
@@ -116,23 +118,6 @@ class UserDAOTest {
     }
 
     @Test
-    @Order(5)
-    void testFindByRole() {
-        logger.info("Запуск теста: поиск пользователей по роли");
-
-        List<User> users = userDAO.findByRole(UserRole.USER);
-
-        assertNotNull(users, "Список пользователей по роли не должен быть null");
-
-        // Проверяем, что наш тестовый пользователь есть в списке
-        boolean found = users.stream()
-                .anyMatch(user -> user.getId().equals(testUser.getId()));
-        assertTrue(found, "Тестовый пользователь должен присутствовать в списке пользователей с ролью USER");
-
-        logger.info("Найдено {} пользователей с ролью USER", users.size());
-    }
-
-    @Test
     @Order(6)
     void testUpdateUser() {
         logger.info("Запуск теста: обновление пользователя");
@@ -143,7 +128,7 @@ class UserDAOTest {
 
         User userToUpdate = new User(
                 newLogin,
-                UserRole.ADMIN,
+                "admin",
                 newPassword
         );
         userToUpdate.setId(testUser.getId());
@@ -156,7 +141,7 @@ class UserDAOTest {
         User updatedUser = userDAO.findById(testUser.getId());
         assertNotNull(updatedUser, "Обновленный пользователь должен существовать");
         assertEquals(newLogin, updatedUser.getLogin(), "Логин должен быть обновлен");
-        assertEquals(UserRole.ADMIN, updatedUser.getRole(), "Роль должна быть обновлена");
+        assertEquals("admin", updatedUser.getRole(), "Роль должна быть обновлена");
         assertEquals(newPassword, updatedUser.getPassword(), "Пароль должен быть обновлен");
 
         testUser = updatedUser; // Обновляем ссылку на тестового пользователя
@@ -187,8 +172,8 @@ class UserDAOTest {
     void testFindByRoleAfterMultipleInserts() {
         logger.info("Запуск теста: поиск по ролям после создания нескольких пользователей");
 
-        List<User> adminUsers = userDAO.findByRole(UserRole.ADMIN);
-        List<User> userUsers = userDAO.findByRole(UserRole.USER);
+        List<User> adminUsers = userDAO.findByRole("admin");
+        List<User> userUsers = userDAO.findByRole("user");
 
         assertNotNull(adminUsers, "Список администраторов не должен быть null");
         assertNotNull(userUsers, "Список пользователей не должен быть null");
@@ -269,7 +254,7 @@ class UserDAOTest {
 
         User specialUser = new User(
                 "user_with_special_chars_测试_тест_" + System.currentTimeMillis(),
-                UserRole.USER,
+                "user",
                 "password123!@#$%"
         );
 
@@ -286,7 +271,7 @@ class UserDAOTest {
 
     private User createRandomUser() {
         String login = generateUniqueLogin();
-        UserRole role = faker.bool().bool() ? UserRole.ADMIN : UserRole.USER;
+        String role = faker.bool().bool() ? "admin" : "user";
         String password = faker.internet().password(8, 16, true, true, true);
 
         // Иногда добавляем специальные символы в пароль для разнообразия

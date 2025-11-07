@@ -75,14 +75,14 @@ public class UserDAO {
     }
 
     // SELECT - поиск пользователей по роли
-    public List<User> findByRole(UserRole role) {
+    public List<User> findByRole(String role) {
         List<User> users = new ArrayList<>();
         String sql = "SELECT id, login, role, password FROM users WHERE role = ?::role_enum";
 
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
-            statement.setString(1, role.getValue());
+            statement.setString(1, role);
 
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
@@ -105,7 +105,7 @@ public class UserDAO {
              PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
             statement.setString(1, user.getLogin());
-            statement.setString(2, user.getRole().getValue()); // Используем enum value
+            statement.setString(2, user.getRole()); // Используем enum value
             statement.setString(3, user.getPassword());
 
             int affectedRows = statement.executeUpdate();
@@ -133,7 +133,7 @@ public class UserDAO {
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
             statement.setString(1, user.getLogin());
-            statement.setString(2, user.getRole().getValue()); // Используем enum value
+            statement.setString(2, user.getRole()); // Используем enum value
             statement.setString(3, user.getPassword());
             statement.setInt(4, user.getId());
 
@@ -190,7 +190,7 @@ public class UserDAO {
 
         // Конвертируем строку из БД в Java enum
         String roleString = resultSet.getString("role");
-        user.setRole(UserRole.fromString(roleString));
+        user.setRole(roleString);
 
         user.setPassword(resultSet.getString("password"));
         return user;
