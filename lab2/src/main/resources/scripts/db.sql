@@ -1,0 +1,22 @@
+CREATE TYPE role_enum AS ENUM ('user', 'admin');
+
+CREATE TABLE users (
+id SERIAL PRIMARY KEY,
+login VARCHAR(255) UNIQUE NOT NULL,
+role role_enum DEFAULT 'user',
+password VARCHAR(255)
+);
+
+CREATE TABLE functions(
+id SERIAL PRIMARY KEY,
+u_id INT NOT NULL,
+name VARCHAR(255) NOT NULL,
+signature VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE points(
+id SERIAL PRIMARY KEY,
+f_id INT NOT NULL,
+x_value FLOAT NOT NULL,
+y_value FLOAT NOT NULL
+);
