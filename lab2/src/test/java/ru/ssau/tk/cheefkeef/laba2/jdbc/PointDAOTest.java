@@ -34,6 +34,8 @@ class PointDAOTest {
         // Создаем тестовую точку
         testPoint = createRandomPoint(testFunctionId);
 
+        pointDAO.insert(testPoint);
+
         logger.debug("Создана тестовая точка: {}", testPoint);
     }
 
@@ -79,6 +81,9 @@ class PointDAOTest {
     void testFindById() {
         logger.info("Запуск теста: поиск точки по ID");
 
+        testPoint = new Point(1, 123.0, 321.0);
+        testPoint = pointDAO.insert(testPoint);
+        System.out.println(testPoint.getId());
         Optional<Point> foundPointOpt = pointDAO.findById(testPoint.getId());
 
         assertTrue(foundPointOpt.isPresent(), "Точка должна быть найдена по ID");
