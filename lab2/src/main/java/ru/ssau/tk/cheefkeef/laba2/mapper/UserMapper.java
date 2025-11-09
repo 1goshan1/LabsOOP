@@ -18,7 +18,8 @@ public class UserMapper {
         return new UserDTO(
                 user.getId(),
                 user.getLogin(),
-                user.getRole()
+                user.getRole(),
+                user.getEnabled()
         );
     }
 

@@ -1,7 +1,6 @@
 package ru.ssau.tk.cheefkeef.laba2.jdbc;
 
 import ru.ssau.tk.cheefkeef.laba2.models.User;
-import ru.ssau.tk.cheefkeef.laba2.models.UserRole;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,7 +19,7 @@ public class UserDAO {
     public List<User> findAll() {
         logger.info("Начало получения всех пользователей");
         List<User> users = new ArrayList<>();
-        String sql = "SELECT id, login, role, password FROM users";
+        String sql = "SELECT id, login, role, password, enabled FROM users";
 
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
              PreparedStatement statement = connection.prepareStatement(sql);
@@ -41,7 +40,7 @@ public class UserDAO {
     // SELECT - поиск пользователя по ID
     public User findById(Integer id) {
         logger.debug("Поиск пользователя по ID: {}", id);
-        String sql = "SELECT id, login, role, password FROM users WHERE id = ?";
+        String sql = "SELECT id, login, role, password, enabled FROM users WHERE id = ?";
 
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -66,7 +65,7 @@ public class UserDAO {
     // SELECT - поиск пользователя по Login
     public User findByLogin(String login) {
         logger.debug("Поиск пользователя по login: {}", login);
-        String sql = "SELECT id, login, role, password FROM users WHERE login = ?";
+        String sql = "SELECT id, login, role, password, enabled FROM users WHERE login = ?";
 
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -92,7 +91,7 @@ public class UserDAO {
     public List<User> findByRole(String role) {
         logger.debug("Поиск пользователей по роли: {}", role);
         List<User> users = new ArrayList<>();
-        String sql = "SELECT id, login, role, password FROM users WHERE role = ?::role_enum";
+        String sql = "SELECT id, login, role, password, enabled FROM users WHERE role = ?";
 
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -113,10 +112,35 @@ public class UserDAO {
         return users;
     }
 
+    // SELECT - поиск активных/неактивных пользователей
+    public List<User> findByEnabledStatus(Boolean enabled) {
+        logger.debug("Поиск пользователей по статусу enabled: {}", enabled);
+        List<User> users = new ArrayList<>();
+        String sql = "SELECT id, login, role, password, enabled FROM users WHERE enabled = ?";
+
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setBoolean(1, enabled);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    User user = mapResultSetToUser(resultSet);
+                    users.add(user);
+                }
+            }
+            logger.debug("Найдено {} пользователей со статусом enabled = {}", users.size(), enabled);
+
+        } catch (SQLException e) {
+            logger.error("Ошибка при поиске пользователей по статусу enabled: {}", enabled, e);
+        }
+        return users;
+    }
+
     // INSERT - создание нового пользователя
     public User insert(User user) {
         logger.info("Создание нового пользователя: {}", user.getLogin());
-        String sql = "INSERT INTO users (login, role, password) VALUES (?, ?::role_enum, ?)";
+        String sql = "INSERT INTO users (login, role, password, enabled) VALUES (?, ?, ?, ?)";
 
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
              PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -124,6 +148,7 @@ public class UserDAO {
             statement.setString(1, user.getLogin());
             statement.setString(2, user.getRole());
             statement.setString(3, user.getPassword());
+            statement.setBoolean(4, user.getEnabled() != null ? user.getEnabled() : true);
 
             int affectedRows = statement.executeUpdate();
 
@@ -147,7 +172,7 @@ public class UserDAO {
     // UPDATE - обновление пользователя
     public boolean update(User user) {
         logger.info("Обновление пользователя с ID: {}", user.getId());
-        String sql = "UPDATE users SET login = ?, role = ?::role_enum, password = ? WHERE id = ?";
+        String sql = "UPDATE users SET login = ?, role = ?, password = ?, enabled = ? WHERE id = ?";
 
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -155,7 +180,8 @@ public class UserDAO {
             statement.setString(1, user.getLogin());
             statement.setString(2, user.getRole());
             statement.setString(3, user.getPassword());
-            statement.setInt(4, user.getId());
+            statement.setBoolean(4, user.getEnabled() != null ? user.getEnabled() : true);
+            statement.setInt(5, user.getId());
 
             int affectedRows = statement.executeUpdate();
             boolean success = affectedRows > 0;
@@ -169,6 +195,33 @@ public class UserDAO {
 
         } catch (SQLException e) {
             logger.error("Ошибка при обновлении пользователя с ID: {}", user.getId(), e);
+        }
+        return false;
+    }
+
+    // UPDATE - обновление статуса enabled
+    public boolean updateEnabledStatus(Integer id, Boolean enabled) {
+        logger.info("Обновление статуса enabled для пользователя с ID: {}, новое значение: {}", id, enabled);
+        String sql = "UPDATE users SET enabled = ? WHERE id = ?";
+
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setBoolean(1, enabled != null ? enabled : true);
+            statement.setInt(2, id);
+
+            int affectedRows = statement.executeUpdate();
+            boolean success = affectedRows > 0;
+
+            if (success) {
+                logger.info("Статус enabled для пользователя с ID {} успешно обновлен на {}", id, enabled);
+            } else {
+                logger.warn("Пользователь с ID {} не найден для обновления статуса", id);
+            }
+            return success;
+
+        } catch (SQLException e) {
+            logger.error("Ошибка при обновлении статуса enabled для пользователя с ID: {}", id, e);
         }
         return false;
     }
@@ -235,6 +288,13 @@ public class UserDAO {
         user.setRole(roleString);
 
         user.setPassword(resultSet.getString("password"));
+        user.setEnabled(resultSet.getBoolean("enabled"));
+
+        // Обработка случая, когда значение может быть NULL
+        if (resultSet.wasNull()) {
+            user.setEnabled(true); // значение по умолчанию
+        }
+
         return user;
     }
 
@@ -247,7 +307,7 @@ public class UserDAO {
         }
 
         String placeholders = String.join(",", java.util.Collections.nCopies(ids.size(), "?"));
-        String sql = String.format("SELECT id, login, role, password FROM users WHERE id IN (%s)", placeholders);
+        String sql = String.format("SELECT id, login, role, password, enabled FROM users WHERE id IN (%s)", placeholders);
 
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -275,14 +335,14 @@ public class UserDAO {
                 sortField, ascending ? "ASC" : "DESC");
         List<User> users = new ArrayList<>();
 
-        List<String> allowedFields = List.of("id", "login", "role", "password");
+        List<String> allowedFields = List.of("id", "login", "role", "password", "enabled");
         if (!allowedFields.contains(sortField.toLowerCase())) {
             logger.warn("Недопустимое поле для сортировки: {}, используется поле по умолчанию: id", sortField);
             sortField = "id";
         }
 
         String direction = ascending ? "ASC" : "DESC";
-        String sql = String.format("SELECT id, login, role, password FROM users ORDER BY %s %s", sortField, direction);
+        String sql = String.format("SELECT id, login, role, password, enabled FROM users ORDER BY %s %s", sortField, direction);
 
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
              PreparedStatement statement = connection.prepareStatement(sql);
@@ -305,14 +365,14 @@ public class UserDAO {
                 role, sortField, ascending ? "ASC" : "DESC");
         List<User> users = new ArrayList<>();
 
-        List<String> allowedFields = List.of("id", "login", "role", "password");
+        List<String> allowedFields = List.of("id", "login", "role", "password", "enabled");
         if (!allowedFields.contains(sortField.toLowerCase())) {
             logger.warn("Недопустимое поле для сортировки: {}, используется поле по умолчанию: id", sortField);
             sortField = "id";
         }
 
         String direction = ascending ? "ASC" : "DESC";
-        String sql = String.format("SELECT id, login, role, password FROM users WHERE role = ?::role_enum ORDER BY %s %s", sortField, direction);
+        String sql = String.format("SELECT id, login, role, password, enabled FROM users WHERE role = ? ORDER BY %s %s", sortField, direction);
 
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
              PreparedStatement statement = connection.prepareStatement(sql)) {

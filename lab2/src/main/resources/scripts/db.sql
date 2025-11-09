@@ -1,10 +1,9 @@
-CREATE TYPE role_enum AS ENUM ('user', 'admin');
-
 CREATE TABLE users (
 id SERIAL PRIMARY KEY,
 login VARCHAR(255) UNIQUE NOT NULL,
-role role_enum DEFAULT 'user',
-password VARCHAR(255)
+role VARCHAR(255) DEFAULT 'USER',
+password VARCHAR(255),
+enabled BOOLEAN NOT NULL
 );
 
 CREATE TABLE functions(

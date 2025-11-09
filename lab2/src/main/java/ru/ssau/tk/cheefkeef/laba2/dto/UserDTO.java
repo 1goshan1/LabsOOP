@@ -5,14 +5,16 @@ public class UserDTO {
     private String login;
     private String role;
     private String password;
+    private Boolean enabled;
 
     // Конструкторы
     public UserDTO() {}
 
-    public UserDTO(Integer id, String login, String role) {
+    public UserDTO(Integer id, String login, String role, Boolean enabled) {
         this.id = id;
         this.login = login;
         this.role = role;
+        this.enabled = enabled;
     }
 
     // Геттеры и сеттеры
@@ -24,6 +26,9 @@ public class UserDTO {
     public void setRole(String role) { this.role = role; }
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
+    public Boolean getEnabled() { return enabled; }
+    public void setEnabled(Boolean enabled) { this.enabled = enabled; }
+
 
     @Override
     public String toString() {

@@ -5,11 +5,9 @@ import org.junit.jupiter.api.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.ssau.tk.cheefkeef.laba2.models.User;
-import ru.ssau.tk.cheefkeef.laba2.models.UserRole;
 
 import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,9 +17,7 @@ class UserDAOTest {
     private static UserDAO userDAO;
     private static Faker faker;
     private static User testUser;
-    private static List<User> testUsers;
     private static String originalLogin;
-
 
     @BeforeAll
     static void setUp() {
@@ -34,7 +30,8 @@ class UserDAOTest {
         testUser = new User(
                 originalLogin,
                 "user",
-                faker.internet().password(8, 16, true, true, true)
+                faker.internet().password(8, 16, true, true, true),
+                true
         );
 
         logger.debug("Создан тестовый пользователь: {}", testUser);
@@ -43,6 +40,15 @@ class UserDAOTest {
     @AfterAll
     static void tearDown() {
         logger.info("Завершение тестов UserDAO");
+
+        // Очистка тестовых данных
+        if (testUser != null && testUser.getId() != null) {
+            try {
+                userDAO.delete(testUser.getId());
+            } catch (Exception e) {
+                logger.warn("Не удалось удалить тестового пользователя: {}", e.getMessage());
+            }
+        }
     }
 
     private static String generateUniqueLogin() {
@@ -64,6 +70,8 @@ class UserDAOTest {
         assertEquals(testUser.getLogin(), insertedUser.getLogin(), "Логины должны совпадать");
         assertEquals(testUser.getRole(), insertedUser.getRole(), "Роли должны совпадать");
         assertEquals(testUser.getPassword(), insertedUser.getPassword(), "Пароли должны совпадать");
+        assertNotNull(insertedUser.getEnabled(), "Поле enabled не должно быть null");
+        assertTrue(insertedUser.getEnabled(), "По умолчанию enabled должен быть true");
 
         testUser.setId(insertedUser.getId());
         logger.info("Успешно создан пользователь с ID: {}", insertedUser.getId());
@@ -81,6 +89,7 @@ class UserDAOTest {
         assertEquals(testUser.getLogin(), foundUser.getLogin(), "Логины должны совпадать");
         assertEquals(testUser.getRole(), foundUser.getRole(), "Роли должны совпадать");
         assertEquals(testUser.getPassword(), foundUser.getPassword(), "Пароли должны совпадать");
+        assertEquals(testUser.getEnabled(), foundUser.getEnabled(), "Статусы enabled должны совпадать");
 
         logger.debug("Найден пользователь: {}", foundUser);
     }
@@ -95,6 +104,7 @@ class UserDAOTest {
         assertNotNull(foundUser, "Пользователь должен быть найден по логину");
         assertEquals(testUser.getLogin(), foundUser.getLogin(), "Логины должны совпадать");
         assertEquals(testUser.getId(), foundUser.getId(), "ID должны совпадать");
+        assertEquals(testUser.getEnabled(), foundUser.getEnabled(), "Статусы enabled должны совпадать");
 
         logger.debug("Найден пользователь по логину {}: {}", testUser.getLogin(), foundUser);
     }
@@ -118,7 +128,44 @@ class UserDAOTest {
     }
 
     @Test
+    @Order(5)
+    void testFindByRole() {
+        logger.info("Запуск теста: поиск пользователей по роли");
+
+        List<User> userRoleUsers = userDAO.findByRole("user");
+
+        assertNotNull(userRoleUsers, "Список пользователей с ролью 'user' не должен быть null");
+
+        // Проверяем, что наш тестовый пользователь есть в списке
+        boolean found = userRoleUsers.stream()
+                .anyMatch(user -> user.getId().equals(testUser.getId()));
+        assertTrue(found, "Тестовый пользователь должен присутствовать в списке пользователей с ролью 'user'");
+
+        logger.info("Найдено {} пользователей с ролью 'user'", userRoleUsers.size());
+    }
+
+    @Test
     @Order(6)
+    void testFindByEnabledStatus() {
+        logger.info("Запуск теста: поиск пользователей по статусу enabled");
+
+        List<User> enabledUsers = userDAO.findByEnabledStatus(true);
+        List<User> disabledUsers = userDAO.findByEnabledStatus(false);
+
+        assertNotNull(enabledUsers, "Список активных пользователей не должен быть null");
+        assertNotNull(disabledUsers, "Список неактивных пользователей не должен быть null");
+
+        // Проверяем, что наш тестовый пользователь есть в списке активных
+        boolean foundInEnabled = enabledUsers.stream()
+                .anyMatch(user -> user.getId().equals(testUser.getId()));
+        assertTrue(foundInEnabled, "Тестовый пользователь должен присутствовать в списке активных пользователей");
+
+        logger.info("Найдено {} активных и {} неактивных пользователей",
+                enabledUsers.size(), disabledUsers.size());
+    }
+
+    @Test
+    @Order(7)
     void testUpdateUser() {
         logger.info("Запуск теста: обновление пользователя");
 
@@ -129,7 +176,8 @@ class UserDAOTest {
         User userToUpdate = new User(
                 newLogin,
                 "admin",
-                newPassword
+                newPassword,
+                false  // Меняем статус на неактивный
         );
         userToUpdate.setId(testUser.getId());
 
@@ -143,13 +191,32 @@ class UserDAOTest {
         assertEquals(newLogin, updatedUser.getLogin(), "Логин должен быть обновлен");
         assertEquals("admin", updatedUser.getRole(), "Роль должна быть обновлена");
         assertEquals(newPassword, updatedUser.getPassword(), "Пароль должен быть обновлен");
+        assertFalse(updatedUser.getEnabled(), "Статус enabled должен быть обновлен на false");
 
         testUser = updatedUser; // Обновляем ссылку на тестового пользователя
         logger.info("Пользователь успешно обновлен: {}", updatedUser);
     }
 
     @Test
-    @Order(7)
+    @Order(8)
+    void testUpdateEnabledStatus() {
+        logger.info("Запуск теста: обновление только статуса enabled");
+
+        // Меняем статус обратно на активный
+        boolean updateResult = userDAO.updateEnabledStatus(testUser.getId(), true);
+        assertTrue(updateResult, "Обновление статуса enabled должно быть успешным");
+
+        // Проверяем, что статус обновился
+        User updatedUser = userDAO.findById(testUser.getId());
+        assertNotNull(updatedUser, "Пользователь должен существовать после обновления");
+        assertTrue(updatedUser.getEnabled(), "Статус enabled должен быть true");
+
+        testUser = updatedUser; // Обновляем ссылку
+        logger.info("Статус enabled успешно обновлен на true");
+    }
+
+    @Test
+    @Order(9)
     void testInsertMultipleUsersWithFaker() {
         logger.info("Запуск теста: создание нескольких пользователей с Faker");
 
@@ -160,6 +227,7 @@ class UserDAOTest {
 
             assertNotNull(insertedUser, "Созданный пользователь не должен быть null");
             assertNotNull(insertedUser.getId(), "ID созданного пользователя не должен быть null");
+            assertNotNull(insertedUser.getEnabled(), "Поле enabled не должно быть null");
 
             logger.debug("Создан случайный пользователь #{}/{}: {}", i + 1, numberOfUsers, insertedUser);
         }
@@ -168,7 +236,7 @@ class UserDAOTest {
     }
 
     @Test
-    @Order(8)
+    @Order(10)
     void testFindByRoleAfterMultipleInserts() {
         logger.info("Запуск теста: поиск по ролям после создания нескольких пользователей");
 
@@ -193,7 +261,57 @@ class UserDAOTest {
     }
 
     @Test
-    @Order(9)
+    @Order(11)
+    void testFindByIds() {
+        logger.info("Запуск теста: множественный поиск по IDs");
+
+        // Создаем еще одного пользователя для теста
+        User anotherUser = createRandomUser();
+        User insertedAnotherUser = userDAO.insert(anotherUser);
+        assertNotNull(insertedAnotherUser, "Дополнительный пользователь должен быть создан");
+
+        List<Integer> ids = List.of(testUser.getId(), insertedAnotherUser.getId());
+        List<User> foundUsers = userDAO.findByIds(ids);
+
+        assertNotNull(foundUsers, "Список найденных пользователей не должен быть null");
+        assertEquals(2, foundUsers.size(), "Должны быть найдены оба пользователя");
+
+        // Проверяем, что оба пользователя присутствуют в результате
+        boolean foundTestUser = foundUsers.stream()
+                .anyMatch(user -> user.getId().equals(testUser.getId()));
+        boolean foundAnotherUser = foundUsers.stream()
+                .anyMatch(user -> user.getId().equals(insertedAnotherUser.getId()));
+
+        assertTrue(foundTestUser, "Тестовый пользователь должен быть найден");
+        assertTrue(foundAnotherUser, "Дополнительный пользователь должен быть найден");
+
+        // Очистка
+        userDAO.delete(insertedAnotherUser.getId());
+        logger.info("Множественный поиск по IDs выполнен успешно");
+    }
+
+    @Test
+    @Order(12)
+    void testFindAllWithSorting() {
+        logger.info("Запуск теста: получение пользователей с сортировкой");
+
+        List<User> usersByIdAsc = userDAO.findAllWithSorting("id", true);
+        List<User> usersByIdDesc = userDAO.findAllWithSorting("id", false);
+        List<User> usersByLogin = userDAO.findAllWithSorting("login", true);
+
+        assertNotNull(usersByIdAsc, "Список с сортировкой по ID ASC не должен быть null");
+        assertNotNull(usersByIdDesc, "Список с сортировкой по ID DESC не должен быть null");
+        assertNotNull(usersByLogin, "Список с сортировкой по login не должен быть null");
+
+        // Проверяем, что списки не пустые
+        assertFalse(usersByIdAsc.isEmpty(), "Список с сортировкой не должен быть пустым");
+
+        logger.info("Тест сортировки завершен: ASC={}, DESC={}, login={}",
+                usersByIdAsc.size(), usersByIdDesc.size(), usersByLogin.size());
+    }
+
+    @Test
+    @Order(13)
     void testDeleteByLogin() {
         logger.info("Запуск теста: удаление пользователя по логину");
 
@@ -213,7 +331,7 @@ class UserDAOTest {
     }
 
     @Test
-    @Order(10)
+    @Order(14)
     void testDeleteById() {
         logger.info("Запуск теста: удаление основного тестового пользователя по ID");
 
@@ -228,7 +346,7 @@ class UserDAOTest {
     }
 
     @Test
-    @Order(11)
+    @Order(15)
     void testEdgeCases() {
         logger.info("Запуск теста: проверка граничных случаев");
 
@@ -244,18 +362,24 @@ class UserDAOTest {
         boolean deleteNonExistent = userDAO.delete(-1);
         assertFalse(deleteNonExistent, "Удаление несуществующего пользователя должно возвращать false");
 
+        // Поиск по пустому списку IDs
+        List<User> emptyListUsers = userDAO.findByIds(List.of());
+        assertNotNull(emptyListUsers, "Поиск по пустому списку IDs должен возвращать не-null список");
+        assertTrue(emptyListUsers.isEmpty(), "Поиск по пустому списку IDs должен возвращать пустой список");
+
         logger.info("Все граничные случаи обработаны корректно");
     }
 
     @Test
-    @Order(12)
+    @Order(16)
     void testUserWithSpecialCharacters() {
         logger.info("Запуск теста: создание пользователя со специальными символами");
 
         User specialUser = new User(
                 "user_with_special_chars_测试_тест_" + System.currentTimeMillis(),
                 "user",
-                "password123!@#$%"
+                "password123!@#$%",
+                true
         );
 
         User insertedUser = userDAO.insert(specialUser);
@@ -273,17 +397,18 @@ class UserDAOTest {
         String login = generateUniqueLogin();
         String role = faker.bool().bool() ? "admin" : "user";
         String password = faker.internet().password(8, 16, true, true, true);
+        Boolean enabled = faker.bool().bool();
 
         // Иногда добавляем специальные символы в пароль для разнообразия
         if (faker.bool().bool()) {
             password += "!@#$%";
         }
 
-        return new User(login, role, password);
+        return new User(login, role, password, enabled);
     }
 
     @Test
-    @Order(13)
+    @Order(18)
     void testPerformanceFindAll() {
         logger.info("Запуск теста производительности: поиск всех пользователей");
 
