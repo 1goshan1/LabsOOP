@@ -4,9 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39e2e6aa-65c5-4953-ae88-51a1bbb00bae" name="Changes" comment="added readTabulatedFunction with BufferedInputStream, TabulatedFunctionFileInputStream(kind of a test cause contains main())">
+    <list default="true" id="39e2e6aa-65c5-4953-ae88-51a1bbb00bae" name="Changes" comment="DTOs">
+      <change beforePath="$PROJECT_DIR$/.idea/LabsOOP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LabsOOP.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/functions/LinkedListTabulatedFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/functions/LinkedListTabulatedFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/logs/application.2025-11-07.0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/logs/application.2025-11-07.1.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/logs/application.2025-11-07.2.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/logs/application.2025-11-07.3.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/logs/application.2025-11-07.4.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/logs/application.2025-11-07.5.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/logs/application.log" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/logs/application.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +32,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="manual" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -64,7 +79,18 @@
     "JUnit.ArrayTabulatedFunctionTest.getX.executor": "Run",
     "JUnit.ArrayTabulatedFunctionTest.getXWithInvalidIndex.executor": "Run",
     "JUnit.ArrayTabulatedFunctionTest.getY.executor": "Run",
+    "JUnit.CompositeFunctionTest.testIdentityAfterSqr.executor": "Run",
+    "JUnit.DtoTransformerTest.executor": "Coverage",
+    "JUnit.DtoTransformerTest.transformPointsBatchFromUi_NullList.executor": "Run",
+    "JUnit.FunctionDAOTest.testFindByUserId.executor": "Run",
+    "JUnit.FunctionMapperTest.executor": "Coverage",
+    "JUnit.FunctionsRepositoryTest (1).executor": "Debug",
+    "JUnit.FunctionsRepositoryTest.executor": "Run",
     "JUnit.LinkedListTabulatedFunctionTest.executor": "Run",
+    "JUnit.PointDAOTest.executor": "Run",
+    "JUnit.PointMapperTest.executor": "Coverage",
+    "JUnit.PointsRepositoryTest.executor": "Run",
+    "JUnit.SynchronizedTabulatedFunctionTest.executor": "Run",
     "JUnit.TabulatedDifferentialOperatorTest.executor": "Run",
     "JUnit.TabulatedDifferentialOperatorTest.testDeriveSinglePoint.executor": "Run",
     "JUnit.TabulatedDifferentialOperatorTest.testSetFactory.executor": "Run",
@@ -72,13 +98,25 @@
     "JUnit.TabulatedFunctionOperationServiceTest.executor": "Run",
     "JUnit.TabulatedFunctionOperationServiceTest.testGetFactory.executor": "Run",
     "JUnit.TabulatedFunctionOperationServiceTest.testInconsistentCount.executor": "Run",
+    "JUnit.UserMapperTest.executor": "Coverage",
+    "JUnit.UserMapperTest.testToDTO.executor": "Run",
+    "JUnit.repositories in lab2.executor": "Run",
     "JUnit.ru.ssau.tk.cheefkeef.laba2.functions in LabsOOP.executor": "Run",
+    "JUnit.ru.ssau.tk.cheefkeef.laba2.mapper in LabsOOP.executor": "Coverage",
+    "Maven.lab2 [clean].executor": "Run",
+    "Maven.lab2 [compile].executor": "Run",
+    "Maven.lab2 [test].executor": "Run",
+    "Maven.lab2 [validate].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "framework",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Admin/IdeaProjects/LabsOOP",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "Errors"
   },
   "keyToStringList": {
@@ -92,76 +130,83 @@
       <recent name="ru.ssau.tk.cheefkeef.laba2.functions.factory" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TabulatedFunctionFileInputStream">
-    <configuration name="ArrayTabulatedFunctionSerialization" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.cheefkeef.laba2.io.ArrayTabulatedFunctionSerialization" />
-      <module name="LabsOOP" />
+  <component name="RunManager" selected="JUnit.repositories in lab2">
+    <configuration name="CompositeFunctionTest.testIdentityAfterSqr" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lab2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.ssau.tk.cheefkeef.laba2.io.*" />
+          <option name="PATTERN" value="ru.ssau.tk.cheefkeef.laba2.functions.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="ru.ssau.tk.cheefkeef.laba2.functions" />
+      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.cheefkeef.laba2.functions.CompositeFunctionTest" />
+      <option name="METHOD_NAME" value="testIdentityAfterSqr" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TabulatedFunctionFileInputStream" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.cheefkeef.laba2.io.TabulatedFunctionFileInputStream" />
-      <module name="LabsOOP" />
+    <configuration name="FunctionsRepositoryTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lab2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.ssau.tk.cheefkeef.laba2.io.*" />
+          <option name="PATTERN" value="ru.ssau.tk.cheefkeef.laba2.repositories.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TabulatedFunctionFileOutputStream" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.cheefkeef.laba2.io.TabulatedFunctionFileOutputStream" />
-      <module name="LabsOOP" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.ssau.tk.cheefkeef.laba2.io.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in LabsOOP" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="LabsOOP" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TabulatedFunctionOperationServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="LabsOOP" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.ssau.tk.cheefkeef.laba2.operations.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ru.ssau.tk.cheefkeef.laba2.operations" />
-      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.cheefkeef.laba2.operations.TabulatedFunctionOperationServiceTest" />
+      <option name="PACKAGE_NAME" value="ru.ssau.tk.cheefkeef.laba2.repositories" />
+      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.cheefkeef.laba2.repositories.FunctionsRepositoryTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FunctionsRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LabsOOP" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.ssau.tk.cheefkeef.laba2.repositories.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.ssau.tk.cheefkeef.laba2.repositories" />
+      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.cheefkeef.laba2.repositories.FunctionsRepositoryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SynchronizedTabulatedFunctionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lab2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.ssau.tk.cheefkeef.laba2.concurrent.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.ssau.tk.cheefkeef.laba2.concurrent" />
+      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.cheefkeef.laba2.concurrent.SynchronizedTabulatedFunctionTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="repositories in lab2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lab2" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/lab2/src/test/java/ru/ssau/tk/cheefkeef/laba2/repositories" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TabulatedFunctionFileInputStream" />
-        <item itemvalue="Application.TabulatedFunctionFileOutputStream" />
-        <item itemvalue="Application.ArrayTabulatedFunctionSerialization" />
-        <item itemvalue="JUnit.All in LabsOOP" />
-        <item itemvalue="JUnit.TabulatedFunctionOperationServiceTest" />
+        <item itemvalue="JUnit.repositories in lab2" />
+        <item itemvalue="JUnit.FunctionsRepositoryTest (1)" />
+        <item itemvalue="JUnit.SynchronizedTabulatedFunctionTest" />
+        <item itemvalue="JUnit.CompositeFunctionTest.testIdentityAfterSqr" />
+        <item itemvalue="JUnit.FunctionsRepositoryTest" />
       </list>
     </recent_temporary>
   </component>
@@ -341,7 +386,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760378080710</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="DTOs">
+      <option name="closed" value="true" />
+      <created>1762621530181</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1762621530181</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -375,9 +428,28 @@
     <MESSAGE value="added multiply and divide in TabulatedFunctionOperationService and tests for them" />
     <MESSAGE value="added writeTabulatedFunction with BufferedOutputStream, TabulatedFunctionFileOutputStream(kind of a test cause contains main())" />
     <MESSAGE value="added readTabulatedFunction with BufferedInputStream, TabulatedFunctionFileInputStream(kind of a test cause contains main())" />
-    <option name="LAST_COMMIT_MESSAGE" value="added readTabulatedFunction with BufferedInputStream, TabulatedFunctionFileInputStream(kind of a test cause contains main())" />
+    <MESSAGE value="DTOs" />
+    <option name="LAST_COMMIT_MESSAGE" value="DTOs" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/LabsOOP$All_in_LabsOOP.ic" NAME="All in LabsOOP Coverage Results" MODIFIED="1760305022206" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/LabsOOP$DtoTransformerTest_transformPointsBatchFromUi_NullList.ic" NAME="DtoTransformerTest.transformPointsBatchFromUi_NullList Coverage Results" MODIFIED="1762620700974" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>ru.ssau.tk.cheefkeef.laba2.util.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LabsOOP$FunctionMapperTest.ic" NAME="FunctionMapperTest Coverage Results" MODIFIED="1762620978902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>ru.ssau.tk.cheefkeef.laba2.mapper.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LabsOOP$DtoTransformerTest.ic" NAME="DtoTransformerTest Coverage Results" MODIFIED="1762621183675" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>ru.ssau.tk.cheefkeef.laba2.util.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LabsOOP$UserMapperTest.ic" NAME="UserMapperTest Coverage Results" MODIFIED="1762621014224" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>ru.ssau.tk.cheefkeef.laba2.mapper.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LabsOOP$ru_ssau_tk_cheefkeef_laba2_mapper_in_LabsOOP.ic" NAME="ru.ssau.tk.cheefkeef.laba2.mapper in LabsOOP Coverage Results" MODIFIED="1762621164470" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>ru.ssau.tk.cheefkeef.laba2.mapper.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LabsOOP$PointMapperTest.ic" NAME="PointMapperTest Coverage Results" MODIFIED="1762621157305" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>ru.ssau.tk.cheefkeef.laba2.mapper.*</FILTER>
+    </SUITE>
   </component>
 </project>
