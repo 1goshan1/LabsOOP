@@ -1,0 +1,6 @@
+CREATE TABLE functions(
+id SERIAL PRIMARY KEY,
+u_id INT NOT NULL,
+name VARCHAR(255) NOT NULL,
+signature VARCHAR(255) NOT NULL
+);

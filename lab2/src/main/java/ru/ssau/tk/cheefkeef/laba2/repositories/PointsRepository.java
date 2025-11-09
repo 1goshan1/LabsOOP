@@ -76,4 +76,5 @@ public interface PointsRepository extends JpaRepository<Points, Long> {
     // Поиск точек с пагинацией
     @Query("SELECT p FROM Points p WHERE p.functionId = :functionId ORDER BY p.x")
     List<Points> findPointsPage(@Param("functionId") Long functionId, org.springframework.data.domain.Pageable pageable);
+
 }

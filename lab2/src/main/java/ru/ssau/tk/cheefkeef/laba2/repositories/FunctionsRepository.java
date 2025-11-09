@@ -1,3 +1,4 @@
+// FunctionsRepository.java - добавьте эти методы
 package ru.ssau.tk.cheefkeef.laba2.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,34 +13,19 @@ import java.util.Optional;
 @Repository
 public interface FunctionsRepository extends JpaRepository<Functions, Long> {
 
-    // Поиск всех функций по userId
+    // Существующие методы...
     List<Functions> findByUserId(Long userId);
-
-    // Поиск функций по имени (точное совпадение)
     List<Functions> findByName(String name);
-
-    // Поиск функций по имени и userId
     List<Functions> findByNameAndUserId(String name, Long userId);
-
-    // Поиск функций по части имени (без учета регистра)
     List<Functions> findByNameContainingIgnoreCase(String name);
-
-    // Поиск функций по сигнатуре
     List<Functions> findBySignature(String signature);
-
-    // Поиск функций по части сигнатуры
     List<Functions> findBySignatureContaining(String signature);
-
-    // Проверка существования функции по имени и userId
     boolean existsByNameAndUserId(String name, Long userId);
-
-    // Удаление всех функций по userId
     void deleteByUserId(Long userId);
-
-    // Удаление функции по имени и userId
     void deleteByNameAndUserId(String name, Long userId);
 
-    // Кастомные запросы
+    // Поиск функций по нескольким ID пользователей
+    List<Functions> findByUserIdIn(List<Long> userIds);
 
     // Поиск функций по userId с сортировкой по имени
     @Query("SELECT f FROM Functions f WHERE f.userId = :userId ORDER BY f.name")

@@ -1,0 +1,6 @@
+CREATE TABLE points(
+id SERIAL PRIMARY KEY,
+f_id INT NOT NULL,
+x_value FLOAT NOT NULL,
+y_value FLOAT NOT NULL
+);
