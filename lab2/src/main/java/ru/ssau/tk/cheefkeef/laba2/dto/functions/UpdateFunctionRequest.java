@@ -1,5 +1,5 @@
 // UpdateFunctionRequest.java
-package ru.ssau.tk.cheefkeef.laba2.dto;
+package ru.ssau.tk.cheefkeef.laba2.dto.functions;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

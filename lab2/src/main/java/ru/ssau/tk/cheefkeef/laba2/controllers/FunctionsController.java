@@ -10,8 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
-import ru.ssau.tk.cheefkeef.laba2.dto.CreateFunctionRequest;
-import ru.ssau.tk.cheefkeef.laba2.dto.UpdateFunctionRequest;
 import ru.ssau.tk.cheefkeef.laba2.dto.functions.*;
 import ru.ssau.tk.cheefkeef.laba2.dto.user.*;
 import ru.ssau.tk.cheefkeef.laba2.dto.points.*;
