@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Created-By: Maven JAR Plugin 3.3.0
+Build-Jdk-Spec: 17
+Implementation-Title: lab2
+Implementation-Version: 1.0-SNAPSHOT
+Main-Class: ru.ssau.tk.cheefkeef.laba2.Lab5Application
