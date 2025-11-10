@@ -1,7 +1,5 @@
 package ru.ssau.tk.cheefkeef.laba2.models;
 
-import com.github.javafaker.Bool;
-
 public class User {
     private Integer id;
     private String login;
@@ -35,10 +33,9 @@ public class User {
     public Boolean getEnabled() { return enabled; }
     public void setEnabled(Boolean enabled) { this.enabled = enabled; }
 
-
     @Override
     public String toString() {
-        return String.format("User{id=%d, login='%s', role=%s, password='%s'}",
-                id, login, role, password != null ? "***" : "null");
+        return String.format("User{id=%d, login='%s', role=%s, enabled=%b}",
+                id, login, role, enabled);
     }
 }

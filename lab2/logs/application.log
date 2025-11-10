@@ -1118,3 +1118,1123 @@
 2025-11-11 00:02:07.816 [main] INFO  r.s.t.c.laba2.util.DtoTransformer - Преобразование данных точки из UI
 2025-11-11 00:02:07.816 [main] DEBUG r.s.t.c.laba2.util.DtoTransformer - Создан PointDTO: functionId=1, x=2.0, y=4.0
 2025-11-11 00:02:07.816 [main] INFO  r.s.t.c.laba2.util.DtoTransformer - Успешно преобразовано 2 точек
+2025-11-11 01:34:01.472 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.476 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.476 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 3 points
+2025-11-11 01:34:01.480 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Found x=2.5 at index 2
+2025-11-11 01:34:01.492 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.493 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 2 points
+2025-11-11 01:34:01.495 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Set y[0] from 1.0 to 999.0
+2025-11-11 01:34:01.495 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Set y[1] from 4.0 to 888.0
+2025-11-11 01:34:01.498 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.498 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:01.498 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Found x=0.0 at index 0
+2025-11-11 01:34:01.498 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Found x=1.0 at index 1
+2025-11-11 01:34:01.498 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - x=1.5 not found in xValues
+2025-11-11 01:34:01.498 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Floor index for x=1.5 is 1
+2025-11-11 01:34:01.499 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Interpolation for x=1.5 at floorIndex=1: result=2.5
+2025-11-11 01:34:01.500 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.500 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 2 points
+2025-11-11 01:34:01.501 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Set y[0] from 10.0 to 100.0
+2025-11-11 01:34:01.503 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.503 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:01.507 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.507 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:01.510 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.510 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:01.514 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.514 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:01.514 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Found y=30.0 at index 2
+2025-11-11 01:34:01.516 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.517 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.518 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 2 points
+2025-11-11 01:34:01.523 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.523 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 2 points
+2025-11-11 01:34:01.525 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Set y[0] from 10.0 to 20.0
+2025-11-11 01:34:01.526 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Set y[1] from 20.0 to 40.0
+2025-11-11 01:34:01.529 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.529 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 2 points
+2025-11-11 01:34:01.534 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.534 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 2 points
+2025-11-11 01:34:01.546 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.547 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:01.550 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.551 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.551 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 2 points
+2025-11-11 01:34:01.573 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.573 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:01.575 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Removing point at index -1
+2025-11-11 01:34:01.575 [main] ERROR r.s.t.c.l.f.ArrayTabulatedFunction - Index out of bounds: index=-1, count=3
+2025-11-11 01:34:01.578 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.578 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 2 points
+2025-11-11 01:34:01.579 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Left extrapolation for x=0.0: result=-2.0
+2025-11-11 01:34:01.583 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from function: xFrom=0.0, xTo=1.0, count=1
+2025-11-11 01:34:01.586 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.587 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:01.591 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 5
+2025-11-11 01:34:01.593 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 5 points
+2025-11-11 01:34:01.594 [main] ERROR r.s.t.c.l.f.ArrayTabulatedFunction - Interpolation error: x=2.5 not in interval [5.0, 6.0]
+2025-11-11 01:34:01.597 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from function: xFrom=5.0, xTo=5.0, count=4
+2025-11-11 01:34:01.597 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - xFrom equals xTo, creating constant function
+2025-11-11 01:34:01.597 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction from source function
+2025-11-11 01:34:01.598 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.599 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 2 points
+2025-11-11 01:34:01.599 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Inserting point: x=3.0, y=30.0
+2025-11-11 01:34:01.599 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - x=3.0 not found in xValues
+2025-11-11 01:34:01.599 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully inserted point at index 2. New count: 3
+2025-11-11 01:34:01.600 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.601 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:01.601 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Floor index for x=1.5 is 0
+2025-11-11 01:34:01.601 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Floor index for x=2.0 is 1
+2025-11-11 01:34:01.601 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Floor index for x=2.5 is 1
+2025-11-11 01:34:01.601 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Floor index for x=3.0 is 2
+2025-11-11 01:34:01.602 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.603 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:01.603 [main] ERROR r.s.t.c.l.f.ArrayTabulatedFunction - Interpolation error: x=1.5 not in interval [0.0, 1.0]
+2025-11-11 01:34:01.606 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.606 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:01.606 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Interpolation at last point, returning y[2] = 4.0
+2025-11-11 01:34:01.608 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.608 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 2 points
+2025-11-11 01:34:01.608 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Right extrapolation for x=3.0: result=7.0
+2025-11-11 01:34:01.610 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.610 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 2 points
+2025-11-11 01:34:01.612 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from function: xFrom=0.0, xTo=2.0, count=3
+2025-11-11 01:34:01.612 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Step size: 1.0
+2025-11-11 01:34:01.612 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction from source function
+2025-11-11 01:34:01.614 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.614 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 2 points
+2025-11-11 01:34:01.616 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.616 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 2 points
+2025-11-11 01:34:01.618 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.618 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 2 points
+2025-11-11 01:34:01.618 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Set y[0] from 1.0 to 5.0
+2025-11-11 01:34:01.620 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.621 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:01.621 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Found x=2.0 at index 1
+2025-11-11 01:34:01.621 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - x=5.0 not found in xValues
+2025-11-11 01:34:01.624 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.625 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:01.625 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Found y=4.0 at index 1
+2025-11-11 01:34:01.625 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - y=5.0 not found in yValues
+2025-11-11 01:34:01.630 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.630 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 2 points
+2025-11-11 01:34:01.631 [main] ERROR r.s.t.c.l.f.ArrayTabulatedFunction - Index out of bounds: index=-1, count=2
+2025-11-11 01:34:01.631 [main] ERROR r.s.t.c.l.f.ArrayTabulatedFunction - Index out of bounds: index=2, count=2
+2025-11-11 01:34:01.633 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.633 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 2 points
+2025-11-11 01:34:01.633 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - x=1.0 not found in xValues
+2025-11-11 01:34:01.633 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Floor index for x=1.0 is 0
+2025-11-11 01:34:01.633 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Interpolation for x=1.0 at floorIndex=0: result=2.0
+2025-11-11 01:34:01.635 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.635 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:01.636 [main] ERROR r.s.t.c.l.f.ArrayTabulatedFunction - X value 0.5 is less than left bound 1.0
+2025-11-11 01:34:01.639 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.639 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:01.639 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Inserting point: x=2.0, y=25.0
+2025-11-11 01:34:01.639 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Found x=2.0 at index 1
+2025-11-11 01:34:01.639 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Point with x=2.0 already exists at index 1, updating y value
+2025-11-11 01:34:01.641 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.641 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 2 points
+2025-11-11 01:34:01.644 [main] ERROR r.s.t.c.l.f.ArrayTabulatedFunction - Index out of bounds: index=-1, count=2
+2025-11-11 01:34:01.646 [main] ERROR r.s.t.c.l.f.ArrayTabulatedFunction - Index out of bounds: index=2, count=2
+2025-11-11 01:34:01.648 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.649 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 2 points
+2025-11-11 01:34:01.650 [main] ERROR r.s.t.c.l.f.ArrayTabulatedFunction - Index out of bounds: index=-1, count=2
+2025-11-11 01:34:01.651 [main] ERROR r.s.t.c.l.f.ArrayTabulatedFunction - Index out of bounds: index=2, count=2
+2025-11-11 01:34:01.652 [main] ERROR r.s.t.c.l.f.ArrayTabulatedFunction - Index out of bounds: index=5, count=2
+2025-11-11 01:34:01.653 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.654 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:01.654 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Removing point at index 1
+2025-11-11 01:34:01.654 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully removed point at index 1. New count: 2
+2025-11-11 01:34:01.656 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from function: xFrom=2.0, xTo=0.0, count=3
+2025-11-11 01:34:01.656 [main] WARN  r.s.t.c.l.f.ArrayTabulatedFunction - xFrom (2.0) > xTo (0.0), swapping values
+2025-11-11 01:34:01.656 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Step size: 1.0
+2025-11-11 01:34:01.656 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction from source function
+2025-11-11 01:34:01.659 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.660 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:01.660 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Inserting point: x=3.0, y=30.0
+2025-11-11 01:34:01.660 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - x=3.0 not found in xValues
+2025-11-11 01:34:01.660 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully inserted point at index 2. New count: 4
+2025-11-11 01:34:01.662 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 4
+2025-11-11 01:34:01.662 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 4 points
+2025-11-11 01:34:01.664 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.664 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 2 points
+2025-11-11 01:34:01.665 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Inserting point: x=1.0, y=10.0
+2025-11-11 01:34:01.665 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - x=1.0 not found in xValues
+2025-11-11 01:34:01.665 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully inserted point at index 0. New count: 3
+2025-11-11 01:34:01.667 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.667 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:01.669 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.669 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 2 points
+2025-11-11 01:34:01.670 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Removing point at index 0
+2025-11-11 01:34:01.671 [main] ERROR r.s.t.c.l.f.ArrayTabulatedFunction - Cannot remove point - minimum points count reached (current: 2)
+2025-11-11 01:34:01.672 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Removing point at index 1
+2025-11-11 01:34:01.672 [main] ERROR r.s.t.c.l.f.ArrayTabulatedFunction - Cannot remove point - minimum points count reached (current: 2)
+2025-11-11 01:34:01.675 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 4
+2025-11-11 01:34:01.675 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 4 points
+2025-11-11 01:34:01.676 [main] ERROR r.s.t.c.l.f.ArrayTabulatedFunction - Iterator has no more elements
+2025-11-11 01:34:01.679 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 4
+2025-11-11 01:34:01.680 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 4 points
+2025-11-11 01:34:01.682 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.683 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 2 points
+2025-11-11 01:34:01.712 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.713 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.713 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 3 points
+2025-11-11 01:34:01.713 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Found x=2.0 at index 1
+2025-11-11 01:34:01.713 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - x=1.5 not found in list
+2025-11-11 01:34:01.713 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Floor index for x=1.5 is 0
+2025-11-11 01:34:01.713 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Interpolation for x=1.5 at floorIndex=0: result=15.0
+2025-11-11 01:34:01.716 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from function: xFrom=0.0, xTo=2.0, count=3
+2025-11-11 01:34:01.716 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Step size: 1.0
+2025-11-11 01:34:01.716 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction from source function
+2025-11-11 01:34:01.716 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Found x=1.0 at index 1
+2025-11-11 01:34:01.716 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Found x=2.0 at index 2
+2025-11-11 01:34:01.716 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - x=1.5 not found in xValues
+2025-11-11 01:34:01.716 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Floor index for x=1.5 is 1
+2025-11-11 01:34:01.716 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Interpolation for x=1.5 at floorIndex=1: result=2.5
+2025-11-11 01:34:01.719 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from function: xFrom=0.0, xTo=2.0, count=3
+2025-11-11 01:34:01.719 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Step size: 1.0
+2025-11-11 01:34:01.719 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction from source function
+2025-11-11 01:34:01.720 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from function: xFrom=0.0, xTo=4.0, count=3
+2025-11-11 01:34:01.720 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Step size: 2.0
+2025-11-11 01:34:01.721 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.721 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction from source function
+2025-11-11 01:34:01.721 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Found x=0.0 at index 0
+2025-11-11 01:34:01.721 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Found x=0.0 at index 0
+2025-11-11 01:34:01.721 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Found x=1.0 at index 1
+2025-11-11 01:34:01.721 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - x=1.0 not found in list
+2025-11-11 01:34:01.721 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Floor index for x=1.0 is 0
+2025-11-11 01:34:01.721 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Interpolation for x=1.0 at floorIndex=0: result=2.0
+2025-11-11 01:34:01.721 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Found x=2.0 at index 2
+2025-11-11 01:34:01.722 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Found x=4.0 at index 2
+2025-11-11 01:34:01.722 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - x=1.5 not found in xValues
+2025-11-11 01:34:01.722 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Floor index for x=1.5 is 1
+2025-11-11 01:34:01.722 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Interpolation for x=1.5 at floorIndex=1: result=2.5
+2025-11-11 01:34:01.722 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - x=2.5 not found in list
+2025-11-11 01:34:01.722 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Floor index for x=2.5 is 1
+2025-11-11 01:34:01.722 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Interpolation for x=2.5 at floorIndex=1: result=5.0
+2025-11-11 01:34:01.731 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 4
+2025-11-11 01:34:01.732 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.732 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 4 points
+2025-11-11 01:34:01.734 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.735 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 2 points
+2025-11-11 01:34:01.735 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 5
+2025-11-11 01:34:01.735 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 5 points
+2025-11-11 01:34:01.736 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.736 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:01.739 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 1
+2025-11-11 01:34:01.741 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 1
+2025-11-11 01:34:01.741 [main] ERROR r.s.t.c.l.f.LinkedListTabulatedFunction - Array length 1 is less than minimum required (2)
+2025-11-11 01:34:01.743 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 0
+2025-11-11 01:34:01.743 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 0
+2025-11-11 01:34:01.744 [main] ERROR r.s.t.c.l.f.LinkedListTabulatedFunction - Array length 0 is less than minimum required (2)
+2025-11-11 01:34:01.744 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.745 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.745 [main] ERROR r.s.t.c.l.f.LinkedListTabulatedFunction - Arrays length mismatch: x.length=2, y.length=1
+2025-11-11 01:34:01.747 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.747 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 2 points
+2025-11-11 01:34:01.747 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.747 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 2 points
+2025-11-11 01:34:01.748 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Set y[0] from 1.0 to 100.0
+2025-11-11 01:34:01.749 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.750 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:01.750 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.750 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.750 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 3 points
+2025-11-11 01:34:01.752 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.752 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.752 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 2 points
+2025-11-11 01:34:01.752 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 5
+2025-11-11 01:34:01.752 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.752 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 5 points
+2025-11-11 01:34:01.758 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.758 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.759 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 3 points
+2025-11-11 01:34:01.760 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.760 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.760 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 3 points
+2025-11-11 01:34:01.760 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Removing point at index 0
+2025-11-11 01:34:01.760 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Removed head node, new head set
+2025-11-11 01:34:01.760 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully removed point at index 0. New count: 2
+2025-11-11 01:34:01.761 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Removing point at index 0
+2025-11-11 01:34:01.761 [main] ERROR r.s.t.c.l.f.LinkedListTabulatedFunction - Cannot remove point - minimum points count reached (current: 2)
+2025-11-11 01:34:01.762 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from function: xFrom=2.0, xTo=0.0, count=3
+2025-11-11 01:34:01.762 [main] WARN  r.s.t.c.l.f.LinkedListTabulatedFunction - xFrom (2.0) > xTo (0.0), swapping values
+2025-11-11 01:34:01.762 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Step size: 1.0
+2025-11-11 01:34:01.762 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.762 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction from source function
+2025-11-11 01:34:01.763 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.764 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.764 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 2 points
+2025-11-11 01:34:01.764 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - x=1.0 not found in list
+2025-11-11 01:34:01.764 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Floor index for x=1.0 is 0
+2025-11-11 01:34:01.764 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Interpolation for x=1.0 at floorIndex=0: result=2.0
+2025-11-11 01:34:01.765 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from function: xFrom=3.0, xTo=3.0, count=4
+2025-11-11 01:34:01.766 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - xFrom equals xTo, creating constant function
+2025-11-11 01:34:01.766 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.766 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction from source function
+2025-11-11 01:34:01.767 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.768 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.768 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 2 points
+2025-11-11 01:34:01.768 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Set y[1] from 1.0 to 10.0
+2025-11-11 01:34:01.770 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 7
+2025-11-11 01:34:01.770 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.770 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 7 points
+2025-11-11 01:34:01.770 [main] ERROR r.s.t.c.l.f.LinkedListTabulatedFunction - Interpolation error: x=2.5 not in interval [3.0, 4.0]
+2025-11-11 01:34:01.772 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from function: xFrom=0.0, xTo=2.0, count=1
+2025-11-11 01:34:01.772 [main] ERROR r.s.t.c.l.f.LinkedListTabulatedFunction - Count 1 is less than minimum required (2)
+2025-11-11 01:34:01.774 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.774 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.774 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 3 points
+2025-11-11 01:34:01.774 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Removing point at index 0
+2025-11-11 01:34:01.774 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Removed head node, new head set
+2025-11-11 01:34:01.774 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully removed point at index 0. New count: 2
+2025-11-11 01:34:01.775 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.775 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.776 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 2 points
+2025-11-11 01:34:01.776 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Inserting point: x=3.0, y=9.0
+2025-11-11 01:34:01.776 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Inserted node at end of list
+2025-11-11 01:34:01.777 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from function: xFrom=0.0, xTo=2.0, count=3
+2025-11-11 01:34:01.778 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Step size: 1.0
+2025-11-11 01:34:01.778 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.778 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction from source function
+2025-11-11 01:34:01.779 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.779 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.779 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 3 points
+2025-11-11 01:34:01.779 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Found x=2.0 at index 1
+2025-11-11 01:34:01.779 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - x=5.0 not found in list
+2025-11-11 01:34:01.781 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.781 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.781 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 3 points
+2025-11-11 01:34:01.781 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Removing point at index 2
+2025-11-11 01:34:01.781 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully removed point at index 2. New count: 2
+2025-11-11 01:34:01.783 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 0
+2025-11-11 01:34:01.784 [main] ERROR r.s.t.c.l.f.LinkedListTabulatedFunction - Array length 0 is less than minimum required (2)
+2025-11-11 01:34:01.785 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.785 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.785 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 2 points
+2025-11-11 01:34:01.786 [main] ERROR r.s.t.c.l.f.LinkedListTabulatedFunction - Node index out of bounds: index=-1, count=2
+2025-11-11 01:34:01.788 [main] ERROR r.s.t.c.l.f.LinkedListTabulatedFunction - Node index out of bounds: index=2, count=2
+2025-11-11 01:34:01.789 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.789 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.789 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 2 points
+2025-11-11 01:34:01.790 [main] ERROR r.s.t.c.l.f.LinkedListTabulatedFunction - Node index out of bounds: index=-1, count=2
+2025-11-11 01:34:01.790 [main] ERROR r.s.t.c.l.f.LinkedListTabulatedFunction - Node index out of bounds: index=2, count=2
+2025-11-11 01:34:01.791 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.792 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.792 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 3 points
+2025-11-11 01:34:01.792 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Inserting point: x=2.0, y=5.0
+2025-11-11 01:34:01.792 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Point with x=2.0 already exists, updating y value
+2025-11-11 01:34:01.794 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.794 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.794 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 3 points
+2025-11-11 01:34:01.794 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Found y=20.0 at index 1
+2025-11-11 01:34:01.795 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.795 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.795 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 2 points
+2025-11-11 01:34:01.796 [main] ERROR r.s.t.c.l.f.LinkedListTabulatedFunction - Node index out of bounds: index=-1, count=2
+2025-11-11 01:34:01.796 [main] ERROR r.s.t.c.l.f.LinkedListTabulatedFunction - Node index out of bounds: index=2, count=2
+2025-11-11 01:34:01.797 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.798 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.798 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 2 points
+2025-11-11 01:34:01.798 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Removing point at index -1
+2025-11-11 01:34:01.798 [main] ERROR r.s.t.c.l.f.LinkedListTabulatedFunction - Index out of bounds: index=-1, count=2
+2025-11-11 01:34:01.799 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Removing point at index 2
+2025-11-11 01:34:01.799 [main] ERROR r.s.t.c.l.f.LinkedListTabulatedFunction - Index out of bounds: index=2, count=2
+2025-11-11 01:34:01.799 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Removing point at index 5
+2025-11-11 01:34:01.799 [main] ERROR r.s.t.c.l.f.LinkedListTabulatedFunction - Index out of bounds: index=5, count=2
+2025-11-11 01:34:01.800 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.800 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.800 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 3 points
+2025-11-11 01:34:01.801 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 4
+2025-11-11 01:34:01.801 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.801 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 4 points
+2025-11-11 01:34:01.801 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Floor index for x=0.5 is 0
+2025-11-11 01:34:01.801 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Floor index for x=1.9 is 1
+2025-11-11 01:34:01.801 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - X value 3.0 is greater than or equal to right bound, returning count-1=3
+2025-11-11 01:34:01.801 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - X value 10.0 is greater than or equal to right bound, returning count-1=3
+2025-11-11 01:34:01.802 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 4
+2025-11-11 01:34:01.802 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.802 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 4 points
+2025-11-11 01:34:01.802 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Removing point at index 0
+2025-11-11 01:34:01.802 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Removed head node, new head set
+2025-11-11 01:34:01.802 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully removed point at index 0. New count: 3
+2025-11-11 01:34:01.802 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Removing point at index 2
+2025-11-11 01:34:01.803 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully removed point at index 2. New count: 2
+2025-11-11 01:34:01.804 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.804 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.804 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 2 points
+2025-11-11 01:34:01.804 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Right extrapolation for x=3.0: result=7.0
+2025-11-11 01:34:01.805 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.806 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.806 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 3 points
+2025-11-11 01:34:01.806 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Inserting point: x=0.5, y=0.25
+2025-11-11 01:34:01.806 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Inserted node at beginning of list
+2025-11-11 01:34:01.807 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:01.807 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.807 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 2 points
+2025-11-11 01:34:01.807 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Left extrapolation for x=0.0: result=-2.0
+2025-11-11 01:34:01.808 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.809 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.809 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 3 points
+2025-11-11 01:34:01.809 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - y=1337.0 not found in list
+2025-11-11 01:34:01.810 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:01.810 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.810 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 3 points
+2025-11-11 01:34:01.811 [main] ERROR r.s.t.c.l.f.LinkedListTabulatedFunction - X value 0.5 is less than left bound 1.0
+2025-11-11 01:34:01.812 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 4
+2025-11-11 01:34:01.813 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:01.813 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 4 points
+2025-11-11 01:34:01.813 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Removing point at index 1
+2025-11-11 01:34:01.813 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully removed point at index 1. New count: 3
+2025-11-11 01:34:01.814 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 1
+2025-11-11 01:34:01.815 [main] ERROR r.s.t.c.l.f.LinkedListTabulatedFunction - Array length 1 is less than minimum required (2)
+2025-11-11 01:34:01.863 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Инициализация тестового окружения FunctionDAO
+2025-11-11 01:34:02.016 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAOTest - Создана тестовая функция: Function{id=null, userId=1, name='test_func_consectetur_1762810442013', signature='x1'}
+2025-11-11 01:34:02.018 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Запуск теста: создание функции
+2025-11-11 01:34:02.019 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Создание новой функции: Function{id=null, userId=1, name='test_func_consectetur_1762810442013', signature='x1'}
+2025-11-11 01:34:02.174 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: INSERT INTO functions (u_id, name, signature) VALUES (?, ?, ?) с параметрами u_id=1, name=test_func_consectetur_1762810442013, signature=***
+2025-11-11 01:34:02.182 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Количество затронутых строк: 1
+2025-11-11 01:34:02.182 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Функция успешно создана с ID: 40206
+2025-11-11 01:34:02.183 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Успешно создана функция с ID: 40206
+2025-11-11 01:34:02.185 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Запуск теста: поиск функции по ID
+2025-11-11 01:34:02.185 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Поиск функции по ID: 40206
+2025-11-11 01:34:02.212 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: SELECT id, u_id, name, signature FROM functions WHERE id = ? с параметром id=40206
+2025-11-11 01:34:02.214 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Найдена функция: Function{id=40206, userId=1, name='test_func_consectetur_1762810442013', signature='x1'}
+2025-11-11 01:34:02.215 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAOTest - Найдена функция: Function{id=40206, userId=1, name='test_func_consectetur_1762810442013', signature='x1'}
+2025-11-11 01:34:02.216 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Запуск теста: поиск функций по ID пользователя
+2025-11-11 01:34:02.216 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Поиск функций по ID пользователя: 1
+2025-11-11 01:34:02.248 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: SELECT id, u_id, name, signature FROM functions WHERE u_id = ? с параметром userId=1
+2025-11-11 01:34:02.251 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Найдено 46 функций для пользователя 1
+2025-11-11 01:34:02.252 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Найдено 46 функций для пользователя с ID: 1
+2025-11-11 01:34:02.253 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Запуск теста: поиск функций по имени (частичное совпадение)
+2025-11-11 01:34:02.253 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Поиск функций по имени: test_fun
+2025-11-11 01:34:02.382 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: SELECT id, u_id, name, signature FROM functions WHERE name LIKE ? с параметром name=%test_fun%
+2025-11-11 01:34:02.385 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Найдено 46 функций по шаблону имени: test_fun
+2025-11-11 01:34:02.385 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Найдено 46 функций по частичному имени 'test_fun'
+2025-11-11 01:34:02.387 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Запуск теста: поиск функций по имени и ID пользователя
+2025-11-11 01:34:02.387 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Поиск функций по имени test_func_consectetur_1762810442013 и ID пользователя 1
+2025-11-11 01:34:02.420 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: SELECT id, u_id, name, signature FROM functions WHERE name = ? AND u_id = ? с параметрами name=test_func_consectetur_1762810442013, userId=1
+2025-11-11 01:34:02.422 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Найдено 1 функций по имени и ID пользователя
+2025-11-11 01:34:02.423 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAOTest - Найдена функция по имени и пользователю: Function{id=40206, userId=1, name='test_func_consectetur_1762810442013', signature='x1'}
+2025-11-11 01:34:02.424 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Запуск теста: проверка существования функции по имени и пользователю
+2025-11-11 01:34:02.424 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Проверка существования функции с именем test_func_consectetur_1762810442013 для пользователя 1
+2025-11-11 01:34:02.560 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: SELECT 1 FROM functions WHERE name = ? AND u_id = ? LIMIT 1 с параметрами name=test_func_consectetur_1762810442013, userId=1
+2025-11-11 01:34:02.563 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Функция с именем test_func_consectetur_1762810442013 для пользователя 1 существует
+2025-11-11 01:34:02.563 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Проверка существования функции с именем non_existent_function_name для пользователя 1
+2025-11-11 01:34:02.698 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: SELECT 1 FROM functions WHERE name = ? AND u_id = ? LIMIT 1 с параметрами name=non_existent_function_name, userId=1
+2025-11-11 01:34:02.702 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Функция с именем non_existent_function_name для пользователя 1 не существует
+2025-11-11 01:34:02.703 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Проверка существования функции завершена успешно
+2025-11-11 01:34:02.704 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Запуск теста: обновление функции
+2025-11-11 01:34:02.705 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Обновление функции с ID: 40206
+2025-11-11 01:34:02.738 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: UPDATE functions SET u_id = ?, name = ?, signature = ? WHERE id = ? с параметрами u_id=2, name=updated_func_1762810442704, signature=***, id=40206
+2025-11-11 01:34:02.740 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Функция с ID 40206 успешно обновлена
+2025-11-11 01:34:02.740 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Поиск функции по ID: 40206
+2025-11-11 01:34:02.762 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: SELECT id, u_id, name, signature FROM functions WHERE id = ? с параметром id=40206
+2025-11-11 01:34:02.763 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Найдена функция: Function{id=40206, userId=2, name='updated_func_1762810442704', signature='x'}
+2025-11-11 01:34:02.764 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Функция успешно обновлена: Function{id=40206, userId=2, name='updated_func_1762810442704', signature='x'}
+2025-11-11 01:34:02.765 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Запуск теста: обновление только сигнатуры функции
+2025-11-11 01:34:02.765 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Обновление сигнатуры функции с ID: 40206
+2025-11-11 01:34:02.785 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: UPDATE functions SET signature = ? WHERE id = ? с параметрами signature=***, id=40206
+2025-11-11 01:34:02.787 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Сигнатура функции с ID 40206 успешно обновлена
+2025-11-11 01:34:02.787 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Поиск функции по ID: 40206
+2025-11-11 01:34:02.805 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: SELECT id, u_id, name, signature FROM functions WHERE id = ? с параметром id=40206
+2025-11-11 01:34:02.807 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Найдена функция: Function{id=40206, userId=2, name='updated_func_1762810442704', signature='String processData(int input, String config)'}
+2025-11-11 01:34:02.807 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Сигнатура функции успешно обновлена
+2025-11-11 01:34:02.809 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Запуск теста: подсчет количества функций пользователя
+2025-11-11 01:34:02.809 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Подсчет количества функций пользователя с ID: 2
+2025-11-11 01:34:02.930 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: SELECT COUNT(*) FROM functions WHERE u_id = ? с параметром userId=2
+2025-11-11 01:34:02.932 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Найдено 12 функций пользователя с ID 2
+2025-11-11 01:34:02.932 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Создание новой функции: Function{id=null, userId=2, name='test_func_aliquid_1762810442932', signature='x'}
+2025-11-11 01:34:03.058 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: INSERT INTO functions (u_id, name, signature) VALUES (?, ?, ?) с параметрами u_id=2, name=test_func_aliquid_1762810442932, signature=***
+2025-11-11 01:34:03.061 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Количество затронутых строк: 1
+2025-11-11 01:34:03.061 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Функция успешно создана с ID: 40207
+2025-11-11 01:34:03.061 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Подсчет количества функций пользователя с ID: 2
+2025-11-11 01:34:03.201 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: SELECT COUNT(*) FROM functions WHERE u_id = ? с параметром userId=2
+2025-11-11 01:34:03.203 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Найдено 13 функций пользователя с ID 2
+2025-11-11 01:34:03.204 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Удаление функции с ID: 40207
+2025-11-11 01:34:03.333 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: DELETE FROM functions WHERE id = ? с параметром id=40207
+2025-11-11 01:34:03.335 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Функция с ID 40207 успешно удалена
+2025-11-11 01:34:03.335 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Подсчет функций: до=12, после=13
+2025-11-11 01:34:03.336 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Запуск теста: создание нескольких функций с Faker
+2025-11-11 01:34:03.336 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Создание новой функции: Function{id=null, userId=1, name='test_func_ad_1762810443336', signature='1'}
+2025-11-11 01:34:03.359 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: INSERT INTO functions (u_id, name, signature) VALUES (?, ?, ?) с параметрами u_id=1, name=test_func_ad_1762810443336, signature=***
+2025-11-11 01:34:03.361 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Количество затронутых строк: 1
+2025-11-11 01:34:03.361 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Функция успешно создана с ID: 40208
+2025-11-11 01:34:03.361 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAOTest - Создана случайная функция #1/5: Function{id=40208, userId=1, name='test_func_ad_1762810443336', signature='1'}
+2025-11-11 01:34:03.361 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Создание новой функции: Function{id=null, userId=1, name='test_func_itaque_1762810443361', signature='x^2'}
+2025-11-11 01:34:03.380 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: INSERT INTO functions (u_id, name, signature) VALUES (?, ?, ?) с параметрами u_id=1, name=test_func_itaque_1762810443361, signature=***
+2025-11-11 01:34:03.382 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Количество затронутых строк: 1
+2025-11-11 01:34:03.382 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Функция успешно создана с ID: 40209
+2025-11-11 01:34:03.382 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAOTest - Создана случайная функция #2/5: Function{id=40209, userId=1, name='test_func_itaque_1762810443361', signature='x^2'}
+2025-11-11 01:34:03.382 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Создание новой функции: Function{id=null, userId=1, name='test_func_quia_1762810443382', signature='x^2'}
+2025-11-11 01:34:03.503 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: INSERT INTO functions (u_id, name, signature) VALUES (?, ?, ?) с параметрами u_id=1, name=test_func_quia_1762810443382, signature=***
+2025-11-11 01:34:03.505 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Количество затронутых строк: 1
+2025-11-11 01:34:03.505 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Функция успешно создана с ID: 40210
+2025-11-11 01:34:03.505 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAOTest - Создана случайная функция #3/5: Function{id=40210, userId=1, name='test_func_quia_1762810443382', signature='x^2'}
+2025-11-11 01:34:03.505 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Создание новой функции: Function{id=null, userId=1, name='test_func_voluptas_1762810443505', signature='x1'}
+2025-11-11 01:34:03.526 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: INSERT INTO functions (u_id, name, signature) VALUES (?, ?, ?) с параметрами u_id=1, name=test_func_voluptas_1762810443505, signature=***
+2025-11-11 01:34:03.528 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Количество затронутых строк: 1
+2025-11-11 01:34:03.528 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Функция успешно создана с ID: 40211
+2025-11-11 01:34:03.528 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAOTest - Создана случайная функция #4/5: Function{id=40211, userId=1, name='test_func_voluptas_1762810443505', signature='x1'}
+2025-11-11 01:34:03.528 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Создание новой функции: Function{id=null, userId=1, name='test_func_eaque_1762810443528', signature='4'}
+2025-11-11 01:34:03.681 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: INSERT INTO functions (u_id, name, signature) VALUES (?, ?, ?) с параметрами u_id=1, name=test_func_eaque_1762810443528, signature=***
+2025-11-11 01:34:03.683 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Количество затронутых строк: 1
+2025-11-11 01:34:03.683 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Функция успешно создана с ID: 40212
+2025-11-11 01:34:03.683 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAOTest - Создана случайная функция #5/5: Function{id=40212, userId=1, name='test_func_eaque_1762810443528', signature='4'}
+2025-11-11 01:34:03.683 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Успешно создано 5 случайных функций
+2025-11-11 01:34:03.685 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Запуск теста: получение всех функций
+2025-11-11 01:34:03.685 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Начало получения всех функций
+2025-11-11 01:34:03.708 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: SELECT id, u_id, name, signature FROM functions
+2025-11-11 01:34:03.709 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Успешно получено 63 функций
+2025-11-11 01:34:03.709 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Найдено 63 функций в базе данных
+2025-11-11 01:34:03.710 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAOTest - Функция из общего списка: Function{id=40073, userId=2, name='updated_func_1762755229170', signature='String processData(int input, String config)'}
+2025-11-11 01:34:03.711 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAOTest - Функция из общего списка: Function{id=40172, userId=2, name='updated_func_1762804916109', signature='String processData(int input, String config)'}
+2025-11-11 01:34:03.711 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAOTest - Функция из общего списка: Function{id=40076, userId=1, name='test_func_et_1762755229845', signature='4'}
+2025-11-11 01:34:03.711 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Запуск теста: проверка граничных случаев
+2025-11-11 01:34:03.711 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Поиск функции по ID: -1
+2025-11-11 01:34:03.733 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: SELECT id, u_id, name, signature FROM functions WHERE id = ? с параметром id=-1
+2025-11-11 01:34:03.734 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Функция с ID -1 не найдена
+2025-11-11 01:34:03.734 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Поиск функций по ID пользователя: -1
+2025-11-11 01:34:03.756 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: SELECT id, u_id, name, signature FROM functions WHERE u_id = ? с параметром userId=-1
+2025-11-11 01:34:03.757 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Найдено 0 функций для пользователя -1
+2025-11-11 01:34:03.758 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Поиск функций по имени: non_existent_function_name_12345
+2025-11-11 01:34:03.894 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: SELECT id, u_id, name, signature FROM functions WHERE name LIKE ? с параметром name=%non_existent_function_name_12345%
+2025-11-11 01:34:03.896 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Найдено 0 функций по шаблону имени: non_existent_function_name_12345
+2025-11-11 01:34:03.896 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Обновление функции с ID: -1
+2025-11-11 01:34:04.031 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: UPDATE functions SET u_id = ?, name = ?, signature = ? WHERE id = ? с параметрами u_id=1, name=test, signature=***, id=-1
+2025-11-11 01:34:04.033 [main] WARN  r.s.t.c.laba2.jdbc.FunctionDAO - Функция с ID -1 не найдена для обновления
+2025-11-11 01:34:04.034 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Обновление сигнатуры функции с ID: -1
+2025-11-11 01:34:04.180 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: UPDATE functions SET signature = ? WHERE id = ? с параметрами signature=***, id=-1
+2025-11-11 01:34:04.182 [main] WARN  r.s.t.c.laba2.jdbc.FunctionDAO - Функция с ID -1 не найдена для обновления сигнатуры
+2025-11-11 01:34:04.183 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Все граничные случаи обработаны корректно
+2025-11-11 01:34:04.184 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Запуск теста: создание функции со специальными символами
+2025-11-11 01:34:04.184 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Создание новой функции: Function{id=null, userId=1, name='function_with_special_测试_тест_1762810444184', signature='List<String> processData(Map<String, Object> input, int maxSize) throws IOException'}
+2025-11-11 01:34:04.208 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: INSERT INTO functions (u_id, name, signature) VALUES (?, ?, ?) с параметрами u_id=1, name=function_with_special_测试_тест_1762810444184, signature=***
+2025-11-11 01:34:04.209 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Количество затронутых строк: 1
+2025-11-11 01:34:04.209 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Функция успешно создана с ID: 40213
+2025-11-11 01:34:04.209 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Поиск функции по ID: 40213
+2025-11-11 01:34:04.338 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: SELECT id, u_id, name, signature FROM functions WHERE id = ? с параметром id=40213
+2025-11-11 01:34:04.340 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Найдена функция: Function{id=40213, userId=1, name='function_with_special_测试_тест_1762810444184', signature='List<String> processData(Map<String, Object> input, int maxSize) throws IOException'}
+2025-11-11 01:34:04.340 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Удаление функции с ID: 40213
+2025-11-11 01:34:04.474 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: DELETE FROM functions WHERE id = ? с параметром id=40213
+2025-11-11 01:34:04.475 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Функция с ID 40213 успешно удалена
+2025-11-11 01:34:04.476 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Тест со специальными символами завершен успешно
+2025-11-11 01:34:04.477 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Запуск теста: удаление всех функций пользователя
+2025-11-11 01:34:04.477 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Создание новой функции: Function{id=null, userId=999, name='test_func_in_1762810444477', signature='x^2'}
+2025-11-11 01:34:04.602 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: INSERT INTO functions (u_id, name, signature) VALUES (?, ?, ?) с параметрами u_id=999, name=test_func_in_1762810444477, signature=***
+2025-11-11 01:34:04.604 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Количество затронутых строк: 1
+2025-11-11 01:34:04.604 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Функция успешно создана с ID: 40214
+2025-11-11 01:34:04.605 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Создание новой функции: Function{id=null, userId=999, name='test_func_blanditiis_1762810444604', signature='1'}
+2025-11-11 01:34:04.626 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: INSERT INTO functions (u_id, name, signature) VALUES (?, ?, ?) с параметрами u_id=999, name=test_func_blanditiis_1762810444604, signature=***
+2025-11-11 01:34:04.627 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Количество затронутых строк: 1
+2025-11-11 01:34:04.627 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Функция успешно создана с ID: 40215
+2025-11-11 01:34:04.627 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Создание новой функции: Function{id=null, userId=999, name='test_func_accusantium_1762810444627', signature='1'}
+2025-11-11 01:34:04.646 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: INSERT INTO functions (u_id, name, signature) VALUES (?, ?, ?) с параметрами u_id=999, name=test_func_accusantium_1762810444627, signature=***
+2025-11-11 01:34:04.648 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Количество затронутых строк: 1
+2025-11-11 01:34:04.648 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Функция успешно создана с ID: 40216
+2025-11-11 01:34:04.648 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Подсчет количества функций пользователя с ID: 999
+2025-11-11 01:34:04.670 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: SELECT COUNT(*) FROM functions WHERE u_id = ? с параметром userId=999
+2025-11-11 01:34:04.671 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Найдено 3 функций пользователя с ID 999
+2025-11-11 01:34:04.671 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Удаление всех функций пользователя с ID: 999
+2025-11-11 01:34:04.798 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: DELETE FROM functions WHERE u_id = ? с параметром userId=999
+2025-11-11 01:34:04.800 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Удалено 3 функций пользователя с ID 999
+2025-11-11 01:34:04.800 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Подсчет количества функций пользователя с ID: 999
+2025-11-11 01:34:04.922 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: SELECT COUNT(*) FROM functions WHERE u_id = ? с параметром userId=999
+2025-11-11 01:34:04.924 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Найдено 0 функций пользователя с ID 999
+2025-11-11 01:34:04.924 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Успешно удалено 3 функций пользователя с ID: 999
+2025-11-11 01:34:04.925 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Запуск теста: удаление основной тестовой функции по ID
+2025-11-11 01:34:04.925 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Удаление функции с ID: 40208
+2025-11-11 01:34:05.046 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: DELETE FROM functions WHERE id = ? с параметром id=40208
+2025-11-11 01:34:05.047 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Функция с ID 40208 успешно удалена
+2025-11-11 01:34:05.048 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Поиск функции по ID: 40208
+2025-11-11 01:34:05.069 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: SELECT id, u_id, name, signature FROM functions WHERE id = ? с параметром id=40208
+2025-11-11 01:34:05.071 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Функция с ID 40208 не найдена
+2025-11-11 01:34:05.071 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Основная тестовая функция с ID 40208 успешно удалена
+2025-11-11 01:34:05.072 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Запуск теста производительности: поиск всех функций
+2025-11-11 01:34:05.072 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Начало получения всех функций
+2025-11-11 01:34:05.205 [main] DEBUG r.s.t.c.laba2.jdbc.FunctionDAO - Выполнение SQL: SELECT id, u_id, name, signature FROM functions
+2025-11-11 01:34:05.205 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAO - Успешно получено 62 функций
+2025-11-11 01:34:05.205 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Поиск всех функций выполнен за 133 мс. Найдено 62 записей
+2025-11-11 01:34:05.207 [main] INFO  r.s.t.c.laba2.jdbc.FunctionDAOTest - Завершение тестов functionDAO
+2025-11-11 01:34:05.234 [main] INFO  r.s.t.c.laba2.jdbc.PointDAOTest - Начало подготовки тестовых данных для функции ID: 6261
+2025-11-11 01:34:05.236 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Удаление всех точек функции ID: 6261
+2025-11-11 01:34:05.261 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: DELETE FROM points WHERE f_id = ? с параметром functionId: 6261
+2025-11-11 01:34:05.265 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Не найдено точек для удаления функции ID: 6261
+2025-11-11 01:34:05.266 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=7.29, y=62.34
+2025-11-11 01:34:05.300 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=7.29, y=62.34
+2025-11-11 01:34:05.305 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:05.306 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80761
+2025-11-11 01:34:05.306 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=68.2, y=20.43
+2025-11-11 01:34:05.349 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=68.2, y=20.43
+2025-11-11 01:34:05.352 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:05.353 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80762
+2025-11-11 01:34:05.353 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=57.49, y=39.25
+2025-11-11 01:34:05.387 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=57.49, y=39.25
+2025-11-11 01:34:05.389 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:05.389 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80763
+2025-11-11 01:34:05.389 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=53.82, y=4.77
+2025-11-11 01:34:05.524 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=53.82, y=4.77
+2025-11-11 01:34:05.526 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:05.526 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80764
+2025-11-11 01:34:05.526 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=19.47, y=77.11
+2025-11-11 01:34:05.548 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=19.47, y=77.11
+2025-11-11 01:34:05.550 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:05.550 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80765
+2025-11-11 01:34:05.550 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Поиск точек по ID функции: 6261
+2025-11-11 01:34:05.679 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: SELECT id, f_id, x_value, y_value FROM points WHERE f_id = ? ORDER BY x_value с параметром functionId: 6261
+2025-11-11 01:34:05.682 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Найдено 5 точек для функции ID: 6261
+2025-11-11 01:34:05.686 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Удаление всех точек функции ID: 6261
+2025-11-11 01:34:05.711 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: DELETE FROM points WHERE f_id = ? с параметром functionId: 6261
+2025-11-11 01:34:05.715 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Удалено 5 точек функции ID: 6261
+2025-11-11 01:34:05.715 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=2.5, y=2.07
+2025-11-11 01:34:05.741 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=2.5, y=2.07
+2025-11-11 01:34:05.743 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:05.743 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80766
+2025-11-11 01:34:05.743 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=7.8, y=-5.41
+2025-11-11 01:34:05.772 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=7.8, y=-5.41
+2025-11-11 01:34:05.774 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:05.774 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80767
+2025-11-11 01:34:05.775 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=12.3, y=-9.93
+2025-11-11 01:34:05.803 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=12.3, y=-9.93
+2025-11-11 01:34:05.804 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:05.804 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80768
+2025-11-11 01:34:05.805 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=18.9, y=-8.92
+2025-11-11 01:34:05.928 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=18.9, y=-8.92
+2025-11-11 01:34:05.930 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:05.930 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80769
+2025-11-11 01:34:05.931 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=25.1, y=-4.42
+2025-11-11 01:34:05.989 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=25.1, y=-4.42
+2025-11-11 01:34:05.993 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:05.993 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80770
+2025-11-11 01:34:05.994 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Поиск точек по диапазону X: от 5.0 до 15.0
+2025-11-11 01:34:06.039 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: SELECT id, f_id, x_value, y_value FROM points WHERE x_value BETWEEN ? AND ? ORDER BY x_value с параметрами minX: 5.0, maxX: 15.0
+2025-11-11 01:34:06.050 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Найдено 103 точек в диапазоне X от 5.0 до 15.0
+2025-11-11 01:34:06.052 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Удаление всех точек функции ID: 6261
+2025-11-11 01:34:06.097 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: DELETE FROM points WHERE f_id = ? с параметром functionId: 6261
+2025-11-11 01:34:06.100 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Удалено 5 точек функции ID: 6261
+2025-11-11 01:34:06.100 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=14.45, y=-7.2
+2025-11-11 01:34:06.123 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=14.45, y=-7.2
+2025-11-11 01:34:06.124 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:06.124 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80771
+2025-11-11 01:34:06.124 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=7.27, y=-3.1
+2025-11-11 01:34:06.250 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=7.27, y=-3.1
+2025-11-11 01:34:06.252 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:06.252 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80772
+2025-11-11 01:34:06.252 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=15.06, y=0.0
+2025-11-11 01:34:06.431 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=15.06, y=0.0
+2025-11-11 01:34:06.435 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:06.435 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80773
+2025-11-11 01:34:06.435 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=4.31, y=2.8
+2025-11-11 01:34:06.462 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=4.31, y=2.8
+2025-11-11 01:34:06.463 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:06.463 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80774
+2025-11-11 01:34:06.464 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=6.03, y=8.5
+2025-11-11 01:34:06.614 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=6.03, y=8.5
+2025-11-11 01:34:06.616 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:06.616 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80775
+2025-11-11 01:34:06.617 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=2.92, y=15.3
+2025-11-11 01:34:06.746 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=2.92, y=15.3
+2025-11-11 01:34:06.747 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:06.747 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80776
+2025-11-11 01:34:06.747 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Поиск точек по диапазону Y: от -5.0 до 5.0
+2025-11-11 01:34:06.873 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: SELECT id, f_id, x_value, y_value FROM points WHERE y_value BETWEEN ? AND ? ORDER BY y_value с параметрами minY: -5.0, maxY: 5.0
+2025-11-11 01:34:06.904 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Найдено 5380 точек в диапазоне Y от -5.0 до 5.0
+2025-11-11 01:34:06.907 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Удаление всех точек функции ID: 6261
+2025-11-11 01:34:07.056 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: DELETE FROM points WHERE f_id = ? с параметром functionId: 6261
+2025-11-11 01:34:07.060 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Удалено 6 точек функции ID: 6261
+2025-11-11 01:34:07.061 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=74.49, y=6.66
+2025-11-11 01:34:07.083 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=74.49, y=6.66
+2025-11-11 01:34:07.084 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:07.085 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80777
+2025-11-11 01:34:07.085 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=74.6, y=19.17
+2025-11-11 01:34:07.213 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=74.6, y=19.17
+2025-11-11 01:34:07.215 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:07.215 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80778
+2025-11-11 01:34:07.215 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=8.17, y=23.37
+2025-11-11 01:34:07.363 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=8.17, y=23.37
+2025-11-11 01:34:07.365 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:07.365 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80779
+2025-11-11 01:34:07.365 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Начало получения всех точек
+2025-11-11 01:34:07.494 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: SELECT id, f_id, x_value, y_value FROM points
+2025-11-11 01:34:07.535 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Успешно получено 10003 точек
+2025-11-11 01:34:07.537 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Удаление всех точек функции ID: 6261
+2025-11-11 01:34:07.671 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: DELETE FROM points WHERE f_id = ? с параметром functionId: 6261
+2025-11-11 01:34:07.673 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Удалено 3 точек функции ID: 6261
+2025-11-11 01:34:07.673 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=33.3, y=5.6
+2025-11-11 01:34:07.692 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=33.3, y=5.6
+2025-11-11 01:34:07.693 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:07.693 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80780
+2025-11-11 01:34:07.693 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Проверка существования точки functionId: 6261, x: 33.3
+2025-11-11 01:34:07.864 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: SELECT 1 FROM points WHERE f_id = ? AND x_value = ? LIMIT 1 с параметрами: functionId=6261, xValue=33.3
+2025-11-11 01:34:07.870 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка functionId: 6261, x: 33.3 существует: true
+2025-11-11 01:34:07.871 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Проверка существования точки functionId: 6261, x: 999.9
+2025-11-11 01:34:07.898 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: SELECT 1 FROM points WHERE f_id = ? AND x_value = ? LIMIT 1 с параметрами: functionId=6261, xValue=999.9
+2025-11-11 01:34:07.899 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка functionId: 6261, x: 999.9 существует: false
+2025-11-11 01:34:07.900 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Удаление всех точек функции ID: 6261
+2025-11-11 01:34:07.920 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: DELETE FROM points WHERE f_id = ? с параметром functionId: 6261
+2025-11-11 01:34:07.922 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Удалено 1 точек функции ID: 6261
+2025-11-11 01:34:07.923 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Массовое добавление 10 точек
+2025-11-11 01:34:08.048 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Начало массовой вставки, авто-коммит отключен
+2025-11-11 01:34:08.053 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Массовая вставка выполнена, коммит завершен
+2025-11-11 01:34:08.053 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Успешно добавлено 10 из 10 точек
+2025-11-11 01:34:08.054 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Поиск точек по ID функции: 6261
+2025-11-11 01:34:08.075 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: SELECT id, f_id, x_value, y_value FROM points WHERE f_id = ? ORDER BY x_value с параметром functionId: 6261
+2025-11-11 01:34:08.078 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Найдено 10 точек для функции ID: 6261
+2025-11-11 01:34:08.079 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Удаление всех точек функции ID: 6261
+2025-11-11 01:34:08.221 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: DELETE FROM points WHERE f_id = ? с параметром functionId: 6261
+2025-11-11 01:34:08.224 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Удалено 10 точек функции ID: 6261
+2025-11-11 01:34:08.225 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=92.31, y=58.39
+2025-11-11 01:34:08.248 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=92.31, y=58.39
+2025-11-11 01:34:08.249 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:08.249 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80791
+2025-11-11 01:34:08.249 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=95.3, y=5.67
+2025-11-11 01:34:08.268 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=95.3, y=5.67
+2025-11-11 01:34:08.269 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:08.269 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80792
+2025-11-11 01:34:08.269 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=93.45, y=63.61
+2025-11-11 01:34:08.288 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=93.45, y=63.61
+2025-11-11 01:34:08.289 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:08.289 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80793
+2025-11-11 01:34:08.289 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=80.79, y=69.87
+2025-11-11 01:34:08.419 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=80.79, y=69.87
+2025-11-11 01:34:08.420 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:08.420 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80794
+2025-11-11 01:34:08.421 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=1.67, y=67.94
+2025-11-11 01:34:08.552 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=1.67, y=67.94
+2025-11-11 01:34:08.553 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:08.553 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80795
+2025-11-11 01:34:08.553 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Начало поиска точек с сортировкой: поле=id, направление=ASC
+2025-11-11 01:34:08.689 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL с сортировкой: SELECT id, f_id, x_value, y_value FROM points ORDER BY id ASC
+2025-11-11 01:34:08.697 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Успешно получено 10005 точек с сортировкой по id ASC
+2025-11-11 01:34:08.697 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Начало поиска точек с сортировкой: поле=x_value, направление=DESC
+2025-11-11 01:34:08.727 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL с сортировкой: SELECT id, f_id, x_value, y_value FROM points ORDER BY x_value DESC
+2025-11-11 01:34:08.735 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Успешно получено 10005 точек с сортировкой по x_value DESC
+2025-11-11 01:34:08.736 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Начало поиска точек с сортировкой: поле=y_value, направление=ASC
+2025-11-11 01:34:08.764 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL с сортировкой: SELECT id, f_id, x_value, y_value FROM points ORDER BY y_value ASC
+2025-11-11 01:34:08.772 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Успешно получено 10005 точек с сортировкой по y_value ASC
+2025-11-11 01:34:08.773 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Начало поиска точек с сортировкой: поле=f_id, направление=DESC
+2025-11-11 01:34:08.909 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL с сортировкой: SELECT id, f_id, x_value, y_value FROM points ORDER BY f_id DESC
+2025-11-11 01:34:08.917 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Успешно получено 10005 точек с сортировкой по f_id DESC
+2025-11-11 01:34:08.918 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Удаление всех точек функции ID: 6261
+2025-11-11 01:34:08.940 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: DELETE FROM points WHERE f_id = ? с параметром functionId: 6261
+2025-11-11 01:34:08.942 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Удалено 5 точек функции ID: 6261
+2025-11-11 01:34:08.943 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=83.06, y=30.15
+2025-11-11 01:34:09.072 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=83.06, y=30.15
+2025-11-11 01:34:09.074 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:09.074 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80796
+2025-11-11 01:34:09.074 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=82.46, y=39.52
+2025-11-11 01:34:09.200 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=82.46, y=39.52
+2025-11-11 01:34:09.203 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:09.203 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80797
+2025-11-11 01:34:09.203 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=53.39, y=63.84
+2025-11-11 01:34:09.225 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=53.39, y=63.84
+2025-11-11 01:34:09.227 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:09.227 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80798
+2025-11-11 01:34:09.227 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=87.67, y=88.48
+2025-11-11 01:34:09.361 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=87.67, y=88.48
+2025-11-11 01:34:09.363 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:09.363 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80799
+2025-11-11 01:34:09.364 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=55.49, y=56.37
+2025-11-11 01:34:09.512 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=55.49, y=56.37
+2025-11-11 01:34:09.515 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:09.515 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80800
+2025-11-11 01:34:09.515 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Удаление всех точек функции ID: 6261
+2025-11-11 01:34:09.574 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: DELETE FROM points WHERE f_id = ? с параметром functionId: 6261
+2025-11-11 01:34:09.578 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Удалено 5 точек функции ID: 6261
+2025-11-11 01:34:09.578 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Поиск точек по ID функции: 6261
+2025-11-11 01:34:09.616 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: SELECT id, f_id, x_value, y_value FROM points WHERE f_id = ? ORDER BY x_value с параметром functionId: 6261
+2025-11-11 01:34:09.620 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Найдено 0 точек для функции ID: 6261
+2025-11-11 01:34:09.624 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Удаление всех точек функции ID: 6261
+2025-11-11 01:34:09.752 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: DELETE FROM points WHERE f_id = ? с параметром functionId: 6261
+2025-11-11 01:34:09.754 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Не найдено точек для удаления функции ID: 6261
+2025-11-11 01:34:09.754 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=2.5, y=7.59
+2025-11-11 01:34:09.776 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=2.5, y=7.59
+2025-11-11 01:34:09.778 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:09.778 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80801
+2025-11-11 01:34:09.778 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=7.8, y=5.82
+2025-11-11 01:34:09.802 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=7.8, y=5.82
+2025-11-11 01:34:09.803 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:09.803 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80802
+2025-11-11 01:34:09.804 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=12.3, y=-6.45
+2025-11-11 01:34:09.824 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=12.3, y=-6.45
+2025-11-11 01:34:09.826 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:09.826 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80803
+2025-11-11 01:34:09.826 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=18.9, y=4.82
+2025-11-11 01:34:09.960 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=18.9, y=4.82
+2025-11-11 01:34:09.962 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:09.962 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80804
+2025-11-11 01:34:09.962 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=25.1, y=-1.31
+2025-11-11 01:34:10.101 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=25.1, y=-1.31
+2025-11-11 01:34:10.103 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:10.103 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80805
+2025-11-11 01:34:10.103 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Получение диапазона X для функции ID: 6261
+2025-11-11 01:34:10.238 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: SELECT MIN(x_value), MAX(x_value) FROM points WHERE f_id = ? с параметром functionId: 6261
+2025-11-11 01:34:10.241 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Диапазон X для функции ID: 6261 - от 2.5 до 25.1
+2025-11-11 01:34:10.243 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Удаление всех точек функции ID: 6261
+2025-11-11 01:34:10.375 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: DELETE FROM points WHERE f_id = ? с параметром functionId: 6261
+2025-11-11 01:34:10.378 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Удалено 5 точек функции ID: 6261
+2025-11-11 01:34:10.378 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=69.39, y=41.37
+2025-11-11 01:34:10.400 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=69.39, y=41.37
+2025-11-11 01:34:10.401 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:10.402 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80806
+2025-11-11 01:34:10.402 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=53.81, y=16.13
+2025-11-11 01:34:10.421 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=53.81, y=16.13
+2025-11-11 01:34:10.422 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:10.422 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80807
+2025-11-11 01:34:10.422 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=55.17, y=56.98
+2025-11-11 01:34:10.566 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=55.17, y=56.98
+2025-11-11 01:34:10.568 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:10.568 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80808
+2025-11-11 01:34:10.568 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Начало поиска точек с сортировкой: поле=invalid_field, направление=INVALID_DIRECTION
+2025-11-11 01:34:10.568 [main] WARN  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Попытка сортировки по недопустимому полю: invalid_field
+2025-11-11 01:34:10.568 [main] WARN  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Недопустимое направление сортировки: INVALID_DIRECTION, установлено ASC
+2025-11-11 01:34:10.703 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL с сортировкой: SELECT id, f_id, x_value, y_value FROM points ORDER BY id ASC
+2025-11-11 01:34:10.712 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Успешно получено 10003 точек с сортировкой по id ASC
+2025-11-11 01:34:10.713 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Удаление всех точек функции ID: 6261
+2025-11-11 01:34:10.834 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: DELETE FROM points WHERE f_id = ? с параметром functionId: 6261
+2025-11-11 01:34:10.837 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Удалено 3 точек функции ID: 6261
+2025-11-11 01:34:10.837 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=42.5, y=44.35
+2025-11-11 01:34:10.857 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=42.5, y=44.35
+2025-11-11 01:34:10.859 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:10.859 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80809
+2025-11-11 01:34:10.859 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Поиск точки по functionId: 6261 и X: 42.5
+2025-11-11 01:34:10.991 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: SELECT id, f_id, x_value, y_value FROM points WHERE f_id = ? AND x_value = ? с параметрами functionId: 6261, xValue: 42.5
+2025-11-11 01:34:10.993 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка найдена для functionId: 6261 и X: 42.5
+2025-11-11 01:34:10.996 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Удаление всех точек функции ID: 6261
+2025-11-11 01:34:11.153 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: DELETE FROM points WHERE f_id = ? с параметром functionId: 6261
+2025-11-11 01:34:11.156 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Удалено 1 точек функции ID: 6261
+2025-11-11 01:34:11.156 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Поиск точки по ID: -1
+2025-11-11 01:34:11.282 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: SELECT id, f_id, x_value, y_value FROM points WHERE id = ? с параметром ID: -1
+2025-11-11 01:34:11.283 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка с ID -1 не найдена
+2025-11-11 01:34:11.284 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Удаление всех точек функции ID: 6261
+2025-11-11 01:34:11.406 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: DELETE FROM points WHERE f_id = ? с параметром functionId: 6261
+2025-11-11 01:34:11.409 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Не найдено точек для удаления функции ID: 6261
+2025-11-11 01:34:11.409 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=29.31, y=49.14
+2025-11-11 01:34:11.534 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=29.31, y=49.14
+2025-11-11 01:34:11.536 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:11.536 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80810
+2025-11-11 01:34:11.536 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=65.63, y=73.71
+2025-11-11 01:34:11.692 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=65.63, y=73.71
+2025-11-11 01:34:11.693 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:11.694 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80811
+2025-11-11 01:34:11.694 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=31.27, y=19.27
+2025-11-11 01:34:11.823 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=31.27, y=19.27
+2025-11-11 01:34:11.825 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:11.825 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80812
+2025-11-11 01:34:11.825 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=99.37, y=75.51
+2025-11-11 01:34:11.842 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=99.37, y=75.51
+2025-11-11 01:34:11.844 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:11.844 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80813
+2025-11-11 01:34:11.844 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=90.15, y=4.11
+2025-11-11 01:34:11.984 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=90.15, y=4.11
+2025-11-11 01:34:11.986 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:11.986 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80814
+2025-11-11 01:34:11.987 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=9.61, y=36.74
+2025-11-11 01:34:12.118 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=9.61, y=36.74
+2025-11-11 01:34:12.119 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:12.120 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80815
+2025-11-11 01:34:12.120 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Создание новой точки: functionId=6261, x=56.97, y=39.95
+2025-11-11 01:34:12.141 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: INSERT INTO points (f_id, x_value, y_value) VALUES (?, ?, ?) с параметрами: functionId=6261, x=56.97, y=39.95
+2025-11-11 01:34:12.142 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Количество затронутых строк: 1
+2025-11-11 01:34:12.142 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Точка успешно создана с ID: 80816
+2025-11-11 01:34:12.142 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Подсчет количества точек функции ID: 6261
+2025-11-11 01:34:12.285 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: SELECT COUNT(*) FROM points WHERE f_id = ? с параметром functionId: 6261
+2025-11-11 01:34:12.290 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Найдено 7 точек для функции ID: 6261
+2025-11-11 01:34:12.292 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Удаление всех точек функции ID: 6261
+2025-11-11 01:34:12.321 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Выполнение SQL: DELETE FROM points WHERE f_id = ? с параметром functionId: 6261
+2025-11-11 01:34:12.323 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.PointDAO - Удалено 7 точек функции ID: 6261
+2025-11-11 01:34:12.323 [main] INFO  r.s.t.c.laba2.jdbc.PointDAOTest - Очистка тестовых данных завершена
+2025-11-11 01:34:12.326 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Инициализация тестового окружения UserDAO
+2025-11-11 01:34:12.349 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан тестовый пользователь: User{id=null, login='testuser_эдуард_евдокимов_1762810452349', role=user, enabled=true}
+2025-11-11 01:34:12.350 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: создание пользователя
+2025-11-11 01:34:12.351 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Создание нового пользователя: testuser_эдуард_евдокимов_1762810452349
+2025-11-11 01:34:12.488 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Пользователь testuser_эдуард_евдокимов_1762810452349 успешно создан с ID: 40206
+2025-11-11 01:34:12.488 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Успешно создан пользователь с ID: 40206
+2025-11-11 01:34:12.489 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: поиск пользователя по ID
+2025-11-11 01:34:12.489 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Поиск пользователя по ID: 40206
+2025-11-11 01:34:12.621 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Пользователь с ID 40206 найден: testuser_эдуард_евдокимов_1762810452349
+2025-11-11 01:34:12.621 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Найден пользователь: User{id=40206, login='testuser_эдуард_евдокимов_1762810452349', role=user, enabled=true}
+2025-11-11 01:34:12.623 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: поиск пользователя по логину
+2025-11-11 01:34:12.623 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Поиск пользователя по login: testuser_эдуард_евдокимов_1762810452349
+2025-11-11 01:34:12.652 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Пользователь с login testuser_эдуард_евдокимов_1762810452349 найден
+2025-11-11 01:34:12.653 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Найден пользователь по логину testuser_эдуард_евдокимов_1762810452349: User{id=40206, login='testuser_эдуард_евдокимов_1762810452349', role=user, enabled=true}
+2025-11-11 01:34:12.654 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: получение всех пользователей
+2025-11-11 01:34:12.654 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Начало получения всех пользователей
+2025-11-11 01:34:12.684 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Успешно получено 87 пользователей
+2025-11-11 01:34:12.685 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Найдено 87 пользователей
+2025-11-11 01:34:12.686 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: поиск пользователей по роли
+2025-11-11 01:34:12.687 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Поиск пользователей по роли: user
+2025-11-11 01:34:12.719 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Найдено 40 пользователей с ролью user
+2025-11-11 01:34:12.720 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Найдено 40 пользователей с ролью 'user'
+2025-11-11 01:34:12.721 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: поиск пользователей по статусу enabled
+2025-11-11 01:34:12.721 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Поиск пользователей по статусу enabled: true
+2025-11-11 01:34:12.750 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Найдено 55 пользователей со статусом enabled = true
+2025-11-11 01:34:12.751 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Поиск пользователей по статусу enabled: false
+2025-11-11 01:34:12.784 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Найдено 32 пользователей со статусом enabled = false
+2025-11-11 01:34:12.785 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Найдено 55 активных и 32 неактивных пользователей
+2025-11-11 01:34:12.786 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: обновление пользователя
+2025-11-11 01:34:12.787 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Обновление пользователя с ID: 40206
+2025-11-11 01:34:12.925 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Пользователь с ID 40206 успешно обновлен
+2025-11-11 01:34:12.925 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Поиск пользователя по ID: 40206
+2025-11-11 01:34:12.953 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Пользователь с ID 40206 найден: testuser_любовь_копылов_1762810452787
+2025-11-11 01:34:12.953 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Пользователь успешно обновлен: User{id=40206, login='testuser_любовь_копылов_1762810452787', role=admin, enabled=false}
+2025-11-11 01:34:12.954 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: обновление только статуса enabled
+2025-11-11 01:34:12.954 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Обновление статуса enabled для пользователя с ID: 40206, новое значение: true
+2025-11-11 01:34:13.090 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Статус enabled для пользователя с ID 40206 успешно обновлен на true
+2025-11-11 01:34:13.090 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Поиск пользователя по ID: 40206
+2025-11-11 01:34:13.116 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Пользователь с ID 40206 найден: testuser_любовь_копылов_1762810452787
+2025-11-11 01:34:13.116 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Статус enabled успешно обновлен на true
+2025-11-11 01:34:13.117 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: создание нескольких пользователей с Faker
+2025-11-11 01:34:13.117 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Создание нового пользователя: testuser_тамара_зуев_1762810453117
+2025-11-11 01:34:13.242 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Пользователь testuser_тамара_зуев_1762810453117 успешно создан с ID: 40207
+2025-11-11 01:34:13.243 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан случайный пользователь #1/5: User{id=40207, login='testuser_тамара_зуев_1762810453117', role=admin, enabled=false}
+2025-11-11 01:34:13.243 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Создание нового пользователя: testuser_таисия_мамонтов_1762810453243
+2025-11-11 01:34:13.384 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Пользователь testuser_таисия_мамонтов_1762810453243 успешно создан с ID: 40208
+2025-11-11 01:34:13.384 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан случайный пользователь #2/5: User{id=40208, login='testuser_таисия_мамонтов_1762810453243', role=admin, enabled=false}
+2025-11-11 01:34:13.384 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Создание нового пользователя: testuser_ксения_воронов_1762810453384
+2025-11-11 01:34:13.407 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Пользователь testuser_ксения_воронов_1762810453384 успешно создан с ID: 40209
+2025-11-11 01:34:13.407 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан случайный пользователь #3/5: User{id=40209, login='testuser_ксения_воронов_1762810453384', role=user, enabled=true}
+2025-11-11 01:34:13.407 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Создание нового пользователя: testuser_анжелика_кошелев_1762810453407
+2025-11-11 01:34:13.551 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Пользователь testuser_анжелика_кошелев_1762810453407 успешно создан с ID: 40210
+2025-11-11 01:34:13.551 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан случайный пользователь #4/5: User{id=40210, login='testuser_анжелика_кошелев_1762810453407', role=user, enabled=false}
+2025-11-11 01:34:13.552 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Создание нового пользователя: testuser_елизавета_исаев_1762810453552
+2025-11-11 01:34:13.717 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Пользователь testuser_елизавета_исаев_1762810453552 успешно создан с ID: 40211
+2025-11-11 01:34:13.717 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Создан случайный пользователь #5/5: User{id=40211, login='testuser_елизавета_исаев_1762810453552', role=user, enabled=false}
+2025-11-11 01:34:13.717 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Успешно создано 5 случайных пользователей
+2025-11-11 01:34:13.718 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: поиск по ролям после создания нескольких пользователей
+2025-11-11 01:34:13.718 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Поиск пользователей по роли: admin
+2025-11-11 01:34:13.742 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Найдено 50 пользователей с ролью admin
+2025-11-11 01:34:13.742 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Поиск пользователей по роли: user
+2025-11-11 01:34:13.881 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Найдено 42 пользователей с ролью user
+2025-11-11 01:34:13.881 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Найдено 50 администраторов и 42 обычных пользователей
+2025-11-11 01:34:13.881 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Администратор: User{id=40038, login='testuser_вера_егоров_1762755231983', role=admin, enabled=false}
+2025-11-11 01:34:13.882 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Администратор: User{id=40039, login='testuser_жанна_рябов_1762755232385', role=admin, enabled=true}
+2025-11-11 01:34:13.882 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Администратор: User{id=40043, login='testuser_никита_волкова_1762755831263', role=admin, enabled=false}
+2025-11-11 01:34:13.882 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Обычный пользователь: User{id=40037, login='testuser_степан_сазонова_1762755231365', role=user, enabled=true}
+2025-11-11 01:34:13.882 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Обычный пользователь: User{id=40040, login='testuser_василиса_носкова_1762755232711', role=user, enabled=true}
+2025-11-11 01:34:13.882 [main] DEBUG r.s.t.c.laba2.jdbc.UserDAOTest - Обычный пользователь: User{id=40041, login='user_with_special_chars_测试_тест_1762755233041', role=user, enabled=true}
+2025-11-11 01:34:13.883 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: множественный поиск по IDs
+2025-11-11 01:34:13.884 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Создание нового пользователя: testuser_оксана_щербакова_1762810453884
+2025-11-11 01:34:13.908 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Пользователь testuser_оксана_щербакова_1762810453884 успешно создан с ID: 40212
+2025-11-11 01:34:13.909 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Множественный поиск пользователей по IDs: [40206, 40212]
+2025-11-11 01:34:14.057 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Найдено 2 пользователей из запрошенных 2
+2025-11-11 01:34:14.059 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Удаление пользователя с ID: 40212
+2025-11-11 01:34:14.195 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Пользователь с ID 40212 успешно удален
+2025-11-11 01:34:14.195 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Множественный поиск по IDs выполнен успешно
+2025-11-11 01:34:14.197 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: получение пользователей с сортировкой
+2025-11-11 01:34:14.197 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Получение всех пользователей с сортировкой по полю: id, порядок: ASC
+2025-11-11 01:34:14.220 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Успешно получено 92 пользователей с сортировкой
+2025-11-11 01:34:14.220 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Получение всех пользователей с сортировкой по полю: id, порядок: DESC
+2025-11-11 01:34:14.240 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Успешно получено 92 пользователей с сортировкой
+2025-11-11 01:34:14.240 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Получение всех пользователей с сортировкой по полю: login, порядок: ASC
+2025-11-11 01:34:14.376 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Успешно получено 92 пользователей с сортировкой
+2025-11-11 01:34:14.376 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Тест сортировки завершен: ASC=92, DESC=92, login=92
+2025-11-11 01:34:14.377 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: удаление пользователя по логину
+2025-11-11 01:34:14.378 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Создание нового пользователя: testuser_матвей_смирнов_1762810454377
+2025-11-11 01:34:14.517 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Пользователь testuser_матвей_смирнов_1762810454377 успешно создан с ID: 40213
+2025-11-11 01:34:14.518 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Удаление пользователя с login: testuser_матвей_смирнов_1762810454377
+2025-11-11 01:34:14.652 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Пользователь с login testuser_матвей_смирнов_1762810454377 успешно удален
+2025-11-11 01:34:14.652 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Поиск пользователя по login: testuser_матвей_смирнов_1762810454377
+2025-11-11 01:34:14.674 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Пользователь с login testuser_матвей_смирнов_1762810454377 не найден
+2025-11-11 01:34:14.675 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Пользователь с логином testuser_матвей_смирнов_1762810454377 успешно удален
+2025-11-11 01:34:14.675 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: удаление основного тестового пользователя по ID
+2025-11-11 01:34:14.675 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Удаление пользователя с ID: 40206
+2025-11-11 01:34:14.798 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Пользователь с ID 40206 успешно удален
+2025-11-11 01:34:14.798 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Поиск пользователя по ID: 40206
+2025-11-11 01:34:14.926 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Пользователь с ID 40206 не найден
+2025-11-11 01:34:14.926 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Основной тестовый пользователь с ID 40206 успешно удален
+2025-11-11 01:34:14.927 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: проверка граничных случаев
+2025-11-11 01:34:14.927 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Поиск пользователя по ID: -1
+2025-11-11 01:34:15.063 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Пользователь с ID -1 не найден
+2025-11-11 01:34:15.064 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Поиск пользователя по login: non_existent_login_12345
+2025-11-11 01:34:15.186 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Пользователь с login non_existent_login_12345 не найден
+2025-11-11 01:34:15.186 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Удаление пользователя с ID: -1
+2025-11-11 01:34:15.313 [main] WARN  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Пользователь с ID -1 не найден для удаления
+2025-11-11 01:34:15.314 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Множественный поиск пользователей по IDs: []
+2025-11-11 01:34:15.314 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Передан пустой список IDs
+2025-11-11 01:34:15.314 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Все граничные случаи обработаны корректно
+2025-11-11 01:34:15.315 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: создание пользователя со специальными символами
+2025-11-11 01:34:15.315 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Создание нового пользователя: user_with_special_chars_测试_тест_1762810455315
+2025-11-11 01:34:15.337 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Пользователь user_with_special_chars_测试_тест_1762810455315 успешно создан с ID: 40214
+2025-11-11 01:34:15.337 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Удаление пользователя с ID: 40214
+2025-11-11 01:34:15.357 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Пользователь с ID 40214 успешно удален
+2025-11-11 01:34:15.357 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Тест со специальными символами завершен успешно
+2025-11-11 01:34:15.358 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста: поиск пользователей по роли с сортировкой
+2025-11-11 01:34:15.358 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Создание нового пользователя: zzz_last_user_1762810455358
+2025-11-11 01:34:15.380 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Пользователь zzz_last_user_1762810455358 успешно создан с ID: 40215
+2025-11-11 01:34:15.380 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Создание нового пользователя: aaa_first_user_1762810455358
+2025-11-11 01:34:15.399 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Пользователь aaa_first_user_1762810455358 успешно создан с ID: 40216
+2025-11-11 01:34:15.399 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Поиск пользователей по роли editor с сортировкой по полю: login, порядок: ASC
+2025-11-11 01:34:15.422 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Найдено 2 пользователей с ролью editor с сортировкой
+2025-11-11 01:34:15.422 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Поиск пользователей по роли editor с сортировкой по полю: id, порядок: DESC
+2025-11-11 01:34:15.444 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Найдено 2 пользователей с ролью editor с сортировкой
+2025-11-11 01:34:15.444 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Поиск пользователей по роли editor с сортировкой по полю: invalid_field, порядок: ASC
+2025-11-11 01:34:15.444 [main] WARN  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Недопустимое поле для сортировки: invalid_field, используется поле по умолчанию: id
+2025-11-11 01:34:15.463 [main] DEBUG r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Найдено 2 пользователей с ролью editor с сортировкой
+2025-11-11 01:34:15.463 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Тест findByRoleWithSorting успешно завершён
+2025-11-11 01:34:15.463 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Удаление пользователя с ID: 40215
+2025-11-11 01:34:15.484 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Пользователь с ID 40215 успешно удален
+2025-11-11 01:34:15.484 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Удаление пользователя с ID: 40216
+2025-11-11 01:34:15.635 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Пользователь с ID 40216 успешно удален
+2025-11-11 01:34:15.636 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Запуск теста производительности: поиск всех пользователей
+2025-11-11 01:34:15.636 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Начало получения всех пользователей
+2025-11-11 01:34:15.758 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Успешно получено 91 пользователей
+2025-11-11 01:34:15.759 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Поиск всех пользователей выполнен за 123 мс. Найдено 91 записей
+2025-11-11 01:34:15.759 [main] INFO  r.s.t.c.laba2.jdbc.UserDAOTest - Завершение тестов UserDAO
+2025-11-11 01:34:15.759 [main] INFO  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Удаление пользователя с ID: 40206
+2025-11-11 01:34:15.881 [main] WARN  r.s.tk.cheefkeef.laba2.jdbc.UserDAO - Пользователь с ID 40206 не найден для удаления
+2025-11-11 01:34:15.884 [main] DEBUG r.s.t.c.laba2.mapper.FunctionMapper - Преобразование Function(id=1) в FunctionDTO
+2025-11-11 01:34:15.885 [main] WARN  r.s.t.c.laba2.mapper.FunctionMapper - Попытка преобразования null-объекта Function в DTO
+2025-11-11 01:34:15.885 [main] WARN  r.s.t.c.laba2.mapper.FunctionMapper - Попытка преобразования null-объекта FunctionDTO в сущность
+2025-11-11 01:34:15.886 [main] DEBUG r.s.t.c.laba2.mapper.FunctionMapper - Преобразование FunctionDTO в Function
+2025-11-11 01:34:15.888 [main] DEBUG r.s.t.c.laba2.mapper.PointMapper - Преобразование Point(id=10) в PointDTO
+2025-11-11 01:34:15.889 [main] WARN  r.s.t.c.laba2.mapper.PointMapper - Попытка преобразования null-объекта Point в DTO
+2025-11-11 01:34:15.890 [main] WARN  r.s.t.c.laba2.mapper.PointMapper - Попытка преобразования null-объекта PointDTO в сущность
+2025-11-11 01:34:15.891 [main] DEBUG r.s.t.c.laba2.mapper.PointMapper - Преобразование PointDTO в Point
+2025-11-11 01:34:15.893 [main] WARN  r.s.t.c.laba2.mapper.UserMapper - Попытка преобразования null-объекта User в DTO
+2025-11-11 01:34:15.894 [main] WARN  r.s.t.c.laba2.mapper.UserMapper - Попытка преобразования null-объекта UserDTO в сущность
+2025-11-11 01:34:15.895 [main] DEBUG r.s.t.c.laba2.mapper.UserMapper - Преобразование User(id=5) в UserDTO
+2025-11-11 01:34:15.896 [main] DEBUG r.s.t.c.laba2.mapper.UserMapper - Преобразование UserDTO в User
+2025-11-11 01:34:15.908 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:15.908 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:15.908 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 3 points
+2025-11-11 01:34:15.908 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:15.908 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:15.908 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 3 points
+2025-11-11 01:34:15.909 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:15.909 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:15.909 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:15.909 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:15.909 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:15.909 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:15.910 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:15.910 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:15.910 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:15.910 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:15.911 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:15.911 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 2 points
+2025-11-11 01:34:15.911 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:15.911 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 2 points
+2025-11-11 01:34:15.912 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 4
+2025-11-11 01:34:15.912 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 4 points
+2025-11-11 01:34:15.912 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 4
+2025-11-11 01:34:15.912 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 4 points
+2025-11-11 01:34:15.913 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:15.913 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:15.913 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 3 points
+2025-11-11 01:34:15.913 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:15.913 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:15.913 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 3 points
+2025-11-11 01:34:15.914 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 4
+2025-11-11 01:34:15.914 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 4 points
+2025-11-11 01:34:15.914 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 4
+2025-11-11 01:34:15.914 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 4 points
+2025-11-11 01:34:15.917 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 4
+2025-11-11 01:34:15.917 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 4 points
+2025-11-11 01:34:15.917 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 4
+2025-11-11 01:34:15.917 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 4 points
+2025-11-11 01:34:15.918 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 4
+2025-11-11 01:34:15.918 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 4 points
+2025-11-11 01:34:15.918 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 4
+2025-11-11 01:34:15.918 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 4 points
+2025-11-11 01:34:15.919 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:15.919 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:15.919 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:15.919 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:15.919 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 3 points
+2025-11-11 01:34:15.919 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:15.919 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:15.920 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:15.920 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:15.920 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 4
+2025-11-11 01:34:15.920 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 4 points
+2025-11-11 01:34:15.920 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 4
+2025-11-11 01:34:15.920 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 4 points
+2025-11-11 01:34:15.923 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:15.923 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:15.923 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:15.923 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:15.923 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 3 points
+2025-11-11 01:34:15.925 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:15.925 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:15.926 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:15.926 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:15.926 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:15.926 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 2 points
+2025-11-11 01:34:15.929 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:15.929 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:15.929 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:15.929 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:15.929 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 3 points
+2025-11-11 01:34:15.929 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:15.929 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:15.929 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 3 points
+2025-11-11 01:34:15.930 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:15.930 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 2 points
+2025-11-11 01:34:15.930 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:15.930 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 2 points
+2025-11-11 01:34:15.932 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:15.932 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 2 points
+2025-11-11 01:34:15.932 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:15.932 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:15.932 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 2 points
+2025-11-11 01:34:15.932 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:15.932 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:15.932 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 2 points
+2025-11-11 01:34:15.933 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:15.933 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:15.933 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:15.933 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:15.933 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:15.933 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:15.934 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:15.934 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:15.934 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:15.934 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:15.934 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:15.934 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:15.935 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:15.935 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 2 points
+2025-11-11 01:34:15.935 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 2
+2025-11-11 01:34:15.935 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 2 points
+2025-11-11 01:34:15.937 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:15.937 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:15.937 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:15.937 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:15.937 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 3 points
+2025-11-11 01:34:15.937 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Creating LinkedListTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:15.937 [main] DEBUG r.s.t.c.l.f.LinkedListTabulatedFunction - Created first node in empty list
+2025-11-11 01:34:15.937 [main] INFO  r.s.t.c.l.f.LinkedListTabulatedFunction - Successfully created LinkedListTabulatedFunction with 3 points
+2025-11-11 01:34:15.939 [main] INFO  r.s.t.c.l.f.ArrayTabulatedFunction - Creating ArrayTabulatedFunction from arrays with length: 3
+2025-11-11 01:34:15.939 [main] DEBUG r.s.t.c.l.f.ArrayTabulatedFunction - Successfully created ArrayTabulatedFunction with 3 points
+2025-11-11 01:34:15.942 [main] INFO  r.s.t.c.laba2.util.DtoTransformer - Преобразование данных функции из UI
+2025-11-11 01:34:15.942 [main] DEBUG r.s.t.c.laba2.util.DtoTransformer - Создан FunctionDTO: userId=null, name=null
+2025-11-11 01:34:15.944 [main] INFO  r.s.t.c.laba2.util.DtoTransformer - Массовое преобразование 1 точек из UI
+2025-11-11 01:34:15.944 [main] INFO  r.s.t.c.laba2.util.DtoTransformer - Преобразование данных точки из UI
+2025-11-11 01:34:15.944 [main] ERROR r.s.t.c.laba2.util.DtoTransformer - Ошибка при преобразовании данных точки: class java.lang.String cannot be cast to class java.lang.Integer (java.lang.String and java.lang.Integer are in module java.base of loader 'bootstrap')
+2025-11-11 01:34:15.947 [main] INFO  r.s.t.c.laba2.util.DtoTransformer - Преобразование данных пользователя из UI
+2025-11-11 01:34:15.948 [main] ERROR r.s.t.c.laba2.util.DtoTransformer - Ошибка при преобразовании данных пользователя: Cannot invoke "java.util.Map.get(Object)" because "uiData" is null
+2025-11-11 01:34:15.949 [main] INFO  r.s.t.c.laba2.util.DtoTransformer - Преобразование данных функции из UI
+2025-11-11 01:34:15.949 [main] ERROR r.s.t.c.laba2.util.DtoTransformer - Ошибка при преобразовании данных функции: class java.lang.String cannot be cast to class java.lang.Integer (java.lang.String and java.lang.Integer are in module java.base of loader 'bootstrap')
+2025-11-11 01:34:15.950 [main] INFO  r.s.t.c.laba2.util.DtoTransformer - Преобразование данных пользователя из UI
+2025-11-11 01:34:15.951 [main] DEBUG r.s.t.c.laba2.util.DtoTransformer - Создан UserDTO: login=user123, role=null
+2025-11-11 01:34:15.952 [main] INFO  r.s.t.c.laba2.util.DtoTransformer - Преобразование данных функции из UI
+2025-11-11 01:34:15.952 [main] DEBUG r.s.t.c.laba2.util.DtoTransformer - Создан FunctionDTO: userId=100, name=quadratic
+2025-11-11 01:34:15.953 [main] INFO  r.s.t.c.laba2.util.DtoTransformer - Преобразование данных точки из UI
+2025-11-11 01:34:15.953 [main] DEBUG r.s.t.c.laba2.util.DtoTransformer - Создан PointDTO: functionId=42, x=3.14, y=2.71
+2025-11-11 01:34:15.954 [main] INFO  r.s.t.c.laba2.util.DtoTransformer - Преобразование данных точки из UI
+2025-11-11 01:34:15.954 [main] DEBUG r.s.t.c.laba2.util.DtoTransformer - Создан PointDTO: functionId=42, x=3.14, y=null
+2025-11-11 01:34:15.955 [main] INFO  r.s.t.c.laba2.util.DtoTransformer - Преобразование данных пользователя из UI
+2025-11-11 01:34:15.955 [main] DEBUG r.s.t.c.laba2.util.DtoTransformer - Создан UserDTO: login=user123, role=ADMIN
+2025-11-11 01:34:15.956 [main] INFO  r.s.t.c.laba2.util.DtoTransformer - Преобразование данных пользователя из UI
+2025-11-11 01:34:15.956 [main] ERROR r.s.t.c.laba2.util.DtoTransformer - Ошибка при преобразовании данных пользователя: class java.lang.Integer cannot be cast to class java.lang.String (java.lang.Integer and java.lang.String are in module java.base of loader 'bootstrap')
+2025-11-11 01:34:15.958 [main] INFO  r.s.t.c.laba2.util.DtoTransformer - Массовое преобразование 0 точек из UI
+2025-11-11 01:34:15.958 [main] INFO  r.s.t.c.laba2.util.DtoTransformer - Успешно преобразовано 0 точек
+2025-11-11 01:34:15.959 [main] INFO  r.s.t.c.laba2.util.DtoTransformer - Массовое преобразование 2 точек из UI
+2025-11-11 01:34:15.959 [main] INFO  r.s.t.c.laba2.util.DtoTransformer - Преобразование данных точки из UI
+2025-11-11 01:34:15.959 [main] DEBUG r.s.t.c.laba2.util.DtoTransformer - Создан PointDTO: functionId=1, x=1.0, y=1.0
+2025-11-11 01:34:15.959 [main] INFO  r.s.t.c.laba2.util.DtoTransformer - Преобразование данных точки из UI
+2025-11-11 01:34:15.959 [main] DEBUG r.s.t.c.laba2.util.DtoTransformer - Создан PointDTO: functionId=1, x=2.0, y=4.0
+2025-11-11 01:34:15.959 [main] INFO  r.s.t.c.laba2.util.DtoTransformer - Успешно преобразовано 2 точек

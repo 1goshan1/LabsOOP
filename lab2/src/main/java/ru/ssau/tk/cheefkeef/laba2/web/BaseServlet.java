@@ -3,7 +3,8 @@ package ru.ssau.tk.cheefkeef.laba2.web;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import ru.ssau.tk.cheefkeef.laba2.auth.AuthorizationService;
+import ru.ssau.tk.cheefkeef.laba2.models.User;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +24,7 @@ public abstract class BaseServlet extends HttpServlet {
 
     protected void handleError(HttpServletResponse resp, int status, String message, String path) throws IOException {
         logger.warn("API ошибка [{}]: {} по пути {}", status, message, path);
-        writeJson(resp, status, new ru.ssau.tk.cheefkeef.laba2.web.ErrorResponse(message, path));
+        writeJson(resp, status, new ErrorResponse(message, path));
     }
 
     protected Integer getIntegerParam(HttpServletRequest req, String paramName) {
@@ -63,7 +64,6 @@ public abstract class BaseServlet extends HttpServlet {
     protected void logRequest(HttpServletRequest req) {
         String queryString = req.getQueryString() != null ? "?" + req.getQueryString() : "";
         logger.info("{} {}{}", req.getMethod(), req.getRequestURI(), queryString);
-
         // Логирование заголовков для отладки
         if (logger.isDebugEnabled()) {
             logger.debug("Заголовки запроса:");
@@ -71,5 +71,54 @@ public abstract class BaseServlet extends HttpServlet {
                     logger.debug("  {}: {}", headerName, req.getHeader(headerName))
             );
         }
+    }
+
+    protected boolean checkAccess(HttpServletRequest req, HttpServletResponse resp,
+                                  String requiredRole, Integer resourceId) throws IOException {
+        if (!AuthorizationService.hasAccess(req, requiredRole, resourceId)) {
+            User currentUser = AuthorizationService.getCurrentUser(req);
+            String userRole = currentUser != null ? currentUser.getRole() : "anonymous";
+            String userName = currentUser != null ? currentUser.getLogin() : "anonymous";
+
+            logger.warn("Отказано в доступе пользователю {} (роль: {}) для ресурса ID: {}",
+                    userName, userRole, resourceId);
+
+            resp.setHeader("WWW-Authenticate", "Basic realm=\"laba2 API\"");
+            if (currentUser == null) {
+                resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Требуется аутентификация");
+            } else {
+                resp.sendError(HttpServletResponse.SC_FORBIDDEN, "Недостаточно прав для выполнения операции");
+            }
+            return false;
+        }
+        return true;
+    }
+
+    protected boolean checkAdminAccess(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        return checkAccess(req, resp, AuthorizationService.ROLE_ADMIN, null);
+    }
+
+    protected boolean checkResourceOwner(HttpServletRequest req, HttpServletResponse resp,
+                                         Integer resourceOwnerId, String resourceType) throws IOException {
+        User currentUser = AuthorizationService.getCurrentUser(req);
+        if (currentUser == null) {
+            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Требуется аутентификация");
+            return false;
+        }
+
+        // Администраторы имеют доступ ко всему
+        if (AuthorizationService.isAdmin(req)) {
+            return true;
+        }
+
+        // Обычные пользователи могут работать только со своими ресурсами
+        if (!currentUser.getId().equals(resourceOwnerId)) {
+            logger.warn("Пользователь {} пытается получить доступ к {} другого пользователя (ID: {})",
+                    currentUser.getLogin(), resourceType, resourceOwnerId);
+            resp.sendError(HttpServletResponse.SC_FORBIDDEN, "Недостаточно прав для доступа к данному ресурсу");
+            return false;
+        }
+
+        return true;
     }
 }

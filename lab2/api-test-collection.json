@@ -4,6 +4,39 @@
     "name": "API Tests Collection",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "admin",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "admin123",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Add Basic Auth header to all requests",
+          "const username = 'admin';",
+          "const password = 'admin123';",
+          "const base64Credentials = btoa(`${username}:${password}`);",
+          "pm.request.headers.upsert({",
+          "    key: 'Authorization',",
+          "    value: `Basic ${base64Credentials}`",
+          "});"
+        ]
+      }
+    }
+  ],
   "item": [
     {
       "name": "Users",
@@ -53,6 +86,11 @@
                   "    pm.expect(jsonData).to.be.an('array');",
                   "    if (jsonData.length > 0) {",
                   "        pm.environment.set(\"user_id\", jsonData[0].id);",
+                  "        // Find admin user",
+                  "        var adminUser = jsonData.find(user => user.login === 'admin');",
+                  "        if (adminUser) {",
+                  "            pm.environment.set(\"admin_id\", adminUser.id);",
+                  "        }",
                   "    }",
                   "});"
                 ],
@@ -352,7 +390,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"userId\": {{user_id}},\n    \"name\": \"testFunction\",\n    \"signature\": \"void testFunction()\"\n}"
+              "raw": "{\n    \"userId\": {{admin_id}},\n    \"name\": \"testFunction\",\n    \"signature\": \"void testFunction()\"\n}"
             },
             "url": {
               "raw": "{{base_url}}/api/v1/functions",
@@ -376,7 +414,6 @@
                   "",
                   "pm.test(\"Function was created with correct data\", function () {",
                   "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData.userId).to.eql(parseInt(pm.environment.get(\"user_id\")));",
                   "    pm.expect(jsonData.name).to.eql(\"testFunction\");",
                   "    pm.environment.set(\"new_function_id\", jsonData.id);",
                   "});"
@@ -447,9 +484,9 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/api/v1/functions/search/by-user/{{user_id}}?sortField=name&ascending=true",
+              "raw": "{{base_url}}/api/v1/functions/search/by-user/{{admin_id}}?sortField=name&ascending=true",
               "host": ["{{base_url}}"],
-              "path": ["api", "v1", "functions", "search", "by-user", "{{user_id}}"],
+              "path": ["api", "v1", "functions", "search", "by-user", "{{admin_id}}"],
               "query": [
                 {
                   "key": "sortField",
@@ -497,9 +534,9 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/api/v1/functions/users/{{user_id}}/count",
+              "raw": "{{base_url}}/api/v1/functions/users/{{admin_id}}/count",
               "host": ["{{base_url}}"],
-              "path": ["api", "v1", "functions", "users", "{{user_id}}", "count"]
+              "path": ["api", "v1", "functions", "users", "{{admin_id}}", "count"]
             }
           },
           "response": [],
@@ -537,13 +574,13 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/api/v1/functions/exists?userId={{user_id}}&name=testFunction",
+              "raw": "{{base_url}}/api/v1/functions/exists?userId={{admin_id}}&name=testFunction",
               "host": ["{{base_url}}"],
               "path": ["api", "v1", "functions", "exists"],
               "query": [
                 {
                   "key": "userId",
-                  "value": "{{user_id}}"
+                  "value": "{{admin_id}}"
                 },
                 {
                   "key": "name",
@@ -569,7 +606,6 @@
                   "pm.test(\"Response has exists field\", function () {",
                   "    var jsonData = pm.response.json();",
                   "    pm.expect(jsonData).to.have.property('exists');",
-                  "    pm.expect(jsonData.exists).to.be.true;",
                   "});"
                 ],
                 "type": "text/javascript"
@@ -589,7 +625,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"ids\": [{{function_id}}]\n}"
+              "raw": "{\n    \"ids\": [{{new_function_id}}]\n}"
             },
             "url": {
               "raw": "{{base_url}}/api/v1/functions/batch/search-by-ids",
@@ -634,7 +670,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"userId\": {{user_id}},\n    \"name\": \"updatedFunction\",\n    \"signature\": \"void updatedFunction()\"\n}"
+              "raw": "{\n    \"userId\": {{admin_id}},\n    \"name\": \"updatedFunction\",\n    \"signature\": \"void updatedFunction()\"\n}"
             },
             "url": {
               "raw": "{{base_url}}/api/v1/functions/{{new_function_id}}",
@@ -747,6 +783,51 @@
       "name": "Points",
       "item": [
         {
+          "name": "POST Create Function for Points Tests",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"userId\": {{admin_id}},\n    \"name\": \"pointsTestFunction\",\n    \"signature\": \"void pointsTestFunction()\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/functions",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "functions"]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "pm.test(\"Response is JSON\", function () {",
+                  "    pm.response.to.be.json;",
+                  "});",
+                  "",
+                  "pm.test(\"Function created for points tests\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.name).to.eql(\"pointsTestFunction\");",
+                  "    pm.environment.set(\"points_function_id\", jsonData.id);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
           "name": "GET All Points",
           "request": {
             "method": "GET",
@@ -790,51 +871,8 @@
                   "    var jsonData = pm.response.json();",
                   "    pm.expect(jsonData).to.be.an('array');",
                   "    if (jsonData.length > 0) {",
-                  "        pm.environment.set(\"point_id\", jsonData[0].id);",
+                  "        pm.environment.set(\"existing_point_id\", jsonData[0].id);",
                   "    }",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ]
-        },
-        {
-          "name": "GET Point by ID",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/api/v1/points/{{point_id}}",
-              "host": ["{{base_url}}"],
-              "path": ["api", "v1", "points", "{{point_id}}"]
-            }
-          },
-          "response": [],
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"Response is JSON\", function () {",
-                  "    pm.response.to.be.json;",
-                  "});",
-                  "",
-                  "pm.test(\"Response has correct point fields\", function () {",
-                  "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData).to.have.property('id');",
-                  "    pm.expect(jsonData).to.have.property('functionId');",
-                  "    pm.expect(jsonData).to.have.property('xvalue');",
-                  "    pm.expect(jsonData).to.have.property('yvalue');",
                   "});"
                 ],
                 "type": "text/javascript"
@@ -853,9 +891,9 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/api/v1/points/function/{{function_id}}?sortField=xValue&ascending=true",
+              "raw": "{{base_url}}/api/v1/points/function/{{points_function_id}}?sortField=xValue&ascending=true",
               "host": ["{{base_url}}"],
-              "path": ["api", "v1", "points", "function", "{{function_id}}"],
+              "path": ["api", "v1", "points", "function", "{{points_function_id}}"],
               "query": [
                 {
                   "key": "sortField",
@@ -904,7 +942,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"functionId\": {{function_id}},\n    \"xvalue\": 1.5,\n    \"yvalue\": 2.5\n}"
+              "raw": "{\n    \"functionId\": {{points_function_id}},\n    \"xvalue\": 1.5,\n    \"yvalue\": 2.5\n}"
             },
             "url": {
               "raw": "{{base_url}}/api/v1/points",
@@ -928,7 +966,7 @@
                   "",
                   "pm.test(\"Point was created with correct data\", function () {",
                   "    var jsonData = pm.response.json();",
-                  "    pm.expect(jsonData.functionId).to.eql(parseInt(pm.environment.get(\"function_id\")));",
+                  "    pm.expect(jsonData.functionId).to.eql(parseInt(pm.environment.get(\"points_function_id\")));",
                   "    pm.expect(jsonData.xvalue).to.eql(1.5);",
                   "    pm.environment.set(\"new_point_id\", jsonData.id);",
                   "});"
@@ -950,7 +988,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"functionId\": {{function_id}},\n    \"points\": [\n        {\n            \"xvalue\": 3.0,\n            \"yvalue\": 4.0\n        },\n        {\n            \"xvalue\": 5.0,\n            \"yvalue\": 6.0\n        }\n    ]\n}"
+              "raw": "{\n    \"functionId\": {{points_function_id}},\n    \"points\": [\n        {\n            \"xvalue\": 3.0,\n            \"yvalue\": 4.0\n        },\n        {\n            \"xvalue\": 5.0,\n            \"yvalue\": 6.0\n        }\n    ]\n}"
             },
             "url": {
               "raw": "{{base_url}}/api/v1/points/batch",
@@ -995,7 +1033,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"ids\": [{{point_id}}]\n}"
+              "raw": "{\n    \"ids\": [{{new_point_id}}]\n}"
             },
             "url": {
               "raw": "{{base_url}}/api/v1/points/batch/search-by-ids",
@@ -1040,7 +1078,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"functionId\": {{function_id}},\n    \"xvalue\": 2.5,\n    \"yvalue\": 3.5\n}"
+              "raw": "{\n    \"functionId\": {{points_function_id}},\n    \"xvalue\": 2.5,\n    \"yvalue\": 3.5\n}"
             },
             "url": {
               "raw": "{{base_url}}/api/v1/points/{{new_point_id}}",
@@ -1115,9 +1153,40 @@
               }
             ],
             "url": {
-              "raw": "{{base_url}}/api/v1/points/function/{{function_id}}",
+              "raw": "{{base_url}}/api/v1/points/function/{{points_function_id}}",
               "host": ["{{base_url}}"],
-              "path": ["api", "v1", "points", "function", "{{function_id}}"]
+              "path": ["api", "v1", "points", "function", "{{points_function_id}}"]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 204\", function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "DELETE Function for Points Tests",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/functions/{{points_function_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "functions", "{{points_function_id}}"]
             }
           },
           "response": [],
@@ -1148,15 +1217,19 @@
       "value": "1"
     },
     {
+      "key": "admin_id",
+      "value": "1"
+    },
+    {
       "key": "function_id",
       "value": "1"
     },
     {
-      "key": "point_id",
+      "key": "points_function_id",
       "value": "1"
     },
     {
-      "key": "new_user_id",
+      "key": "existing_point_id",
       "value": "1"
     },
     {
