@@ -1,0 +1,13 @@
+﻿Тест класс;;;Операция;;Spring Data JPA;;;JDBC;
+UserSmthTest;;;Insert;;2.512;;;1.257;
+;;;Select;;4.233;;;1.414;
+;;;Delete;;3.718;;;1.647;
+;;;Update;;3.147;;;1.248;
+FunctionSmthTest;;;Insert;;2.259;;;1.162;
+;;;Select;;2.836;;;0.601;
+;;;Delete;;2.635;;;3.120;
+;;;Update;;0.735;;;2.635;
+PointSmthTest;;;Insert;;2.259;;;0.911;
+;;;Select;;2.836;;;1.229;
+;;;Delete;;2.635;;;13.352(mnogo);
+;;;Update;;3.612;;;1.216;
