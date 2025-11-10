@@ -386,7 +386,7 @@ class UserDAOTest {
         assertNotNull(insertedUser, "Пользователь со специальными символами должен быть создан");
 
         // Очистка
-        if (insertedUser != null && insertedUser.getId() != null) {
+        if (insertedUser.getId() != null) {
             userDAO.delete(insertedUser.getId());
         }
 
@@ -405,6 +405,52 @@ class UserDAOTest {
         }
 
         return new User(login, role, password, enabled);
+    }
+    @Test
+    @Order(17)
+    void testFindByRoleWithSorting() {
+        logger.info("Запуск теста: поиск пользователей по роли с сортировкой");
+
+        // Создаем двух тестовых пользователей с одинаковой ролью, но разными логинами и ID
+        User user1 = new User("zzz_last_user_" + System.currentTimeMillis(), "editor", "pass123!", true);
+        User user2 = new User("aaa_first_user_" + System.currentTimeMillis(), "editor", "pass456!", true);
+
+        User inserted1 = userDAO.insert(user1);
+        User inserted2 = userDAO.insert(user2);
+
+        assertNotNull(inserted1);
+        assertNotNull(inserted2);
+
+        try {
+            // Тест сортировки по login ASC
+            List<User> sortedByLoginAsc = userDAO.findByRoleWithSorting("editor", "login", true);
+            assertFalse(sortedByLoginAsc.isEmpty(), "Список не должен быть пустым");
+            assertEquals(2, sortedByLoginAsc.size(), "Должно быть 2 пользователя с ролью 'editor'");
+            assertTrue(sortedByLoginAsc.get(0).getLogin().startsWith("aaa"), "Первый логин должен начинаться с 'aaa'");
+            assertTrue(sortedByLoginAsc.get(1).getLogin().startsWith("zzz"), "Второй логин должен начинаться с 'zzz'");
+
+            // Тест сортировки по id DESC
+            List<User> sortedByIdDesc = userDAO.findByRoleWithSorting("editor", "id", false);
+            assertFalse(sortedByIdDesc.isEmpty());
+            assertEquals(2, sortedByIdDesc.size());
+            // Поскольку inserted2 создан вторым, его ID больше
+            assertEquals(inserted2.getId(), sortedByIdDesc.get(0).getId(), "Сначала должен идти пользователь с бОльшим ID");
+
+            // Тест с недопустимым полем сортировки -> должно использовать 'id' по умолчанию
+            List<User> sortedWithInvalidField = userDAO.findByRoleWithSorting("editor", "invalid_field", true);
+            assertFalse(sortedWithInvalidField.isEmpty());
+            assertEquals(2, sortedWithInvalidField.size());
+            // Проверяем, что сортировка всё же по id ASC
+            long firstId = sortedWithInvalidField.get(0).getId();
+            long secondId = sortedWithInvalidField.get(1).getId();
+            assertTrue(firstId < secondId, "При недопустимом поле сортировка должна быть по id ASC");
+
+            logger.info("Тест findByRoleWithSorting успешно завершён");
+        } finally {
+            // Очистка
+            if (inserted1.getId() != null) userDAO.delete(inserted1.getId());
+            if (inserted2.getId() != null) userDAO.delete(inserted2.getId());
+        }
     }
 
     @Test
