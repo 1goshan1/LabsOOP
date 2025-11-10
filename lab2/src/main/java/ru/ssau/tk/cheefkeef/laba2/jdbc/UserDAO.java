@@ -143,7 +143,7 @@ public class UserDAO {
         String sql = "INSERT INTO users (login, role, password, enabled) VALUES (?, ?, ?, ?)";
 
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+             PreparedStatement statement = connection.prepareStatement(sql, new String[]{"id"})) {
 
             statement.setString(1, user.getLogin());
             statement.setString(2, user.getRole());
