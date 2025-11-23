@@ -249,7 +249,7 @@ public class UserServlet extends BaseServlet {
 
             User user = UserMapper.toEntity(userDTO);
             // Хеширование пароля
-            user.setPassword(PasswordUtil.hashPassword(userDTO.getPassword()));
+            user.setPassword(userDTO.getPassword());
 
             User savedUser = userDAO.insert(user);
             if (savedUser != null && savedUser.getId() != null) {

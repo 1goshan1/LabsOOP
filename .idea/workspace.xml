@@ -5,8 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39e2e6aa-65c5-4953-ae88-51a1bbb00bae" name="Changes" comment="added readTabulatedFunction with BufferedInputStream, TabulatedFunctionFileInputStream(kind of a test cause contains main())">
+      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/api/api.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/api/auth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/api/functions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/api/points.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/components/Layout.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/context/AuthContext.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/context/ThemeContext.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/DashboardPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/FunctionEditorPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/FunctionsPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/GraphViewerPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/LoginPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/OperationsPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/RegisterPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/SettingsPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/functions/LinkedListTabulatedFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/functions/LinkedListTabulatedFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/logs/application.log" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/logs/application.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/auth/PasswordUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/auth/PasswordUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/web/UserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/web/UserServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +94,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "manual",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Admin/IdeaProjects/LabsOOP",
     "settings.editor.selected.configurable": "Errors"
@@ -92,7 +110,7 @@
       <recent name="ru.ssau.tk.cheefkeef.laba2.functions.factory" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TabulatedFunctionFileInputStream">
+  <component name="RunManager" selected="Smart Tomcat.Tomcat: lab2">
     <configuration name="ArrayTabulatedFunctionSerialization" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.cheefkeef.laba2.io.ArrayTabulatedFunctionSerialization" />
       <module name="LabsOOP" />
@@ -140,28 +158,39 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TabulatedFunctionOperationServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="LabsOOP" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.ssau.tk.cheefkeef.laba2.operations.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ru.ssau.tk.cheefkeef.laba2.operations" />
-      <option name="MAIN_CLASS_NAME" value="ru.ssau.tk.cheefkeef.laba2.operations.TabulatedFunctionOperationServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
+    <configuration name="Tomcat: lab2" type="com.poratu.idea.plugins.tomcat" temporary="true">
+      <predefined_log_file enabled="true" id="Tomcat Localhost Log" />
+      <predefined_log_file enabled="true" id="Tomcat Access Log" />
+      <predefined_log_file id="Tomcat Catalina Log" />
+      <predefined_log_file id="Tomcat Manager Log" />
+      <predefined_log_file id="Tomcat Host Manager Log" />
+      <option name="contextPath" value="/lab2" />
+      <option name="docBase" value="$PROJECT_DIR$/lab2/src/main/webapp" />
+      <option name="tomcatInfo">
+        <TomcatInfo>
+          <option name="name" value="Apache Tomcat/9.0.111" />
+          <option name="path" value="$USER_HOME$/Desktop/apache-tomcat-9.0.111" />
+          <option name="version" value="9.0.111.0" />
+        </TomcatInfo>
+      </option>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.TabulatedFunctionFileInputStream" />
+      <item itemvalue="Application.ArrayTabulatedFunctionSerialization" />
+      <item itemvalue="Application.TabulatedFunctionFileOutputStream" />
+      <item itemvalue="JUnit.All in LabsOOP" />
+      <item itemvalue="Smart Tomcat.Tomcat: lab2" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Smart Tomcat.Tomcat: lab2" />
         <item itemvalue="Application.TabulatedFunctionFileInputStream" />
         <item itemvalue="Application.TabulatedFunctionFileOutputStream" />
         <item itemvalue="Application.ArrayTabulatedFunctionSerialization" />
         <item itemvalue="JUnit.All in LabsOOP" />
-        <item itemvalue="JUnit.TabulatedFunctionOperationServiceTest" />
       </list>
     </recent_temporary>
   </component>
