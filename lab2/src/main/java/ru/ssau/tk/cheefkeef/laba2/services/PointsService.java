@@ -6,10 +6,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.ssau.tk.cheefkeef.laba2.dto.points.PointCoordinate;
+import ru.ssau.tk.cheefkeef.laba2.dto.points.UpdatePointCoordinate;
 import ru.ssau.tk.cheefkeef.laba2.entities.Points;
 import ru.ssau.tk.cheefkeef.laba2.repositories.PointsRepository;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -114,6 +116,43 @@ public class PointsService {
         logger.debug("Поиск максимального Y для функции с ID: {}", functionId);
         return pointsRepository.findMaxYByFunctionId(functionId);
     }
+// В PointsService.java добавим методы:
+
+    public List<Points> findByFunctionIdAndXInAndIdNotIn(Long functionId, List<Double> xValues, List<Long> excludeIds) {
+        logger.debug("Поиск конфликтующих точек функции {} с X в {} исключая IDs {}",
+                functionId, xValues, excludeIds);
+        return pointsRepository.findByFunctionIdAndXInAndIdNotIn(functionId, xValues, excludeIds);
+    }
+
+    public List<Points> updatePointsBatch(Long functionId, List<UpdatePointCoordinate> pointCoordinates) {
+        logger.debug("Массовое обновление {} точек для функции {}", pointCoordinates.size(), functionId);
+
+        List<Long> pointIds = pointCoordinates.stream()
+                .map(UpdatePointCoordinate::getId)
+                .collect(Collectors.toList());
+
+        List<Points> existingPoints = pointsRepository.findAllById(pointIds);
+        Map<Long, UpdatePointCoordinate> coordinateMap = pointCoordinates.stream()
+                .collect(Collectors.toMap(UpdatePointCoordinate::getId, pc -> pc));
+
+        List<Points> updatedPoints = existingPoints.stream()
+                .map(point -> {
+                    UpdatePointCoordinate coordinate = coordinateMap.get(point.getId());
+                    if (coordinate != null) {
+                        if (!point.getFunctionId().equals(functionId)) {
+                            throw new IllegalArgumentException("Точка с ID " + point.getId() +
+                                    " не принадлежит функции с ID " + functionId);
+                        }
+                        point.setX(coordinate.getXValue());
+                        point.setY(coordinate.getYValue());
+                    }
+                    return point;
+                })
+                .collect(Collectors.toList());
+
+        return pointsRepository.saveAll(updatedPoints);
+    }
+
 
     public List<Points> createPointsBatch(Long functionId, List<PointCoordinate> pointCoordinates) {
         logger.debug("Создание {} точек для функции {}", pointCoordinates.size(), functionId);

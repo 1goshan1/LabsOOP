@@ -175,7 +175,7 @@ public class UserController {
 
     // GET /users/search/by-login/{login} - Найти пользователя по логину
     @GetMapping("/search/by-login/{login}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("@securityService.canAccessUserByLogin(#login)")
     public ResponseEntity<?> getUserByLogin(@PathVariable String login) {
         logger.info("Запрос на поиск пользователя по логину: {}", login);
 
@@ -200,7 +200,7 @@ public class UserController {
 
     // DELETE /users/search/by-login/{login} - Удалить пользователя по логину
     @DeleteMapping("/search/by-login/{login}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("@securityService.canAccessUserByLogin(#login)")
     public ResponseEntity<?> deleteUserByLogin(@PathVariable String login) {
         logger.info("Запрос на удаление пользователя по логину: {}", login);
 

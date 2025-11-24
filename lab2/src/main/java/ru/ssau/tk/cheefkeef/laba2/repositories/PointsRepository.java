@@ -77,4 +77,6 @@ public interface PointsRepository extends JpaRepository<Points, Long> {
     @Query("SELECT p FROM Points p WHERE p.functionId = :functionId ORDER BY p.x")
     List<Points> findPointsPage(@Param("functionId") Long functionId, org.springframework.data.domain.Pageable pageable);
 
+    // В PointsRepository.java добавим метод:
+    List<Points> findByFunctionIdAndXInAndIdNotIn(Long functionId, List<Double> xValues, List<Long> excludeIds);
 }

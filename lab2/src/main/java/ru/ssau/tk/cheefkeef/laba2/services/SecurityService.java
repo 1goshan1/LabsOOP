@@ -99,4 +99,23 @@ public class SecurityService {
         String role = getCurrentUserRole();
         return "USER".equals(role) || "MANAGER".equals(role) || "ADMIN".equals(role);
     }
+
+    public boolean canAccessUserByLogin(String login) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUsername = authentication.getName();
+
+        logger.debug("Проверка доступа: пользователь {} пытается получить доступ к логину {}",
+                currentUsername, login);
+
+        // Админы имеют доступ ко всем логинам
+        if (isAdmin()) {
+            logger.debug("Доступ разрешен: пользователь {} является ADMIN", currentUsername);
+            return true;
+        }
+
+        // Пользователи имеют доступ только к своему логину
+        boolean canAccess = currentUsername.equals(login);
+        logger.debug("Доступ пользователя {} к логину {}: {}", currentUsername, login, canAccess);
+        return canAccess;
+    }
 }

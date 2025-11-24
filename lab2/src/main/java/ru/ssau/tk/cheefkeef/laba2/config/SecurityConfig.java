@@ -1,4 +1,3 @@
-// SecurityConfig.java
 package ru.ssau.tk.cheefkeef.laba2.config;
 
 import org.slf4j.Logger;
@@ -13,7 +12,13 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import ru.ssau.tk.cheefkeef.laba2.services.UserDetailsServiceImpl;
+
+import java.util.Arrays;
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -31,20 +36,40 @@ public class SecurityConfig {
     }
 
     @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        logger.info("Настройка CORS конфигурации");
+
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(Arrays.asList("*")); // Разрешить все origins
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
+        configuration.setAllowedHeaders(Arrays.asList("*")); // Разрешить все headers
+        configuration.setAllowCredentials(false); // Должно быть false при allowedOrigins("*")
+        configuration.setMaxAge(3600L); // Кэшировать preflight запросы на 1 час
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration); // Применить ко всем endpoints
+
+        logger.info("CORS настроен: origins=*, methods=GET,POST,PUT,DELETE,OPTIONS,PATCH, headers=*");
+        return source;
+    }
+
+    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         logger.info("Настройка SecurityFilterChain");
 
         http
+                .cors(cors -> cors.configurationSource(corsConfigurationSource())) // Добавляем CORS
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authz -> authz
                         // Публичные endpoints
                         .requestMatchers("/h2-console/**").permitAll()
                         .requestMatchers("/api/v1/auth/register").permitAll()
+                        .requestMatchers("/api/v1/auth/login").permitAll() // Добавьте если есть login endpoint
 
                         // Users endpoints
-                        .requestMatchers("/api/v1/users/**").hasAnyRole("ADMIN", "MANAGER")
-                        .requestMatchers("/api/v1/users/search/**").hasAnyRole("ADMIN", "MANAGER", "USER")
+                        .requestMatchers("/api/v1/users/**").authenticated()
+                        .requestMatchers("/api/v1/users/search/**").authenticated()
 
                         // Functions endpoints
                         .requestMatchers("/api/v1/functions/**").authenticated()
@@ -62,7 +87,7 @@ public class SecurityConfig {
                 .headers(headers -> headers.frameOptions().disable()) // Для H2 console
                 .userDetailsService(userDetailsService);
 
-        logger.info("SecurityFilterChain настроен успешно");
+        logger.info("SecurityFilterChain настроен успешно с CORS поддержкой");
         return http.build();
     }
 }

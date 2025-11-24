@@ -16,12 +16,14 @@ import ru.ssau.tk.cheefkeef.laba2.dto.user.*;
 import ru.ssau.tk.cheefkeef.laba2.dto.points.*;
 import ru.ssau.tk.cheefkeef.laba2.entities.Functions;
 import ru.ssau.tk.cheefkeef.laba2.entities.Points;
+import ru.ssau.tk.cheefkeef.laba2.functions.*;
 import ru.ssau.tk.cheefkeef.laba2.services.FunctionsService;
 import ru.ssau.tk.cheefkeef.laba2.services.PointsService;
 import ru.ssau.tk.cheefkeef.laba2.services.SecurityService;
+import ru.ssau.tk.cheefkeef.laba2.operations.LeftSteppingDifferentialOperator;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+
 import java.util.stream.Collectors;
 
 @RestController
@@ -91,6 +93,65 @@ public class PointsController {
         }
     }
 
+    @GetMapping("/linear/{functionId}/interpolate/{x}")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<?> interpolateAtX(
+            @PathVariable Long functionId,
+            @PathVariable double x) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        logger.info("Запрос на интерполяцию функции {} в точке x={} пользователем: {}", functionId, x, username);
+
+        try {
+            // Проверка доступа к функции
+            if (!canAccessFunction(functionId, authentication)) {
+                logger.warn("Пользователь {} пытается выполнить интерполяцию для чужой функции {}", username, functionId);
+                return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                        .body(new ErrorResponse("Доступ запрещен к этой функции",
+                                "/api/v1/points/linear/" + functionId + "/interpolate"));
+            }
+
+            // Получаем точки функции
+            List<Points> points = pointsService.findByFunctionId(functionId);
+            if (points.isEmpty()) {
+                logger.warn("Функция {} не имеет точек", functionId);
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body(new ErrorResponse("Функция не содержит точек для интерполяции",
+                                "/api/v1/points/linear/" + functionId + "/interpolate"));
+            }
+
+            // Сортируем по X
+            points.sort(Comparator.comparingDouble(Points::getX));
+
+            // Преобразуем в массивы
+            double[] xValues = points.stream().mapToDouble(Points::getX).toArray();
+            double[] yValues = points.stream().mapToDouble(Points::getY).toArray();
+
+            // Создаём табулированную функцию
+            ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
+
+            // Выполняем интерполяцию (или экстраполяцию) через apply()
+            double y = function.apply(x);
+
+            // Формируем ответ в требуемом формате
+            Map<String, Double> response = Map.of("xvalue", x, "yvalue", y);
+
+            logger.info("Успешно выполнена интерполяция для функции {} в точке x={}: y={}", functionId, x, y);
+            return ResponseEntity.ok(response);
+
+        } catch (IllegalArgumentException e) {
+            logger.warn("Ошибка при интерполяции функции {}: {}", functionId, e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(new ErrorResponse("Ошибка интерполяции: " + e.getMessage(),
+                            "/api/v1/points/linear/" + functionId + "/interpolate"));
+        } catch (Exception e) {
+            logger.error("Внутренняя ошибка при интерполяции функции {}: {}", functionId, e.getMessage(), e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ErrorResponse("Внутренняя ошибка сервера",
+                            "/api/v1/points/linear/" + functionId + "/interpolate"));
+        }
+    }
+
     // POST /points - Создать новую точку для своей функции
     @PostMapping
     @PreAuthorize("isAuthenticated()")
@@ -139,7 +200,6 @@ public class PointsController {
         }
     }
 
-    // POST /points/batch - Создать несколько точек для своей функции
     @PostMapping("/batch")
     @PreAuthorize("isAuthenticated()")
     public ResponseEntity<?> createPointsBatch(@Valid @RequestBody CreatePointsBatchRequest request) {
@@ -160,6 +220,21 @@ public class PointsController {
 
             List<Points> savedPoints = pointsService.createPointsBatch(
                     request.getFunctionId(), request.getPoints());
+
+            // Создаем объект ArrayTabulatedFunction из полученных точек
+            if (!savedPoints.isEmpty()) {
+                double[] xValues = new double[savedPoints.size()];
+                double[] yValues = new double[savedPoints.size()];
+
+                for (int i = 0; i < savedPoints.size(); i++) {
+                    Points point = savedPoints.get(i);
+                    xValues[i] = point.getX();
+                    yValues[i] = point.getY();
+                }
+
+                ArrayTabulatedFunction function = new ArrayTabulatedFunction(xValues, yValues);
+                logger.debug("Создан объект ArrayTabulatedFunction с {} точками", savedPoints.size());
+            }
 
             List<PointDTO> pointDTOs = convertToDTO(savedPoints);
 
@@ -279,6 +354,119 @@ public class PointsController {
         }
     }
 
+    @PostMapping("/composite/{functionId}/{function}/{name}")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<?> createCompositeFunction(
+            @PathVariable Long functionId,
+            @PathVariable String function,
+            @PathVariable String name) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        logger.info("Запрос на создание композитной функции для функции {} с типом {} и именем {} пользователем: {}",
+                functionId, function, name, username);
+
+        try {
+            // Проверка доступа к исходной функции
+            if (!canAccessFunction(functionId, authentication)) {
+                logger.warn("Пользователь {} пытается создать композитную функцию для чужой функции {}",
+                        username, functionId);
+                return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                        .body(new ErrorResponse("Доступ запрещен к исходной функции",
+                                "/api/v1/points/composite/" + functionId + "/" + function + "/" + name));
+            }
+
+            // Получаем исходную функцию
+            Optional<Functions> originalFunctionOpt = functionsService.findById(functionId);
+            if (originalFunctionOpt.isEmpty()) {
+                logger.warn("Функция с ID {} не найдена", functionId);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body(new ErrorResponse("Исходная функция не найдена",
+                                "/api/v1/points/composite/" + functionId + "/" + function + "/" + name));
+            }
+            Functions originalFunction = originalFunctionOpt.get();
+
+            // Получаем точки исходной функции и сортируем по X
+            List<Points> originalPoints = pointsService.findByFunctionId(functionId);
+            if (originalPoints.isEmpty()) {
+                logger.warn("Для функции с ID {} не найдены точки", functionId);
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body(new ErrorResponse("Для исходной функции не найдены точки",
+                                "/api/v1/points/composite/" + functionId + "/" + function + "/" + name));
+            }
+            originalPoints.sort(Comparator.comparingDouble(Points::getX));
+
+            // Создаем соответствующую функцию в зависимости от параметра
+            MathFunction mathFunction;
+            switch (function.toLowerCase()) {
+                case "identity":
+                    mathFunction = new IdentityFunction();
+                    break;
+                case "sqr":
+                    mathFunction = new SqrFunction();
+                    break;
+                case "constant":
+                    mathFunction = new ConstantFunction(1.0); // Используем 1.0 как константу
+                    break;
+                default:
+                    logger.warn("Неподдерживаемый тип функции: {}", function);
+                    return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                            .body(new ErrorResponse("Неподдерживаемый тип функции. Доступные: identity, sqr, constant",
+                                    "/api/v1/points/composite/" + functionId + "/" + function + "/" + name));
+            }
+
+            // Создаем новую функцию
+            Functions newFunction = new Functions();
+            newFunction.setName(name);
+            newFunction.setSignature(function + "(" + functionId + ")");
+            newFunction.setUserId(originalFunction.getUserId()); // Новая функция принадлежит тому же пользователю
+            Functions savedFunction = functionsService.save(newFunction);
+
+            // Вычисляем значения новой функции для каждой точки
+            List<Points> newPoints = new ArrayList<>();
+            for (Points originalPoint : originalPoints) {
+                double x = originalPoint.getX();
+                double y_old = originalPoint.getY();
+                double y = mathFunction.apply(y_old); // Применяем функцию к значению X
+
+                Points point = new Points();
+                point.setFunctionId(savedFunction.getId());
+                point.setX(x);
+                point.setY(y);
+                newPoints.add(point);
+            }
+
+            // Сохраняем точки
+            List<Points> savedPoints = pointsService.saveAll(newPoints);
+
+            // Формируем ответ
+            Map<String, Object> response = new HashMap<>();
+            response.put("initFunctionId", functionId);
+            response.put("functionId", savedFunction.getId());
+
+            List<Map<String, Double>> pointsList = savedPoints.stream()
+                    .map(point -> {
+                        Map<String, Double> pointMap = new HashMap<>();
+                        pointMap.put("xvalue", point.getX());
+                        pointMap.put("yvalue", point.getY());
+                        return pointMap;
+                    })
+                    .collect(Collectors.toList());
+
+            response.put("points", pointsList);
+
+            logger.info("Успешно создана композитная функция с ID: {} на основе функции {}",
+                    savedFunction.getId(), functionId);
+            return ResponseEntity.status(HttpStatus.CREATED).body(response);
+
+        } catch (Exception e) {
+            logger.error("Ошибка при создании композитной функции для функции {}: {}",
+                    functionId, e.getMessage(), e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ErrorResponse("Внутренняя ошибка сервера",
+                            "/api/v1/points/composite/" + functionId + "/" + function + "/" + name));
+        }
+    }
+
     // DELETE /points/{id} - Удалить точку по ID
     @DeleteMapping("/{id}")
     @PreAuthorize("isAuthenticated()")
@@ -358,6 +546,271 @@ public class PointsController {
             logger.error("Ошибка при поиске точек по ID функции {}: {}", functionId, e.getMessage(), e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(new ErrorResponse("Внутренняя ошибка сервера", "/api/v1/points/function/" + functionId));
+        }
+    }
+
+    // PointsController.java - добавляем новый метод с Map
+
+    // GET /points/generate/{function}/{from}/{to}/{count} - Генерация точек табулированной функции
+    @GetMapping("/generate/{function}/{from}/{to}/{count}")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<?> generateTabulatedFunction(
+            @PathVariable String function,
+            @PathVariable double from,
+            @PathVariable double to,
+            @PathVariable int count) {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+
+        logger.info("Запрос на генерацию функции {} в диапазоне [{}, {}] с {} точками пользователем: {}",
+                function, from, to, count, username);
+
+        try {
+            // Проверяем минимальное количество точек
+            if (count < 2) {
+                logger.warn("Некорректное количество точек: {}", count);
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body(new ErrorResponse("Количество точек должно быть не менее 2",
+                                "/api/v1/points/generate/" + function + "/" + from + "/" + to + "/" + count));
+            }
+
+            // Создаем Map для выбора функций
+            Map<String, MathFunction> functionMap = Map.of(
+                    "identity", new IdentityFunction(),
+                    "constant", new ConstantFunction(1.0),
+                    "sqr", new SqrFunction()
+            );
+
+            // Получаем функцию из Map по ключу
+            MathFunction mathFunction = functionMap.get(function.toLowerCase());
+
+            if (mathFunction == null) {
+                logger.warn("Неподдерживаемый тип функции: {}. Доступные: {}", function, functionMap.keySet());
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body(new ErrorResponse("Неподдерживаемый тип функции. Доступные: " + functionMap.keySet(),
+                                "/api/v1/points/generate/" + function + "/" + from + "/" + to + "/" + count));
+            }
+
+            // Создаем табулированную функцию
+            ArrayTabulatedFunction tabulatedFunction = new ArrayTabulatedFunction(mathFunction, from, to, count);
+
+            // Преобразуем в DTO
+            List<TabulatedPointDTO> points = new ArrayList<>();
+            for (int i = 0; i < tabulatedFunction.getCount(); i++) {
+                points.add(new TabulatedPointDTO(
+                        tabulatedFunction.getX(i),
+                        tabulatedFunction.getY(i)
+                ));
+            }
+
+            TabulatedFunctionResponse response = new TabulatedFunctionResponse(points);
+
+            logger.info("Успешно сгенерировано {} точек для функции {}", points.size(), function);
+            return ResponseEntity.ok(response);
+
+        } catch (IllegalArgumentException e) {
+            logger.warn("Ошибка при генерации функции: {}", e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(new ErrorResponse(e.getMessage(),
+                            "/api/v1/points/generate/" + function + "/" + from + "/" + to + "/" + count));
+        } catch (Exception e) {
+            logger.error("Ошибка при генерации точек функции: {}", e.getMessage(), e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ErrorResponse("Внутренняя ошибка сервера",
+                            "/api/v1/points/generate/" + function + "/" + from + "/" + to + "/" + count));
+        }
+    }
+
+    @GetMapping("/differential/{functionId}")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<?> differentiateFunction(@PathVariable Long functionId) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        logger.info("Запрос на дифференцирование функции с ID: {} пользователем: {}", functionId, username);
+
+        try {
+            // Проверка доступа к функции
+            if (!canAccessFunction(functionId, authentication)) {
+                logger.warn("Пользователь {} пытается дифференцировать чужую функцию {}", username, functionId);
+                return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                        .body(new ErrorResponse("Доступ запрещен к этой функции", "/api/v1/points/differential/" + functionId));
+            }
+
+            // Получаем точки исходной функции
+            List<Points> originalPoints = pointsService.findByFunctionId(functionId);
+            if (originalPoints.isEmpty()) {
+                logger.warn("Не найдены точки для функции с ID: {}", functionId);
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body(new ErrorResponse("Для функции не найдены точки", "/api/v1/points/differential/" + functionId));
+            }
+
+            // Сортируем точки по X для корректного создания ArrayTabulatedFunction
+            originalPoints.sort(Comparator.comparingDouble(Points::getX));
+
+            // Создаем массивы X и Y значений
+            double[] xValues = originalPoints.stream().mapToDouble(Points::getX).toArray();
+            double[] yValues = originalPoints.stream().mapToDouble(Points::getY).toArray();
+
+            // Создаем ArrayTabulatedFunction
+            ArrayTabulatedFunction originalFunction = new ArrayTabulatedFunction(xValues, yValues);
+
+            // Определяем шаг для дифференцирования
+            double step = xValues.length > 1 ? xValues[1] - xValues[0] : 1.0;
+            LeftSteppingDifferentialOperator diffOperator = new LeftSteppingDifferentialOperator(step);
+
+            // Применяем оператор дифференцирования
+            MathFunction differentiatedFunction = diffOperator.derive(originalFunction);
+
+            // Получаем исходную функцию
+            Optional<Functions> originalFunctionOpt = functionsService.findById(functionId);
+            if (originalFunctionOpt.isEmpty()) {
+                logger.warn("Функция с ID {} не найдена", functionId);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body(new ErrorResponse("Функция не найдена", "/api/v1/points/differential/" + functionId));
+            }
+            Functions originalFunctionEntity = originalFunctionOpt.get();
+
+            // Создаем новую функцию
+            Functions newFunction = new Functions();
+            newFunction.setName("Дифференцирование " + functionId);
+            newFunction.setSignature("d" + functionId + "/dx");
+            newFunction.setUserId(originalFunctionEntity.getUserId());
+            Functions savedFunction = functionsService.save(newFunction);
+
+            // Создаем точки для дифференцированной функции (пропускаем первую точку)
+            List<Points> diffPoints = new ArrayList<>();
+            for (int i = 1; i < originalFunction.getCount(); i++) {
+                double x = originalFunction.getX(i);
+                double y = differentiatedFunction.apply(x);
+
+                Points point = new Points();
+                point.setFunctionId(savedFunction.getId());
+                point.setX(x);
+                point.setY(y);
+                diffPoints.add(point);
+            }
+
+            // Сохраняем точки
+            List<Points> savedPoints = pointsService.saveAll(diffPoints);
+
+            // Формируем ответ в требуемом формате
+            Map<String, Object> response = new HashMap<>();
+            response.put("dfunctionId", functionId);
+            response.put("functionId", savedFunction.getId());
+
+            List<Map<String, Double>> pointsList = savedPoints.stream()
+                    .map(point -> {
+                        Map<String, Double> pointMap = new HashMap<>();
+                        pointMap.put("xvalue", point.getX());
+                        pointMap.put("yvalue", point.getY());
+                        return pointMap;
+                    })
+                    .collect(Collectors.toList());
+
+            response.put("points", pointsList);
+
+            logger.info("Успешно выполнено дифференцирование функции {}. Создана новая функция с ID: {}",
+                    functionId, savedFunction.getId());
+
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            logger.error("Ошибка при дифференцировании функции с ID {}: {}", functionId, e.getMessage(), e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ErrorResponse("Внутренняя ошибка сервера", "/api/v1/points/differential/" + functionId));
+        }
+    }
+
+    // PUT /points/update/batch/{functionId} - Массовое обновление точек функции
+    @PutMapping("/update/batch/{functionId}")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<?> updatePointsBatch(
+            @PathVariable Long functionId,
+            @Valid @RequestBody UpdatePointsBatchRequest request) {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+
+        logger.info("Запрос на массовое обновление {} точек для функции {} пользователем: {}",
+                request.getPoints().size(), functionId, username);
+
+        try {
+            // Проверяем, что functionId в пути совпадает с functionId в теле запроса
+            if (!functionId.equals(request.getFunctionId())) {
+                logger.warn("Несоответствие functionId в пути ({}) и в теле ({})",
+                        functionId, request.getFunctionId());
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body(new ErrorResponse("ID функции в пути и в теле запроса не совпадают",
+                                "/api/v1/points/update/batch/" + functionId));
+            }
+
+            // Проверяем права доступа к функции
+            if (!canAccessFunction(functionId, authentication)) {
+                logger.warn("Пользователь {} пытается обновлять точки чужой функции {}",
+                        username, functionId);
+                return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                        .body(new ErrorResponse("Доступ запрещен к этой функции",
+                                "/api/v1/points/update/batch/" + functionId));
+            }
+
+            // Проверяем уникальность X значений в рамках одного запроса
+            Map<Double, Long> xValueCounts = request.getPoints().stream()
+                    .collect(Collectors.groupingBy(UpdatePointCoordinate::getXValue,
+                            Collectors.counting()));
+
+            List<Double> duplicateXValues = xValueCounts.entrySet().stream()
+                    .filter(entry -> entry.getValue() > 1)
+                    .map(Map.Entry::getKey)
+                    .collect(Collectors.toList());
+
+            if (!duplicateXValues.isEmpty()) {
+                logger.warn("Обнаружены дублирующиеся X значения в запросе: {}", duplicateXValues);
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body(new ErrorResponse("Обнаружены дублирующиеся X значения: " + duplicateXValues,
+                                "/api/v1/points/update/batch/" + functionId));
+            }
+
+            // Проверяем, не заняты ли новые X значения другими точками этой функции
+            List<Double> newXValues = request.getPoints().stream()
+                    .map(UpdatePointCoordinate::getXValue)
+                    .collect(Collectors.toList());
+
+            // Получаем существующие точки с такими X значениями (исключая обновляемые точки)
+            List<Long> updatingPointIds = request.getPoints().stream()
+                    .map(UpdatePointCoordinate::getId)
+                    .collect(Collectors.toList());
+
+            List<Points> conflictingPoints = pointsService.findByFunctionIdAndXInAndIdNotIn(
+                    functionId, newXValues, updatingPointIds);
+
+            if (!conflictingPoints.isEmpty()) {
+                List<Double> conflictingXValues = conflictingPoints.stream()
+                        .map(Points::getX)
+                        .collect(Collectors.toList());
+                logger.warn("Конфликтующие X значения: {}", conflictingXValues);
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body(new ErrorResponse("Точки с такими X значениями уже существуют: " + conflictingXValues,
+                                "/api/v1/points/update/batch/" + functionId));
+            }
+
+            // Выполняем массовое обновление
+            List<Points> updatedPoints = pointsService.updatePointsBatch(functionId, request.getPoints());
+            List<PointDTO> pointDTOs = convertToDTO(updatedPoints);
+
+            logger.info("Успешно обновлено {} точек для функции {}", pointDTOs.size(), functionId);
+
+            return ResponseEntity.ok(pointDTOs);
+
+        } catch (IllegalArgumentException e) {
+            logger.warn("Ошибка при массовом обновлении точек: {}", e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(new ErrorResponse(e.getMessage(), "/api/v1/points/update/batch/" + functionId));
+        } catch (Exception e) {
+            logger.error("Ошибка при массовом обновлении точек для функции {}: {}",
+                    functionId, e.getMessage(), e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ErrorResponse("Внутренняя ошибка сервера",
+                            "/api/v1/points/update/batch/" + functionId));
         }
     }
 
