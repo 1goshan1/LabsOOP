@@ -11,3 +11,312 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* Стили для инклюзивности */
+
+/* Большой текст */
+.large-text {
+  font-size: 18px;
+}
+
+.large-text .MuiTypography-h4 {
+  font-size: 2.5rem;
+}
+
+.large-text .MuiTypography-h6 {
+  font-size: 1.5rem;
+}
+
+.large-text .MuiTypography-body1 {
+  font-size: 1.2rem;
+}
+
+.large-text .MuiTypography-body2 {
+  font-size: 1.1rem;
+}
+
+.large-text .MuiButton-root {
+  font-size: 1.1rem;
+  padding: 10px 20px;
+}
+
+/* Высокая контрастность */
+.high-contrast {
+  --primary-color: #000000;
+  --secondary-color: #ffffff;
+  --background-color: #ffffff;
+  --text-color: #000000;
+}
+
+.high-contrast .MuiCard-root {
+  border: 2px solid #000000;
+}
+
+.high-contrast .MuiButton-contained {
+  background-color: #000000;
+  color: #ffffff;
+  border: 2px solid #000000;
+}
+
+.high-contrast .MuiButton-outlined {
+  border: 2px solid #000000;
+  color: #000000;
+}
+
+/* Режим для дальтоников */
+.color-blind-friendly {
+  /* Используем цвета, различимые для людей с различными формами дальтонизма */
+  --primary-color: #0066cc;
+  --success-color: #339933;
+  --warning-color: #ff9900;
+  --error-color: #cc0000;
+}
+
+.color-blind-friendly .MuiAlert-standardSuccess {
+  background-color: #e6f7e6;
+  border: 1px solid #339933;
+}
+
+.color-blind-friendly .MuiAlert-standardError {
+  background-color: #ffe6e6;
+  border: 1px solid #cc0000;
+}
+
+.color-blind-friendly .MuiAlert-standardWarning {
+  background-color: #fff5e6;
+  border: 1px solid #ff9900;
+}
+
+/* Уменьшение движения */
+.reduced-motion * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+.reduced-motion .MuiSwitch-track {
+  transition: none;
+}
+
+.reduced-motion .MuiButton-root {
+  transition: none;
+}
+
+/* Улучшенная фокусировка для клавиатурной навигации */
+.MuiButton-root:focus-visible,
+.MuiSwitch-root:focus-visible,
+.MuiSelect-select:focus-visible {
+  outline: 3px solid #0066cc;
+  outline-offset: 2px;
+}
+
+/* Улучшения для скринридеров */
+[aria-live="polite"] {
+  position: relative;
+}
+
+/* Скрытие декоративных элементов от скринридеров */
+.decorative {
+  aria-hidden: true;
+}
+/* Стили для инклюзивности */
+
+/* Большой текст */
+.large-text {
+  font-size: 18px;
+}
+
+.large-text .MuiTypography-h4 {
+  font-size: 2.5rem !important;
+}
+
+.large-text .MuiTypography-h5 {
+  font-size: 2rem !important;
+}
+
+.large-text .MuiTypography-h6 {
+  font-size: 1.5rem !important;
+}
+
+.large-text .MuiTypography-body1 {
+  font-size: 1.2rem !important;
+  line-height: 1.6 !important;
+}
+
+.large-text .MuiTypography-body2 {
+  font-size: 1.1rem !important;
+  line-height: 1.5 !important;
+}
+
+.large-text .MuiButton-root {
+  font-size: 1.1rem !important;
+  padding: 10px 20px !important;
+  min-height: 48px !important;
+}
+
+.large-text .MuiTextField-root .MuiInputBase-input {
+  font-size: 1.1rem !important;
+}
+
+.large-text .MuiSelect-select {
+  font-size: 1.1rem !important;
+}
+
+.large-text .MuiAlert-root {
+  font-size: 1.1rem !important;
+}
+
+.large-text .MuiAlert-icon {
+  font-size: 1.3rem !important;
+}
+
+.large-text .MuiTableCell-root {
+  font-size: 1.1rem !important;
+  padding: 12px 16px !important;
+}
+
+/* Высокая контрастность */
+.high-contrast {
+  --primary-contrast: #000000;
+  --secondary-contrast: #ffffff;
+}
+
+.high-contrast .MuiCard-root {
+  border: 2px solid !important;
+}
+
+.high-contrast .MuiPaper-root {
+  border: 1px solid !important;
+}
+
+.high-contrast .MuiButton-outlined {
+  border-width: 2px !important;
+}
+
+.high-contrast .MuiTextField-root .MuiOutlinedInput-root fieldset {
+  border-width: 2px !important;
+}
+
+.high-contrast .MuiSelect-root .MuiOutlinedInput-notchedOutline {
+  border-width: 2px !important;
+}
+
+.high-contrast .MuiAlert-root {
+  border: 2px solid !important;
+}
+
+.high-contrast .MuiTable-root {
+  border: 2px solid !important;
+}
+
+.high-contrast .MuiTableCell-root {
+  border-bottom: 2px solid !important;
+}
+
+.high-contrast .MuiAppBar-root {
+  border-bottom: 2px solid !important;
+}
+
+.high-contrast .MuiDrawer-paper {
+  border-right: 2px solid !important;
+}
+
+/* Режим для дальтоников */
+.color-blind-friendly .MuiChip-colorPrimary {
+  background-color: #4dabf5 !important;
+}
+
+.color-blind-friendly .MuiChip-colorSecondary {
+  background-color: #ffa726 !important;
+}
+
+.color-blind-friendly .MuiChip-colorSuccess {
+  background-color: #69db7c !important;
+}
+
+.color-blind-friendly .MuiChip-colorError {
+  background-color: #ff6b6b !important;
+}
+
+.color-blind-friendly .MuiChip-colorWarning {
+  background-color: #ffd93d !important;
+}
+
+.color-blind-friendly .MuiChip-colorInfo {
+  background-color: #51cf66 !important;
+}
+
+/* Уменьшение движения */
+.reduced-motion * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+.reduced-motion .MuiSwitch-track {
+  transition: none !important;
+}
+
+.reduced-motion .MuiSwitch-thumb {
+  transition: none !important;
+}
+
+.reduced-motion .MuiButton-root {
+  transition: none !important;
+}
+
+.reduced-motion .MuiCard-root {
+  transition: none !important;
+}
+
+.reduced-motion .MuiPaper-root {
+  transition: none !important;
+}
+
+/* Улучшенная фокусировка для клавиатурной навигации */
+.MuiButton-root:focus-visible,
+.MuiSwitch-root:focus-visible,
+.MuiSelect-select:focus-visible,
+.MuiTextField-root:focus-visible .MuiInputBase-input,
+.MuiCheckbox-root:focus-visible,
+.MuiRadio-root:focus-visible {
+  outline: 3px solid #0066cc !important;
+  outline-offset: 2px !important;
+}
+
+.high-contrast .MuiButton-root:focus-visible,
+.high-contrast .MuiSwitch-root:focus-visible,
+.high-contrast .MuiSelect-select:focus-visible,
+.high-contrast .MuiTextField-root:focus-visible .MuiInputBase-input,
+.high-contrast .MuiCheckbox-root:focus-visible,
+.high-contrast .MuiRadio-root:focus-visible {
+  outline: 3px solid #ffff00 !important;
+  outline-offset: 2px !important;
+}
+
+/* Улучшения для скринридеров */
+[aria-live="polite"] {
+  position: relative;
+}
+
+/* Скрытие декоративных элементов от скринридеров */
+.decorative {
+  aria-hidden: true;
+}
+
+/* Улучшенная читаемость для высокого контраста */
+@media (prefers-contrast: high) {
+  .high-contrast {
+    --primary-contrast: #000000;
+    --secondary-contrast: #ffffff;
+  }
+}
+
+/* Поддержка prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .reduced-motion * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

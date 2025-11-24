@@ -6,13 +6,16 @@ import { useAuth } from '../context/AuthContext';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
+// Регулярные выражения для валидации
+const LOGIN_PATTERN = /^[a-zA-Z0-9_]{3,20}$/;
+const PASSWORD_PATTERN = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,32}$/;
+
 const LoginSchema = Yup.object().shape({
   username: Yup.string()
-    .min(3, 'Логин должен содержать не менее 3 символов')
-    .max(20, 'Логин должен содержать не более 20 символов')
+    .matches(LOGIN_PATTERN, 'Логин должен содержать 3-20 символов (только латинские буквы, цифры и _)')
     .required('Логин обязателен'),
   password: Yup.string()
-    .min(8, 'Пароль должен содержать не менее 8 символов')
+    .matches(PASSWORD_PATTERN, 'Пароль должен содержать 8-32 символа, включая минимум одну заглавную букву, одну строчную букву и одну цифру')
     .required('Пароль обязателен'),
 });
 
@@ -52,7 +55,7 @@ const LoginPage = () => {
           validationSchema={LoginSchema}
           onSubmit={handleSubmit}
         >
-          {({ isSubmitting }) => (
+          {({ isSubmitting, errors, touched }) => (
             <Form>
               <Field
                 as={TextField}
@@ -61,9 +64,9 @@ const LoginPage = () => {
                 fullWidth
                 margin="normal"
                 disabled={loading}
-                error={false}
+                error={errors.username && touched.username}
+                helperText={<ErrorMessage name="username" />}
               />
-              <ErrorMessage name="username" component="div" style={{ color: 'red', fontSize: '0.75rem', marginTop: '-8px', marginBottom: '8px' }} />
 
               <Field
                 as={TextField}
@@ -73,9 +76,9 @@ const LoginPage = () => {
                 fullWidth
                 margin="normal"
                 disabled={loading}
-                error={false}
+                error={errors.password && touched.password}
+                helperText={<ErrorMessage name="password" />}
               />
-              <ErrorMessage name="password" component="div" style={{ color: 'red', fontSize: '0.75rem', marginTop: '-8px', marginBottom: '16px' }} />
 
               <Button
                 type="submit"

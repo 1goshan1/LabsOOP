@@ -6,6 +6,7 @@ import {
   Card,
   CardContent,
   CardHeader,
+  CardActions,
   FormControl,
   InputLabel,
   Select,
@@ -89,6 +90,7 @@ const DifferentiationPage = () => {
 
       // Получаем результат дифференцирования
       const diffData = await getDifferentiatedPoints(selectedFunctionId);
+      console.log('Результат дифференцирования:', diffData); // <-- ДОБАВЬ ЭТО
       setDifferentiatedData(diffData);
 
       setHasResult(true);
@@ -209,20 +211,7 @@ const DifferentiationPage = () => {
           {/* Результат дифференцирования */}
           <Grid item xs={12} md={6}>
             <Card>
-              <CardHeader
-                title="Результат дифференцирования"
-                action={differentiatedData?.dfunctionId && (
-                  <Button
-                    component={Link}
-                    to={`/functions/${differentiatedData.dfunctionId}/graph`}
-                    variant="outlined"
-                    size="small"
-                    sx={{ mt: 1 }}
-                  >
-                    Просмотреть график
-                  </Button>
-                )}
-              />
+              <CardHeader title="Результат дифференцирования" />
               <CardContent sx={{ height: 400 }}>
                 {differentiatedData?.points?.length > 0 ? (
                   <ResponsiveContainer width="100%" height="100%">
@@ -255,12 +244,29 @@ const DifferentiationPage = () => {
                     </Typography>
                   </Box>
                 )}
-                {differentiatedData?.dfunctionId && (
-                  <Typography variant="body2" color="textSecondary" sx={{ mt: 1 }}>
-                    Создана новая функция с ID: {differentiatedData.dfunctionId}
-                  </Typography>
-                )}
               </CardContent>
+
+              {differentiatedData?.dfunctionId && (
+                <CardActions sx={{ justifyContent: 'center', pb: 2, flexDirection: 'column' }}>
+                  <Button
+                    component={Link}
+                    to={`/functions/${differentiatedData.functionId}/graph`}
+                    variant="contained"
+                    size="large"
+                    color="primary"
+                    sx={{ maxWidth: 400, width: '100%' }}
+                  >
+                    Перейти к графику новой функции
+                  </Button>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    sx={{ mt: 1, textAlign: 'center' }}
+                  >
+                    Создана функция: f'(x) (ID: {differentiatedData.functionId})
+                  </Typography>
+                </CardActions>
+              )}
             </Card>
           </Grid>
         </Grid>

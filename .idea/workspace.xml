@@ -4,26 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39e2e6aa-65c5-4953-ae88-51a1bbb00bae" name="Changes" comment="first part of 7th lab">
-      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/CompositeFunctionsPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/DifferentiationPage.js" afterDir="false" />
+    <list default="true" id="39e2e6aa-65c5-4953-ae88-51a1bbb00bae" name="Changes" comment="тушил сигу в казаках от мартин роуз">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lab2/logs/application.log" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/logs/application.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/jdbc/PointDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/jdbc/PointDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/api/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/api/functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/api/functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/api/points.js" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/api/points.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/components/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/components/Layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/api/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/api/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/context/ThemeContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/context/ThemeContext.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/FunctionEditorPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/FunctionEditorPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/GraphViewerPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/GraphViewerPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/DifferentiationPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/DifferentiationPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/LoginPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/OperationsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/OperationsPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/reportWebVitals.js" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/reportWebVitals.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/web/FunctionServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/web/FunctionServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/web/PointServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/web/PointServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/RegisterPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/RegisterPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/SettingsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/SettingsPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -398,7 +393,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763916033333</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="тушил сигу в казаках от мартин роуз">
+      <option name="closed" value="true" />
+      <created>1764003109012</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1764003109012</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -433,7 +436,8 @@
     <MESSAGE value="added writeTabulatedFunction with BufferedOutputStream, TabulatedFunctionFileOutputStream(kind of a test cause contains main())" />
     <MESSAGE value="added readTabulatedFunction with BufferedInputStream, TabulatedFunctionFileInputStream(kind of a test cause contains main())" />
     <MESSAGE value="first part of 7th lab" />
-    <option name="LAST_COMMIT_MESSAGE" value="first part of 7th lab" />
+    <MESSAGE value="тушил сигу в казаках от мартин роуз" />
+    <option name="LAST_COMMIT_MESSAGE" value="тушил сигу в казаках от мартин роуз" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/LabsOOP$All_in_LabsOOP.ic" NAME="All in LabsOOP Coverage Results" MODIFIED="1760305022206" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />

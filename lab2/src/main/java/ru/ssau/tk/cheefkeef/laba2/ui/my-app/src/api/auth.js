@@ -1,18 +1,14 @@
 import api from './api';
 
 export const login = async (username, password) => {
-  // Кодируем учетные данные для Basic Auth
-  const token = btoa(`${username}:${password}`);
-
-  // Проверяем подключение с учетными данными
   try {
-    const response = await api.get('/users/search/by-login/'+username, {
+    const token = btoa(`${username}:${password}`);
+    const response = await api.get(`/users/search/by-login/${username}`, {
       headers: {
         'Authorization': `Basic ${token}`
       }
     });
-    console.log(response)
-    // Сохраняем токен и информацию о пользователе
+
     const user = {
       username,
       token,
@@ -23,21 +19,40 @@ export const login = async (username, password) => {
     localStorage.setItem('user', JSON.stringify(user));
     return user;
   } catch (error) {
-    throw new Error('Неверные учетные данные');
+    throw new Error(error.message || 'Неверные учетные данные');
   }
 };
 
 export const register = async (userData) => {
   try {
-    const response = await api.post('/users', userData);
+    // Временное решение: используем дефолтные учетные данные администратора
+    // ЗАМЕНИТЕ 'admin:admin' на реальные учетные данные администратора
+    const adminCredentials = btoa('admin:admin123');
+
+    const response = await api.post('/users', userData, {
+      headers: {
+        'Authorization': `Basic ${adminCredentials}`
+      }
+    });
     return response.data;
   } catch (error) {
-    throw new Error('Ошибка при регистрации');
+    if (error.response && error.response.status === 401) {
+      throw new Error('Ошибка авторизации. Регистрация требует прав администратора.');
+    }
+    throw new Error(error.message || 'Ошибка при регистрации');
   }
 };
 
 export const getCurrentUser = () => {
-  return JSON.parse(localStorage.getItem('user'));
+  const userStr = localStorage.getItem('user');
+  if (!userStr) return null;
+
+  try {
+    return JSON.parse(userStr);
+  } catch (error) {
+    localStorage.removeItem('user');
+    return null;
+  }
 };
 
 export const logout = () => {

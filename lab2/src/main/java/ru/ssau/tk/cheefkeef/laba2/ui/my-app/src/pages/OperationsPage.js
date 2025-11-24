@@ -42,6 +42,56 @@ const OperationsPage = () => {
 
   const fileInputRef = useRef(null);
 
+  // Функция для извлечения читаемого сообщения об ошибке
+  const getErrorMessage = (error) => {
+    console.log('Full error object:', error);
+
+    // Если ошибка в формате строки
+    if (typeof error === 'string') {
+      return error;
+    }
+
+    // Если это объект ошибки с response.data
+    if (error.response?.data) {
+      const errorData = error.response.data;
+
+      // Если сервер возвращает объект с полем error
+      if (typeof errorData === 'object' && errorData.error) {
+        return errorData.error;
+      }
+
+      // Если сервер возвращает просто сообщение
+      if (typeof errorData === 'object' && errorData.message) {
+        return errorData.message;
+      }
+
+      // Если это строка JSON
+      if (typeof errorData === 'string') {
+        try {
+          const parsedError = JSON.parse(errorData);
+          return parsedError.error || parsedError.message || 'Неизвестная ошибка сервера';
+        } catch {
+          return errorData;
+        }
+      }
+
+      // Если это объект, попробуем преобразовать в строку
+      return JSON.stringify(errorData);
+    }
+
+    // Если есть message
+    if (error.message) {
+      return error.message;
+    }
+
+    // Если это обычный объект
+    if (typeof error === 'object') {
+      return JSON.stringify(error);
+    }
+
+    return 'Неизвестная ошибка';
+  };
+
   useEffect(() => {
     const loadFunctions = async () => {
       try {
@@ -67,7 +117,7 @@ const OperationsPage = () => {
           setFunction1Points(points1);
           setEditablePoints(prev => ({ ...prev, first: points1.map(p => ({ ...p })) }));
         } catch (err) {
-          toast.error('Ошибка при загрузке точек первой функции');
+          toast.error('Ошибка при загрузке точек первой функции: ' + getErrorMessage(err));
           console.error(err);
         }
       } else {
@@ -81,7 +131,7 @@ const OperationsPage = () => {
           setFunction2Points(points2);
           setEditablePoints(prev => ({ ...prev, second: points2.map(p => ({ ...p })) }));
         } catch (err) {
-          toast.error('Ошибка при загрузке точек второй функции');
+          toast.error('Ошибка при загрузке точек второй функции: ' + getErrorMessage(err));
           console.error(err);
         }
       } else {
@@ -157,8 +207,8 @@ const OperationsPage = () => {
 
       toast.success(`Точки ${functionType === 'first' ? 'первой' : functionType === 'second' ? 'второй' : 'десериализованной'} функции успешно обновлены!`);
     } catch (err) {
-      toast.error(`Ошибка при сохранении точек: ${err.response?.data?.message || err.message}`);
-      console.error(err);
+      toast.error(`Ошибка при сохранении точек: ${getErrorMessage(err)}`);
+      console.error('Save points error:', err);
     } finally {
       setSavingPoints(prev => ({ ...prev, [functionType]: false }));
     }
@@ -222,8 +272,9 @@ const OperationsPage = () => {
 
       toast.success('Операция успешно выполнена!');
     } catch (err) {
-      toast.error('Ошибка при выполнении операции: ' + (err.response?.data?.message || err.message));
-      console.error(err);
+      const errorMessage = getErrorMessage(err);
+      toast.error(`Ошибка при выполнении операции: ${errorMessage}`);
+      console.error('Operation error:', err);
     } finally {
       setOperationLoading(false);
     }
@@ -274,8 +325,8 @@ const OperationsPage = () => {
 
       toast.success('Функция успешно десериализована!');
     } catch (err) {
-      toast.error('Ошибка при десериализации: ' + (err.response?.data?.message || err.message));
-      console.error(err);
+      toast.error('Ошибка при десериализации: ' + getErrorMessage(err));
+      console.error('Deserialization error:', err);
     } finally {
       setDeserializationLoading(false);
       // Reset file input
@@ -323,8 +374,8 @@ const OperationsPage = () => {
 
       toast.success('Функция успешно сериализована и скачана!');
     } catch (err) {
-      toast.error('Ошибка при сериализации: ' + (err.response?.data?.message || err.message));
-      console.error(err);
+      toast.error('Ошибка при сериализации: ' + getErrorMessage(err));
+      console.error('Serialization error:', err);
     }
   };
 
@@ -352,8 +403,8 @@ const OperationsPage = () => {
 
       toast.success('Десериализованная функция успешно скачана!');
     } catch (err) {
-      toast.error('Ошибка при скачивании десериализованной функции: ' + (err.response?.data?.message || err.message));
-      console.error(err);
+      toast.error('Ошибка при скачивании десериализованной функции: ' + getErrorMessage(err));
+      console.error('Download deserialized error:', err);
     }
   };
 
