@@ -3,11 +3,13 @@ package ru.ssau.tk.cheefkeef.laba2.jdbc;
 import ru.ssau.tk.cheefkeef.laba2.models.Point;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.ssau.tk.cheefkeef.laba2.web.PointServlet;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class PointDAO {
     private static final Logger logger = LoggerFactory.getLogger(PointDAO.class);
@@ -509,5 +511,79 @@ public class PointDAO {
         logger.trace("Маппинг ResultSet в Point: id={}, functionId={}, x={}, y={}",
                 point.getId(), point.getFunctionId(), point.getXValue(), point.getYValue());
         return point;
+    }
+    /**
+     * Массовое обновление точек
+     * @param functionId ID функции
+     * @param points данные для обновления
+     * @return список обновленных точек
+     */
+    public List<Point> updatePointsBatch(Integer functionId, List<PointServlet.UpdatePointCoordinate> points) {
+        logger.info("Массовое обновление {} точек для функции {}", points.size(), functionId);
+        List<Point> result = new ArrayList<>();
+
+        for (PointServlet.UpdatePointCoordinate coord : points) {
+            Optional<Point> pointOpt = findById(coord.getId());
+            if (pointOpt.isPresent()) {
+                Point point = pointOpt.get();
+                // Проверка принадлежности точки к функции
+                if (point.getFunctionId().equals(functionId)) {
+                    point.setXValue(coord.getXValue());
+                    point.setYValue(coord.getYValue());
+                    if (update(point)) {
+                        result.add(point);
+                    }
+                }
+            }
+        }
+
+        logger.info("Успешно обновлено {} точек для функции {}", result.size(), functionId);
+        return result;
+    }
+
+    /**
+     * Поиск точек по ID функции и списку X значений, исключая точки с определенными ID
+     * @param functionId ID функции
+     * @param xValues список X значений
+     * @param excludedIds список ID для исключения
+     * @return список точек
+     */
+    public List<Point> findByFunctionIdAndXInAndIdNotIn(Integer functionId, List<Double> xValues, List<Integer> excludedIds) {
+        logger.debug("Поиск точек по functionId={}, xValues={}, исключая ID {}",
+                functionId, xValues, excludedIds);
+
+        List<Point> result = new ArrayList<>();
+        String sql = "SELECT id, f_id, x_value, y_value FROM points " +
+                "WHERE f_id = ? AND x_value IN (";
+
+        // Формируем placeholder для X значений
+        String placeholders = xValues.stream()
+                .map(x -> "?")
+                .collect(Collectors.joining(","));
+        sql += placeholders + ") AND id NOT IN (" +
+                excludedIds.stream().map(String::valueOf).collect(Collectors.joining(",")) +
+                ") ORDER BY x_value";
+
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setInt(1, functionId);
+
+            // Устанавливаем значения для X
+            for (int i = 0; i < xValues.size(); i++) {
+                statement.setDouble(2 + i, xValues.get(i));
+            }
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    result.add(mapResultSetToPoint(resultSet));
+                }
+            }
+        } catch (SQLException e) {
+            logger.error("Ошибка при поиске точек по functionId и X: {}", e.getMessage());
+            throw new RuntimeException("Database error", e);
+        }
+
+        return result;
     }
 }

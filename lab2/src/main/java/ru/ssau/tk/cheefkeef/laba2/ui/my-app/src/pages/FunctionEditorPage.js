@@ -5,7 +5,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useAuth } from '../context/AuthContext';
 import { getFunctionById, createFunction, updateFunction } from '../api/functions';
-import { getPointsByFunctionId, createPointsBatch, updatePoint, deletePoint } from '../api/points';
+import { getPointsByFunctionId, createPointsBatch, updatePoint, deletePoint, getPointsByFunctionName } from '../api/points';
+import { updatePointsBatch } from '../api/points';
 
 const FunctionEditorPage = () => {
   const { id } = useParams();
@@ -24,10 +25,8 @@ const FunctionEditorPage = () => {
   const [loading, setLoading] = useState(false);
   const [mathFunctions, setMathFunctions] = useState([
     { id: 'identity', name: 'Тождественная функция', formula: 'f(x) = x' },
-    { id: 'square', name: 'Квадратичная функция', formula: 'f(x) = x²' },
-    { id: 'cube', name: 'Кубическая функция', formula: 'f(x) = x³' },
-    { id: 'sqrt', name: 'Квадратный корень', formula: 'f(x) = √x' },
-    { id: 'linear', name: 'Линейная функция', formula: 'f(x) = ax + b' },
+    { id: 'sqr', name: 'Квадратичная функция', formula: 'f(x) = x²' },
+    { id: 'constant', name: 'Кубическая функция', formula: 'f(x) = 1' },
   ]);
   const [selectedFunction, setSelectedFunction] = useState('');
   const [intervalFrom, setIntervalFrom] = useState(0);
@@ -92,9 +91,43 @@ const FunctionEditorPage = () => {
     setLoading(true);
     try {
       if (id) {
-        // Обновление существующей функции
+        // 1. Обновляем метаданные функции
         await updateFunction(id, functionData);
-        toast.success('Функция успешно обновлена');
+
+        // 2. Разделяем точки на существующие (id > 0) и новые (id < 0)
+        const existingPoints = points.filter(p => p.id > 0);
+        const newPoints = points.filter(p => p.id < 0);
+
+        // 3. Обновляем существующие точки
+        if (existingPoints.length > 0) {
+          const pointsToUpdate = existingPoints.map(p => ({
+            id: p.id,
+            xvalue: p.x,
+            yvalue: p.y
+          }));
+          await updatePointsBatch(id, pointsToUpdate);
+        }
+
+        // 4. Создаем новые точки
+        if (newPoints.length > 0) {
+          const pointsToCreate = newPoints.map(p => ({
+            xvalue: p.x,
+            yvalue: p.y
+          }));
+          await createPointsBatch(id, pointsToCreate);
+        }
+
+        // 5. ПЕРЕЗАГРУЖАЕМ ВСЕ ТОЧКИ для синхронизации с сервером
+        const refreshedPoints = await getPointsByFunctionId(id);
+        setPoints(refreshedPoints.map(p => ({
+          id: p.id,
+          x: p.xvalue,
+          y: p.yvalue,
+          isInsertable: true,
+          isRemovable: refreshedPoints.length > 2
+        })));
+
+        toast.success('Функция и точки успешно обновлены');
       } else {
         // Создание новой функции
         const newFunction = await createFunction(functionData);
@@ -141,14 +174,15 @@ const FunctionEditorPage = () => {
     }
 
     const newPoint = {
-      x: newX,
-      y: 0,
-      isInsertable: true,
-      isRemovable: true
-    };
+        id: Date.now() * -1, // Генерируем уникальный временный ID (отрицательный)
+        x: newX,
+        y: 0,
+        isInsertable: true,
+        isRemovable: true
+      };
 
-    newPoints.splice(index + 1, 0, newPoint);
-    setPoints(newPoints);
+      newPoints.splice(index + 1, 0, newPoint);
+      setPoints(newPoints);
   };
 
   const handleRemovePoint = async (index) => {
@@ -172,59 +206,49 @@ const FunctionEditorPage = () => {
     setPoints(newPoints);
   };
 
-  const handleCreateFromMathFunction = async () => {
-      // Исправленная проверка полей
-      if (!selectedFunction || pointCount < 2) {
-        toast.error('Выберите функцию и укажите количество точек (минимум 2)');
-        return;
-      }
+const handleCreateFromMathFunction = async () => {
+  if (!selectedFunction) {
+    toast.error('Выберите математическую функцию');
+    return;
+  }
+  if (pointCount < 2) {
+    toast.error('Количество точек должно быть не менее 2');
+    return;
+  }
+  if (intervalFrom >= intervalTo) {
+    toast.error('Начало интервала должно быть меньше конца');
+    return;
+  }
 
-      // Дополнительная проверка корректности интервала
-      if (intervalFrom >= intervalTo) {
-        toast.error('Начало интервала должно быть меньше конца интервала');
-        return;
-      }
+  setLoading(true);
+  try {
+    const data = await getPointsByFunctionName(
+      selectedFunction,
+      intervalFrom,
+      intervalTo,
+      pointCount
+    );
 
-      // Генерация точек на основе выбранной математической функции
-      const step = (intervalTo - intervalFrom) / (pointCount - 1);
-      const newPoints = [];
+    if (!data?.points || !Array.isArray(data.points)) {
+      throw new Error('Некорректный ответ от сервера');
+    }
+    console.log(data.points);
+    const newPoints = data.points.map(p => ({
+      x: p.xvalue,
+      y: p.yvalue,
+      isInsertable: true,
+      isRemovable: data.points.length > 2
+    }));
 
-      for (let i = 0; i < pointCount; i++) {
-        const x = intervalFrom + i * step;
-        let y = 0;
-
-        switch (selectedFunction) {
-          case 'identity':
-            y = x;
-            break;
-          case 'square':
-            y = x * x;
-            break;
-          case 'cube':
-            y = x * x * x;
-            break;
-          case 'sqrt':
-            y = x >= 0 ? Math.sqrt(x) : 0;
-            break;
-          case 'linear':
-            y = 2 * x + 1; // Пример линейной функции
-            break;
-          default:
-            y = x;
-        }
-
-        newPoints.push({
-          x,
-          y,
-          isInsertable: true,
-          isRemovable: pointCount > 2
-        });
-      }
-
-      setPoints(newPoints);
-      setIsCreatingFromFunction(false);
-      toast.success(`Создано ${pointCount} точек для функции`);
-    };
+    setPoints(newPoints);
+    toast.success(`Успешно загружено ${newPoints.length} точек`);
+  } catch (error) {
+    console.error('Ошибка при генерации точек:', error);
+    toast.error('Не удалось загрузить точки с сервера');
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <Box>
@@ -347,110 +371,111 @@ const FunctionEditorPage = () => {
             </Box>
           )}
 
-          {tabValue === 1 && (
-            <Box>
-              <Grid container spacing={2} sx={{ mb: 3 }}>
-                <Grid item xs={12} md={6}>
-                  <FormControl fullWidth>
-                    <InputLabel>Математическая функция</InputLabel>
-                    <Select
-                      value={selectedFunction}
-                      onChange={(e) => setSelectedFunction(e.target.value)}
-                      label="Математическая функция"
-                    >
-                      {mathFunctions.map((func) => (
-                        <MenuItem key={func.id} value={func.id}>
-                          {func.name} ({func.formula})
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                </Grid>
-                <Grid item xs={6} md={3}>
-                  <TextField
-                    fullWidth
-                    label="Начало интервала"
-                    type="number"
-                    value={intervalFrom}
-                    onChange={(e) => setIntervalFrom(parseFloat(e.target.value) || 0)}
-                  />
-                </Grid>
-                <Grid item xs={6} md={3}>
-                  <TextField
-                    fullWidth
-                    label="Конец интервала"
-                    type="number"
-                    value={intervalTo}
-                    onChange={(e) => setIntervalTo(parseFloat(e.target.value) || 0)}
-                  />
-                </Grid>
-                <Grid item xs={6} md={3}>
-                  <TextField
-                    fullWidth
-                    label="Количество точек"
-                    type="number"
-                    value={pointCount}
-                    onChange={(e) => setPointCount(Math.max(2, parseInt(e.target.value) || 2))}
-                    inputProps={{ min: 2 }}
-                  />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <Button
-                    variant="contained"
-                    onClick={handleCreateFromMathFunction}
-                    fullWidth
-                    startIcon={<AddIcon />}
-                  >
-                    Создать точки
-                  </Button>
-                </Grid>
-              </Grid>
+{tabValue === 1 && (
+  <Box>
+    <Grid container spacing={2} sx={{ mb: 3 }}>
+      <Grid item xs={12} md={6}>
+        <FormControl fullWidth>
+          <InputLabel>Математическая функция</InputLabel>
+          <Select
+            value={selectedFunction}
+            onChange={(e) => setSelectedFunction(e.target.value)}
+            label="Математическая функция"
+          >
+            {mathFunctions.map((func) => (
+              <MenuItem key={func.id} value={func.id}>
+                {func.name} ({func.formula})
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </Grid>
+      <Grid item xs={6} md={3}>
+        <TextField
+          fullWidth
+          label="Начало интервала"
+          type="number"
+          value={intervalFrom}
+          onChange={(e) => setIntervalFrom(parseFloat(e.target.value) || 0)}
+        />
+      </Grid>
+      <Grid item xs={6} md={3}>
+        <TextField
+          fullWidth
+          label="Конец интервала"
+          type="number"
+          value={intervalTo}
+          onChange={(e) => setIntervalTo(parseFloat(e.target.value) || 0)}
+        />
+      </Grid>
+      <Grid item xs={6} md={3}>
+        <TextField
+          fullWidth
+          label="Количество точек"
+          type="number"
+          value={pointCount}
+          onChange={(e) => setPointCount(Math.max(2, parseInt(e.target.value) || 2))}
+          inputProps={{ min: 2 }}
+        />
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <Button
+          variant="contained"
+          onClick={handleCreateFromMathFunction}
+          fullWidth
+          startIcon={<AddIcon />}
+          disabled={!selectedFunction || intervalFrom >= intervalTo || pointCount < 2 || loading}
+        >
+          {loading ? 'Генерация...' : 'Создать точки'}
+        </Button>
+      </Grid>
+    </Grid>
 
-              {points.length > 0 && (
-                <TableContainer component={Paper} sx={{ mt: 2 }}>
-                  <Table>
-                    <TableHead>
-                      <TableRow>
-                        <TableCell>№</TableCell>
-                        <TableCell>X</TableCell>
-                        <TableCell>Y</TableCell>
-                        <TableCell>Действия</TableCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      {points.map((point, index) => (
-                        <TableRow key={index}>
-                          <TableCell>{index + 1}</TableCell>
-                          <TableCell>{point.x.toFixed(2)}</TableCell>
-                          <TableCell>{point.y.toFixed(2)}</TableCell>
-                          <TableCell>
-                            <Box sx={{ display: 'flex', gap: 1 }}>
-                              <IconButton
-                                color="primary"
-                                onClick={() => handleInsertPoint(index)}
-                                title="Добавить точку после текущей"
-                              >
-                                <AddIcon />
-                              </IconButton>
-                              {point.isRemovable && (
-                                <IconButton
-                                  color="error"
-                                  onClick={() => handleRemovePoint(index)}
-                                  title="Удалить точку"
-                                >
-                                  <DeleteIcon />
-                                </IconButton>
-                              )}
-                            </Box>
-                          </TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-              )}
-            </Box>
-          )}
+    {points.length > 0 && (
+      <TableContainer component={Paper} sx={{ mt: 2 }}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>№</TableCell>
+              <TableCell>X</TableCell>
+              <TableCell>Y</TableCell>
+              <TableCell>Действия</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {points.map((point, index) => (
+              <TableRow key={index}>
+                <TableCell>{index + 1}</TableCell>
+                <TableCell>{point.x.toFixed(2)}</TableCell>
+                <TableCell>{point.y.toFixed(2)}</TableCell>
+                <TableCell>
+                  <Box sx={{ display: 'flex', gap: 1 }}>
+                    <IconButton
+                      color="primary"
+                      onClick={() => handleInsertPoint(index)}
+                      title="Добавить точку после текущей"
+                    >
+                      <AddIcon />
+                    </IconButton>
+                    {point.isRemovable && (
+                      <IconButton
+                        color="error"
+                        onClick={() => handleRemovePoint(index)}
+                        title="Удалить точку"
+                      >
+                        <DeleteIcon />
+                      </IconButton>
+                    )}
+                  </Box>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    )}
+  </Box>
+)}
 
           {tabValue === 2 && id && (
             <Box>

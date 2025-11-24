@@ -35,3 +35,21 @@ export const getFunctionCountForUser = async (userId) => {
   const response = await api.get(`/functions/users/${userId}/count`);
   return response.data.count;
 };
+
+
+export const performOperation = async (functionId1, functionId2, operation) => {
+  const response = await api.get(`/functions/operations/${functionId1}/${functionId2}/${operation}`);
+  return response.data;
+};
+
+export const deserializeFunction = async (serializedFunction) => {
+  const response = await api.post('/functions/deserialize', { serializedFunction });
+  return response.data;
+};
+
+export const serializeFunction = async (functionId) => {
+  const response = await api.get(`/functions/serialize/${functionId}`, {
+    responseType: 'text' // Important for non-JSON response
+  });
+  return response.data;
+};

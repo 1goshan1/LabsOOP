@@ -5,8 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39e2e6aa-65c5-4953-ae88-51a1bbb00bae" name="Changes" comment="first part of 7th lab">
+      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/CompositeFunctionsPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/DifferentiationPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lab2/logs/application.log" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/logs/application.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/jdbc/PointDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/jdbc/PointDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/api/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/api/functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/api/functions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/api/points.js" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/api/points.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/components/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/components/Layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/FunctionEditorPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/FunctionEditorPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/GraphViewerPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/GraphViewerPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/OperationsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/OperationsPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/reportWebVitals.js" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/reportWebVitals.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/web/FunctionServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/web/FunctionServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/web/PointServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/web/PointServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +39,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="framework" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{

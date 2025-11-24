@@ -9,6 +9,8 @@ import { getFunctionById } from '../api/functions';
 import { getPointsByFunctionId } from '../api/points';
 import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
 import { Grid } from '@mui/material';
+import { interpolatePoint } from '../api/points';
+
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
 
@@ -45,51 +47,33 @@ const GraphViewerPage = () => {
     loadData();
   }, [id]);
 
-  const handleCalculate = () => {
+  const handleCalculate = async () => {
     if (!xValue || isNaN(xValue)) {
       toast.error('Введите корректное значение X');
       return;
     }
 
-    const x = parseFloat(xValue);
-    let y = 0;
-
-    if (interpolationMethod === 'linear') {
-      // Простая линейная интерполяция
-      const sortedPoints = [...points].sort((a, b) => a.x - b.x);
-      let y1, y2, x1, x2;
-
-      for (let i = 0; i < sortedPoints.length - 1; i++) {
-        if (x >= sortedPoints[i].x && x <= sortedPoints[i + 1].x) {
-          x1 = sortedPoints[i].x;
-          y1 = sortedPoints[i].y;
-          x2 = sortedPoints[i + 1].x;
-          y2 = sortedPoints[i + 1].y;
-
-          // Линейная интерполяция: y = y1 + (y2 - y1) * (x - x1) / (x2 - x1)
-          y = y1 + (y2 - y1) * (x - x1) / (x2 - x1);
-          break;
-        }
-      }
-    } else if (interpolationMethod === 'polynomial') {
-      // Полиномиальная интерполяция (Лагранж)
-      if (points.length >= 2) {
-        let result = 0;
-        for (let i = 0; i < points.length; i++) {
-          let term = points[i].y;
-          for (let j = 0; j < points.length; j++) {
-            if (i !== j) {
-              term *= (x - points[j].x) / (points[i].x - points[j].x);
-            }
-          }
-          result += term;
-        }
-        y = result;
-      }
+    if (!id) {
+      toast.error('ID функции не определён');
+      return;
     }
 
-    setYResult(y.toFixed(4));
-    toast.success(`Значение функции в точке x = ${xValue}: y = ${y.toFixed(4)}`);
+    try {
+      const x = parseFloat(xValue);
+      const result = await interpolatePoint(id, x); // вызов API
+      const y = result.yvalue;
+
+      setYResult(y.toFixed(4));
+      toast.success(`Значение функции в точке x = ${xValue}: y = ${y.toFixed(4)}`);
+    } catch (err) {
+      console.error('Ошибка интерполяции:', err);
+      let message = 'Не удалось рассчитать значение функции';
+      if (err.response?.status === 400) {
+        message = 'Значение X выходит за пределы диапазона точек функции';
+      }
+      toast.error(message);
+      setYResult('');
+    }
   };
 
   const getChartOptions = () => {

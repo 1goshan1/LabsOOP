@@ -13,6 +13,9 @@ import FunctionEditorPage from './pages/FunctionEditorPage';
 import GraphViewerPage from './pages/GraphViewerPage';
 import OperationsPage from './pages/OperationsPage';
 import SettingsPage from './pages/SettingsPage';
+import DifferentiationPage from './pages/DifferentiationPage';
+import CompositeFunctionsPage from './pages/CompositeFunctionsPage';
+
 
 // Защищенный маршрут
 const PrivateRoute = ({ children }) => {
@@ -79,6 +82,22 @@ function App() {
                 element={
                   <PrivateRoute>
                     <OperationsPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/differentiation"
+                element={
+                  <PrivateRoute>
+                    <DifferentiationPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/composite-functions"
+                element={
+                  <PrivateRoute>
+                    <CompositeFunctionsPage />
                   </PrivateRoute>
                 }
               />

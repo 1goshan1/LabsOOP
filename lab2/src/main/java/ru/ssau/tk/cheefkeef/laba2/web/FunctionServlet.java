@@ -1,26 +1,38 @@
 package ru.ssau.tk.cheefkeef.laba2.web;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.ssau.tk.cheefkeef.laba2.auth.AuthorizationService;
 import ru.ssau.tk.cheefkeef.laba2.dto.FunctionDTO;
+import ru.ssau.tk.cheefkeef.laba2.dto.PointDTO;
 import ru.ssau.tk.cheefkeef.laba2.dto.UserIdsRequest;
+import ru.ssau.tk.cheefkeef.laba2.exceptions.InconsistentFunctionsException;
+import ru.ssau.tk.cheefkeef.laba2.functions.*;
+import ru.ssau.tk.cheefkeef.laba2.functions.factory.ArrayTabulatedFunctionFactory;
+import ru.ssau.tk.cheefkeef.laba2.functions.factory.TabulatedFunctionFactory;
+import ru.ssau.tk.cheefkeef.laba2.io.FunctionsIO;
 import ru.ssau.tk.cheefkeef.laba2.jdbc.FunctionDAO;
+import ru.ssau.tk.cheefkeef.laba2.jdbc.PointDAO;
 import ru.ssau.tk.cheefkeef.laba2.mapper.FunctionMapper;
+import ru.ssau.tk.cheefkeef.laba2.mapper.PointMapper;
 import ru.ssau.tk.cheefkeef.laba2.models.Function;
+import ru.ssau.tk.cheefkeef.laba2.models.Point;
 import ru.ssau.tk.cheefkeef.laba2.models.User;
+import ru.ssau.tk.cheefkeef.laba2.operations.TabulatedFunctionOperationService;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
+import java.util.Base64;
 @WebServlet("/api/v1/functions/*")
 public class FunctionServlet extends BaseServlet {
     private static final Logger logger = LoggerFactory.getLogger(FunctionServlet.class);
     private final FunctionDAO functionDAO = new FunctionDAO();
+    private final PointDAO pointDAO = new PointDAO(); // Инициализируем PointDAO
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -39,7 +51,8 @@ public class FunctionServlet extends BaseServlet {
                 handleGetFunctionById(pathInfo.substring(1), req, resp);
             } else if (pathInfo.equals("/search")) {
                 handleSearchFunctions(req, resp);
-            } else if (pathInfo.startsWith("/search/by-name/")) {
+            }
+              else if (pathInfo.startsWith("/search/by-name/")) {
                 handleSearchByName(pathInfo.substring("/search/by-name/".length()), req, resp);
             } else if (pathInfo.startsWith("/search/by-user/")) {
                 handleSearchByUserId(pathInfo.substring("/search/by-user/".length()), req, resp);
@@ -49,6 +62,10 @@ public class FunctionServlet extends BaseServlet {
                 handleGetFunctionCountForUser(pathInfo, req, resp);
             } else if (pathInfo.equals("/exists")) {
                 handleCheckFunctionExists(req, resp);
+            } else if (pathInfo.startsWith("/operations/")) {
+                handleFunctionOperations(pathInfo.substring("/operations/".length()), req, resp);
+            } else if (pathInfo.startsWith("/serialize/")) {
+                handleSerializeFunction(pathInfo.substring("/serialize/".length()), req, resp);
             } else {
                 handleError(resp, 400, "Неверный путь", req.getRequestURI());
             }
@@ -73,6 +90,8 @@ public class FunctionServlet extends BaseServlet {
             String pathInfo = req.getPathInfo();
             if (pathInfo == null || pathInfo.equals("/") || pathInfo.equals("")) {
                 handleCreateFunction(req, resp);
+            } else if (pathInfo != null && pathInfo.equals("/deserialize")) {
+                handleDeserializeFunction(req, resp);
             } else if (pathInfo.equals("/batch/search-by-ids")) {
                 handleBatchSearchByIds(req, resp);
             } else if (pathInfo.equals("/batch/search-by-user-ids")) {
@@ -715,6 +734,347 @@ public class FunctionServlet extends BaseServlet {
         }
         public void setSignature(String signature) {
             this.signature = signature;
+        }
+    }
+    // Новый метод для обработки операций над функциями
+    private void handleFunctionOperations(String pathSuffix, HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        logger.info("Запрос на выполнение операции над функциями: {}", pathSuffix);
+
+        // Разбираем путь: id1/id2/operation
+        String[] parts = pathSuffix.split("/");
+        if (parts.length != 3) {
+            handleError(resp, 400, "Неверный формат пути для операции", "/api/v1/functions/operations/" + pathSuffix);
+            return;
+        }
+
+        try {
+            int id1 = Integer.parseInt(parts[0]);
+            int id2 = Integer.parseInt(parts[1]);
+            String operation = parts[2];
+
+            // Проверка существования функций
+            Optional<Function> function1Opt = functionDAO.findById(id1);
+            Optional<Function> function2Opt = functionDAO.findById(id2);
+
+            if (!function1Opt.isPresent() || !function2Opt.isPresent()) {
+                logger.warn("Функция с ID {} или {} не найдена", id1, id2);
+                handleError(resp, 404, "Одна из функций не найдена", "/api/v1/functions/operations/" + id1 + "/" + id2 + "/" + operation);
+                return;
+            }
+
+            Function function1 = function1Opt.get();
+            Function function2 = function2Opt.get();
+
+            // Проверка прав доступа
+            User currentUser = AuthorizationService.getCurrentUser(req);
+            if (!AuthorizationService.isAdmin(req) && !currentUser.getId().equals(function1.getUserId())) {
+                logger.warn("Пользователь {} пытается получить доступ к чужой функции {}",
+                        currentUser.getLogin(), id1);
+                resp.sendError(HttpServletResponse.SC_FORBIDDEN, "Доступ запрещен к функции " + id1);
+                return;
+            }
+
+            if (!AuthorizationService.isAdmin(req) && !currentUser.getId().equals(function2.getUserId())) {
+                logger.warn("Пользователь {} пытается получить доступ к чужой функции {}",
+                        currentUser.getLogin(), id2);
+                resp.sendError(HttpServletResponse.SC_FORBIDDEN, "Доступ запрещен к функции " + id2);
+                return;
+            }
+
+            // Получаем точки функций, отсортированные по X
+            List<Point> points1 = pointDAO.findByFunctionId(id1);
+            List<Point> points2 = pointDAO.findByFunctionId(id2);
+
+            // Сортируем по X
+            points1.sort(Comparator.comparingDouble(Point::getXValue));
+            points2.sort(Comparator.comparingDouble(Point::getXValue));
+
+            // Проверяем соответствие точек
+            if (points1.size() != points2.size()) {
+                handleError(resp, 400, "Функции имеют разное количество точек",
+                        "/api/v1/functions/operations/" + id1 + "/" + id2 + "/" + operation);
+                return;
+            }
+
+            // Проверяем совпадение значений X
+            for (int i = 0; i < points1.size(); i++) {
+                if (Math.abs(points1.get(i).getXValue() - points2.get(i).getXValue()) > 1e-9) {
+                    handleError(resp, 400, String.format("Несовпадение значений X на позиции %d: %f vs %f",
+                                    i, points1.get(i).getXValue(), points2.get(i).getXValue()),
+                            "/api/v1/functions/operations/" + id1 + "/" + id2 + "/" + operation);
+                    return;
+                }
+            }
+
+            // Преобразуем точки в массивы
+            double[] xValues = points1.stream().mapToDouble(Point::getXValue).toArray();
+            double[] yValues1 = points1.stream().mapToDouble(Point::getYValue).toArray();
+            double[] yValues2 = points2.stream().mapToDouble(Point::getYValue).toArray();
+
+            // Создаем табулированные функции
+            TabulatedFunctionFactory factory = new ArrayTabulatedFunctionFactory();
+            TabulatedFunction func1 = factory.create(xValues, yValues1);
+            TabulatedFunction func2 = factory.create(xValues, yValues2);
+
+            // Создаем сервис операций
+            TabulatedFunctionOperationService operationService = new TabulatedFunctionOperationService(factory);
+            TabulatedFunction resultFunction;
+
+            // Выполняем операцию
+            switch (operation.toLowerCase()) {
+                case "plus":
+                    resultFunction = operationService.add(func1, func2);
+                    break;
+                case "minus":
+                    resultFunction = operationService.subtract(func1, func2);
+                    break;
+                case "multiply":
+                    resultFunction = operationService.multiply(func1, func2);
+                    break;
+                case "divide":
+                    try {
+                        resultFunction = operationService.divide(func1, func2);
+                    } catch (ArithmeticException e) {
+                        handleError(resp, 400, "Деление на ноль в одной из точек",
+                                "/api/v1/functions/operations/" + id1 + "/" + id2 + "/" + operation);
+                        return;
+                    }
+                    break;
+                default:
+                    handleError(resp, 400, "Неподдерживаемая операция: " + operation,
+                            "/api/v1/functions/operations/" + id1 + "/" + id2 + "/" + operation);
+                    return;
+            }
+
+            ru.ssau.tk.cheefkeef.laba2.functions.Point[] resultPoints = TabulatedFunctionOperationService.asPoints(resultFunction);
+
+            // Создаем новую функцию для результата
+            Function resultFunctionEntity = new Function();
+            resultFunctionEntity.setUserId(currentUser.getId());
+
+            String operationName;
+            switch (operation.toLowerCase()) {
+                case "plus":
+                    operationName = "Сумма";
+                    break;
+                case "minus":
+                    operationName = "Разность";
+                    break;
+                case "multiply":
+                    operationName = "Произведение";
+                    break;
+                case "divide":
+                    operationName = "Частное";
+                    break;
+                default:
+                    operationName = "Операция";
+            }
+
+            resultFunctionEntity.setName(String.format("%s функций %d и %d", operationName, id1, id2));
+            resultFunctionEntity.setSignature(String.format("%s(%d, %d)", operationName, id1, id2));
+
+            Function savedFunction = functionDAO.insert(resultFunctionEntity);
+            if (savedFunction == null) {
+                logger.error("Не удалось сохранить результирующую функцию");
+                handleError(resp, 500, "Ошибка при сохранении результирующей функции",
+                        "/api/v1/functions/operations/" + id1 + "/" + id2 + "/" + operation);
+                return;
+            }
+
+            // Сохраняем точки результата
+            List<Point> pointsToSave = new ArrayList<>();
+            for (ru.ssau.tk.cheefkeef.laba2.functions.Point point : resultPoints) {
+                Point p = new Point();
+                p.setFunctionId(savedFunction.getId());
+                p.setXValue(point.x);
+                p.setYValue(point.y);
+                pointsToSave.add(p);
+            }
+
+            // Вставляем точки пакетно
+            pointDAO.insertBatch(pointsToSave);
+
+            // Формируем ответ
+            List<PointDTO> response = pointsToSave.stream()
+                    .map(PointMapper::toDTO)
+                    .collect(Collectors.toList());
+
+            writeJson(resp, 200, response);
+            logger.info("Успешно выполнена операция {} над функциями {} и {}", operation, id1, id2);
+
+        } catch (NumberFormatException e) {
+            logger.error("Неверный формат ID: {}", pathSuffix, e);
+            handleError(resp, 400, "Неверный формат ID", "/api/v1/functions/operations/" + pathSuffix);
+        } catch (InconsistentFunctionsException e) {
+            logger.error("Несовместимые функции: {}", e.getMessage(), e);
+            handleError(resp, 400, "Несовместимые функции: " + e.getMessage(),
+                    "/api/v1/functions/operations/" + pathSuffix);
+        } catch (Exception e) {
+            logger.error("Ошибка при выполнении операции: {}", e.getMessage(), e);
+            handleError(resp, 500, "Внутренняя ошибка сервера",
+                    "/api/v1/functions/operations/" + pathSuffix);
+        }
+    }
+
+    // Новый метод для сериализации функции
+    private void handleSerializeFunction(String idStr, HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        logger.info("Запрос на сериализацию функции с ID: {}", idStr);
+
+        try {
+            int functionId = Integer.parseInt(idStr);
+            ValidationUtils.validateId(functionId, "функция");
+
+            // Проверка существования функции
+            Optional<Function> functionOpt = functionDAO.findById(functionId);
+            if (!functionOpt.isPresent()) {
+                logger.warn("Функция с ID {} не найдена", functionId);
+                handleError(resp, 404, "Функция не найдена", "/api/v1/functions/serialize/" + functionId);
+                return;
+            }
+
+            Function function = functionOpt.get();
+
+            // Проверка прав доступа
+            User currentUser = AuthorizationService.getCurrentUser(req);
+            if (!AuthorizationService.isAdmin(req) && !currentUser.getId().equals(function.getUserId())) {
+                logger.warn("Пользователь {} пытается получить доступ к чужой функции {}",
+                        currentUser.getLogin(), functionId);
+                resp.sendError(HttpServletResponse.SC_FORBIDDEN, "Доступ запрещен");
+                return;
+            }
+
+            // Получение точек функции
+            List<Point> points = pointDAO.findByFunctionId(functionId);
+            if (points.isEmpty()) {
+                logger.warn("Функция с ID {} не имеет точек", functionId);
+                handleError(resp, 400, "Функция не содержит точек", "/api/v1/functions/serialize/" + functionId);
+                return;
+            }
+
+            // Сортируем по X
+            points.sort(Comparator.comparingDouble(Point::getXValue));
+
+            // Преобразование точек в массивы
+            double[] xValues = points.stream().mapToDouble(Point::getXValue).toArray();
+            double[] yValues = points.stream().mapToDouble(Point::getYValue).toArray();
+
+            // Создание табулированной функции
+            TabulatedFunction tabulatedFunction = new ArrayTabulatedFunction(xValues, yValues);
+
+            // Сериализация в байтовый массив
+            ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
+            try (BufferedOutputStream bufferedStream = new BufferedOutputStream(byteStream)) {
+                FunctionsIO.serialize(bufferedStream, tabulatedFunction);
+            }
+
+            // Преобразование в Base64 строку
+            String serializedString = Base64.getEncoder().encodeToString(byteStream.toByteArray());
+            logger.info("Функция с ID {} успешно сериализована в строку длиной {}", functionId, serializedString.length());
+
+            // Отправка результата
+            writeJson(resp, 200, Map.of("serializedFunction", serializedString));
+
+        } catch (NumberFormatException e) {
+            logger.error("Неверный формат ID: {}", idStr, e);
+            handleError(resp, 400, "Неверный формат ID", "/api/v1/functions/serialize/" + idStr);
+        } catch (Exception e) {
+            logger.error("Ошибка при сериализации функции с ID {}: {}", idStr, e.getMessage(), e);
+            handleError(resp, 500, "Ошибка сериализации", "/api/v1/functions/serialize/" + idStr);
+        }
+    }
+
+    // Новый метод для десериализации функции
+    private void handleDeserializeFunction(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        logger.info("Запрос на десериализацию функции");
+
+        try {
+            // Чтение тела запроса
+            DeserializeRequest request = objectMapper.readValue(req.getInputStream(), DeserializeRequest.class);
+            if (request.getSerializedFunction() == null || request.getSerializedFunction().trim().isEmpty()) {
+                logger.warn("Пустая строка для десериализации");
+                handleError(resp, 400, "Пустая строка для десериализации", "/api/v1/functions/deserialize");
+                return;
+            }
+
+            // Декодируем Base64 строку
+            byte[] serializedBytes;
+            try {
+                serializedBytes = Base64.getDecoder().decode(request.getSerializedFunction());
+            } catch (IllegalArgumentException e) {
+                logger.warn("Некорректная Base64 строка: {}", e.getMessage());
+                handleError(resp, 400, "Неверный формат Base64", "/api/v1/functions/deserialize");
+                return;
+            }
+
+            // Десериализуем из байтов
+            TabulatedFunction function;
+            try (BufferedInputStream bufferedStream = new BufferedInputStream(new ByteArrayInputStream(serializedBytes))) {
+                function = FunctionsIO.deserialize(bufferedStream);
+            } catch (ClassNotFoundException e) {
+                logger.error("Не удалось десериализовать: класс не найден", e);
+                handleError(resp, 400, "Несовместимый формат данных", "/api/v1/functions/deserialize");
+                return;
+            } catch (IOException e) {
+                logger.error("Ошибка при десериализации: {}", e.getMessage(), e);
+                handleError(resp, 400, "Повреждённые данные", "/api/v1/functions/deserialize");
+                return;
+            }
+
+            // Сохраняем как новую функцию
+            User currentUser = AuthorizationService.getCurrentUser(req);
+            Function newFunction = new Function();
+            newFunction.setUserId(currentUser.getId());
+            newFunction.setName("Десериализованная функция");
+            newFunction.setSignature("Создана из сериализованной строки");
+
+            Function savedFunction = functionDAO.insert(newFunction);
+            if (savedFunction == null) {
+                logger.error("Не удалось сохранить десериализованную функцию");
+                handleError(resp, 500, "Ошибка при сохранении функции", "/api/v1/functions/deserialize");
+                return;
+            }
+
+            // Сохраняем точки
+            List<Point> pointsToSave = new ArrayList<>();
+            for (int i = 0; i < function.getCount(); i++) {
+                Point point = new Point();
+                point.setFunctionId(savedFunction.getId());
+                point.setXValue(function.getX(i));
+                point.setYValue(function.getY(i));
+                pointsToSave.add(point);
+            }
+
+            pointDAO.insertBatch(pointsToSave);
+
+            logger.info("Функция успешно десериализована и сохранена с ID {}", savedFunction.getId());
+
+            // Отправка результата
+            Map<String, Object> response = new HashMap<>();
+            response.put("functionId", savedFunction.getId());
+            response.put("pointCount", function.getCount());
+            response.put("name", newFunction.getName());
+
+            writeJson(resp, 201, response);
+
+        } catch (IOException e) {
+            logger.error("Ошибка при чтении тела запроса: {}", e.getMessage(), e);
+            handleError(resp, 400, "Ошибка при чтении тела запроса", "/api/v1/functions/deserialize");
+        } catch (Exception e) {
+            logger.error("Необработанная ошибка при десериализации: {}", e.getMessage(), e);
+            handleError(resp, 500, "Ошибка сервера при десериализации", "/api/v1/functions/deserialize");
+        }
+    }
+
+    // Вспомогательный класс для десериализации
+    private static class DeserializeRequest {
+        private String serializedFunction;
+
+        public String getSerializedFunction() {
+            return serializedFunction;
+        }
+
+        public void setSerializedFunction(String serializedFunction) {
+            this.serializedFunction = serializedFunction;
         }
     }
 }

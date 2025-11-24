@@ -4,6 +4,8 @@ import { Menu as MenuIcon, Dashboard as DashboardIcon, Functions as FunctionsIco
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import { Link, useNavigate } from 'react-router-dom';
+import { TrendingUp as TrendingUpIcon } from '@mui/icons-material';
+import { CallMerge as CallMergeIcon } from '@mui/icons-material';
 
 const drawerWidth = 240;
 
@@ -46,6 +48,14 @@ const Layout = ({ children }) => {
         <ListItem button component={Link} to="/operations">
           <ListItemIcon><CalculateIcon /></ListItemIcon>
           <ListItemText primary="Операции" />
+        </ListItem>
+        <ListItem button component={Link} to="/differentiation">
+          <ListItemIcon><TrendingUpIcon /></ListItemIcon>
+          <ListItemText primary="Дифференцирование" />
+        </ListItem>
+        <ListItem button component={Link} to="/composite-functions">
+          <ListItemIcon><CallMergeIcon /></ListItemIcon>
+          <ListItemText primary="Сложные функции" />
         </ListItem>
       </List>
       <Divider />

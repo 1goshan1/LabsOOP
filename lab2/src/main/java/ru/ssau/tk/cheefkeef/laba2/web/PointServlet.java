@@ -4,12 +4,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.ssau.tk.cheefkeef.laba2.auth.AuthorizationService;
 import ru.ssau.tk.cheefkeef.laba2.dto.PointDTO;
+import ru.ssau.tk.cheefkeef.laba2.functions.*;
 import ru.ssau.tk.cheefkeef.laba2.jdbc.FunctionDAO;
 import ru.ssau.tk.cheefkeef.laba2.jdbc.PointDAO;
 import ru.ssau.tk.cheefkeef.laba2.mapper.PointMapper;
 import ru.ssau.tk.cheefkeef.laba2.models.Function;
 import ru.ssau.tk.cheefkeef.laba2.models.Point;
 import ru.ssau.tk.cheefkeef.laba2.models.User;
+import ru.ssau.tk.cheefkeef.laba2.operations.LeftSteppingDifferentialOperator;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -42,6 +45,12 @@ public class PointServlet extends BaseServlet {
                 handleGetPointsByFunctionId(pathInfo.substring("/function/".length()), req, resp);
             } else if (pathInfo.equals("/batch/search-by-ids")) {
                 handleBatchSearchByIds(req, resp);
+            } else if (pathInfo.startsWith("/generate/")) {
+                handleGenerateTabulatedFunction(pathInfo.substring("/generate/".length()), req, resp);
+            } else if (pathInfo.startsWith("/differential/")) {
+                handleDifferentiateFunction(pathInfo.substring("/differential/".length()), req, resp);
+            } else if (pathInfo.startsWith("/linear/")) {
+                handleInterpolateAtX(pathInfo.substring("/linear/".length()), req, resp);
             } else {
                 handleError(resp, 400, "Неверный путь", req.getRequestURI());
             }
@@ -52,7 +61,88 @@ public class PointServlet extends BaseServlet {
             handleError(resp, 500, "Внутренняя ошибка сервера", req.getRequestURI());
         }
     }
+    private void handleInterpolateAtX(String pathSuffix, HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        logger.info("Запрос на линейную интерполяцию: {}", pathSuffix);
 
+        // Разбираем путь: {functionId}/interpolate/{x}
+        // /linear/123/interpolate/2.5
+        String[] parts = pathSuffix.split("/");
+        if (parts.length != 3 || !"interpolate".equals(parts[1])) {
+            handleError(resp, 400, "Неверный формат пути для интерполяции",
+                    "/api/v1/points/linear/" + pathSuffix);
+            return;
+        }
+
+        try {
+            int functionId = Integer.parseInt(parts[0]);
+            double x = Double.parseDouble(parts[2]);
+
+            User currentUser = AuthorizationService.getCurrentUser(req);
+            logger.info("Запрос на интерполяцию функции {} в точке x={} пользователем: {}",
+                    functionId, x, currentUser.getLogin());
+
+            // Проверка доступа к функции
+            Optional<Function> functionOpt = functionDAO.findById(functionId);
+            if (!functionOpt.isPresent()) {
+                logger.warn("Функция с ID {} не найдена", functionId);
+                handleError(resp, 404, "Функция не найдена",
+                        "/api/v1/points/linear/" + functionId + "/interpolate");
+                return;
+            }
+
+            Function function = functionOpt.get();
+            if (!AuthorizationService.isAdmin(req) && !currentUser.getId().equals(function.getUserId())) {
+                logger.warn("Пользователь {} пытается выполнить интерполяцию для чужой функции {}",
+                        currentUser.getLogin(), functionId);
+                resp.sendError(HttpServletResponse.SC_FORBIDDEN, "Доступ запрещен к этой функции");
+                return;
+            }
+
+            // Получаем точки функции
+            List<Point> points = pointDAO.findByFunctionId(functionId);
+            if (points.isEmpty()) {
+                logger.warn("Функция {} не имеет точек", functionId);
+                handleError(resp, 400, "Функция не содержит точек для интерполяции",
+                        "/api/v1/points/linear/" + functionId + "/interpolate");
+                return;
+            }
+
+            // Сортируем по X
+            points.sort(Comparator.comparingDouble(Point::getXValue));
+
+            // Преобразуем в массивы
+            double[] xValues = points.stream().mapToDouble(Point::getXValue).toArray();
+            double[] yValues = points.stream().mapToDouble(Point::getYValue).toArray();
+
+            // Создаём табулированную функцию
+            ArrayTabulatedFunction tabulatedFunction = new ArrayTabulatedFunction(xValues, yValues);
+
+            // Выполняем интерполяцию (или экстраполяцию) через apply()
+            double y = tabulatedFunction.apply(x);
+
+            // Формируем ответ в требуемом формате
+            Map<String, Double> response = new HashMap<>();
+            response.put("xvalue", x);
+            response.put("yvalue", y);
+
+            logger.info("Успешно выполнена интерполяция для функции {} в точке x={}: y={}",
+                    functionId, x, y);
+            writeJson(resp, 200, response);
+
+        } catch (NumberFormatException e) {
+            logger.error("Неверный формат параметров: {}", pathSuffix, e);
+            handleError(resp, 400, "Неверный формат параметров",
+                    "/api/v1/points/linear/" + pathSuffix);
+        } catch (IllegalArgumentException e) {
+            logger.warn("Ошибка при интерполяции: {}", e.getMessage());
+            handleError(resp, 400, "Ошибка интерполяции: " + e.getMessage(),
+                    "/api/v1/points/linear/" + pathSuffix);
+        } catch (Exception e) {
+            logger.error("Внутренняя ошибка при интерполяции: {}", e.getMessage(), e);
+            handleError(resp, 500, "Внутренняя ошибка сервера",
+                    "/api/v1/points/linear/" + pathSuffix);
+        }
+    }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         logRequest(req);
@@ -62,7 +152,6 @@ public class PointServlet extends BaseServlet {
             if (!checkAccess(req, resp, null, null)) {
                 return;
             }
-
             String pathInfo = req.getPathInfo();
             if (pathInfo == null || pathInfo.equals("/") || pathInfo.equals("")) {
                 handleCreatePoint(req, resp);
@@ -70,6 +159,8 @@ public class PointServlet extends BaseServlet {
                 handleCreatePointsBatch(req, resp);
             } else if (pathInfo.equals("/batch/search-by-ids")) {
                 handleBatchSearchByIds(req, resp);
+            } else if (pathInfo.startsWith("/composite/")) {
+                handleCreateCompositeFunction(pathInfo.substring("/composite/".length()), req, resp);
             } else {
                 handleError(resp, 400, "Неверный путь", req.getRequestURI());
             }
@@ -78,6 +169,135 @@ public class PointServlet extends BaseServlet {
         } catch (Exception e) {
             logger.error("Ошибка при обработке POST запроса: {}", e.getMessage(), e);
             handleError(resp, 500, "Внутренняя ошибка сервера", req.getRequestURI());
+        }
+    }
+
+    // Новый метод для создания композитной функции
+    private void handleCreateCompositeFunction(String pathSuffix, HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        logger.info("Запрос на создание композитной функции: {}", pathSuffix);
+
+        // Разбираем путь: functionId/function/name
+        String[] parts = pathSuffix.split("/");
+        if (parts.length != 3) {
+            handleError(resp, 400, "Неверный формат пути для создания композитной функции",
+                    "/api/v1/points/composite/" + pathSuffix);
+            return;
+        }
+
+        try {
+            int functionId = Integer.parseInt(parts[0]);
+            String functionType = parts[1].toLowerCase();
+            String name = parts[2];
+
+            User currentUser = AuthorizationService.getCurrentUser(req);
+            logger.info("Запрос на создание композитной функции для функции {} с типом {} и именем {} пользователем: {}",
+                    functionId, functionType, name, currentUser.getLogin());
+
+            // Проверка доступа к исходной функции
+            Optional<Function> functionOpt = functionDAO.findById(functionId); // Изменено имя переменной
+            if (!functionOpt.isPresent()) {
+                logger.warn("Функция с ID {} не найдена", functionId);
+                handleError(resp, 404, "Исходная функция не найдена",
+                        "/api/v1/points/composite/" + functionId + "/" + functionType + "/" + name);
+                return;
+            }
+
+            Function originalFunction = functionOpt.get(); // Используем правильное имя переменной
+            if (!AuthorizationService.isAdmin(req) && !currentUser.getId().equals(originalFunction.getUserId())) {
+                logger.warn("Пользователь {} пытается создать композитную функцию для чужой функции {}",
+                        currentUser.getLogin(), functionId);
+                resp.sendError(HttpServletResponse.SC_FORBIDDEN, "Доступ запрещен к исходной функции");
+                return;
+            }
+
+            // Получаем точки исходной функции и сортируем по X
+            List<Point> originalPoints = pointDAO.findByFunctionId(functionId);
+            if (originalPoints.isEmpty()) {
+                logger.warn("Для функции с ID {} не найдены точки", functionId);
+                handleError(resp, 400, "Для исходной функции не найдены точки",
+                        "/api/v1/points/composite/" + functionId + "/" + functionType + "/" + name);
+                return;
+            }
+            originalPoints.sort(Comparator.comparingDouble(Point::getXValue));
+
+            // Создаем соответствующую функцию в зависимости от параметра
+            MathFunction mathFunction;
+            switch (functionType) {
+                case "identity":
+                    mathFunction = new IdentityFunction();
+                    break;
+                case "sqr":
+                    mathFunction = new SqrFunction();
+                    break;
+                case "constant":
+                    mathFunction = new ConstantFunction(1.0); // Используем 1.0 как константу
+                    break;
+                default:
+                    logger.warn("Неподдерживаемый тип функции: {}", functionType);
+                    handleError(resp, 400, "Неподдерживаемый тип функции. Доступные: identity, sqr, constant",
+                            "/api/v1/points/composite/" + functionId + "/" + functionType + "/" + name);
+                    return;
+            }
+
+            // Создаем новую функцию
+            Function newFunction = new Function();
+            newFunction.setName(name);
+            newFunction.setSignature(functionType + "(" + functionId + ")");
+            newFunction.setUserId(originalFunction.getUserId()); // Новая функция принадлежит тому же пользователю
+            Function savedFunction = functionDAO.insert(newFunction);
+            if (savedFunction == null) {
+                logger.error("Не удалось создать новую функцию");
+                handleError(resp, 500, "Не удалось создать новую функцию",
+                        "/api/v1/points/composite/" + functionId + "/" + functionType + "/" + name);
+                return;
+            }
+
+            // Вычисляем значения новой функции для каждой точки
+            List<Point> newPoints = new ArrayList<>();
+            for (Point originalPoint : originalPoints) {
+                double x = originalPoint.getXValue();
+                double y_old = originalPoint.getYValue();
+                double y = mathFunction.apply(y_old); // Применяем функцию к значению Y
+
+                Point point = new Point();
+                point.setFunctionId(savedFunction.getId());
+                point.setXValue(x);
+                point.setYValue(y);
+                newPoints.add(point);
+            }
+
+            // Сохраняем точки
+            pointDAO.insertBatch(newPoints);
+
+            // Формируем ответ
+            Map<String, Object> response = new HashMap<>();
+            response.put("initFunctionId", functionId);
+            response.put("functionId", savedFunction.getId());
+
+            List<Map<String, Double>> pointsList = newPoints.stream()
+                    .map(point -> {
+                        Map<String, Double> pointMap = new HashMap<>();
+                        pointMap.put("xvalue", point.getXValue());
+                        pointMap.put("yvalue", point.getYValue());
+                        return pointMap;
+                    })
+                    .collect(Collectors.toList());
+
+            response.put("points", pointsList);
+
+            logger.info("Успешно создана композитная функция с ID: {} на основе функции {}",
+                    savedFunction.getId(), functionId);
+            writeJson(resp, 201, response); // HttpStatus.CREATED = 201
+
+        } catch (NumberFormatException e) {
+            logger.error("Неверный формат ID функции: {}", parts[0], e);
+            handleError(resp, 400, "Неверный формат ID функции",
+                    "/api/v1/points/composite/" + pathSuffix);
+        } catch (Exception e) {
+            logger.error("Ошибка при создании композитной функции для функции {}: {}",
+                    parts[0], e.getMessage(), e);
+            handleError(resp, 500, "Внутренняя ошибка сервера",
+                    "/api/v1/points/composite/" + pathSuffix);
         }
     }
 
@@ -90,10 +310,11 @@ public class PointServlet extends BaseServlet {
             if (!checkAccess(req, resp, null, null)) {
                 return;
             }
-
             String pathInfo = req.getPathInfo();
             if (pathInfo != null && pathInfo.matches("/\\d+")) {
                 handleUpdatePoint(pathInfo.substring(1), req, resp);
+            } else if (pathInfo != null && pathInfo.startsWith("/update/batch/")) {
+                handleUpdatePointsBatch(pathInfo.substring("/update/batch/".length()), req, resp);
             } else {
                 handleError(resp, 400, "Неверный путь", req.getRequestURI());
             }
@@ -102,6 +323,192 @@ public class PointServlet extends BaseServlet {
         } catch (Exception e) {
             logger.error("Ошибка при обработке PUT запроса: {}", e.getMessage(), e);
             handleError(resp, 500, "Внутренняя ошибка сервера", req.getRequestURI());
+        }
+    }
+    // Новый метод для генерации точек табулированной функции
+    private void handleGenerateTabulatedFunction(String pathSuffix, HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        logger.info("Запрос на генерацию табулированной функции: {}", pathSuffix);
+
+        // Разбираем путь: function/from/to/count
+        String[] parts = pathSuffix.split("/");
+        if (parts.length != 4) {
+            handleError(resp, 400, "Неверный формат пути для генерации функции", "/api/v1/points/generate/" + pathSuffix);
+            return;
+        }
+
+        try {
+            String functionType = parts[0].toLowerCase();
+            double from = Double.parseDouble(parts[1]);
+            double to = Double.parseDouble(parts[2]);
+            int count = Integer.parseInt(parts[3]);
+
+            User currentUser = AuthorizationService.getCurrentUser(req);
+            logger.info("Запрос на генерацию функции {} в диапазоне [{}, {}] с {} точками пользователем: {}",
+                    functionType, from, to, count, currentUser.getLogin());
+
+            // Проверяем минимальное количество точек
+            if (count < 2) {
+                logger.warn("Некорректное количество точек: {}", count);
+                handleError(resp, 400, "Количество точек должно быть не менее 2",
+                        "/api/v1/points/generate/" + functionType + "/" + from + "/" + to + "/" + count);
+                return;
+            }
+
+            // Создаем Map для выбора функций
+            Map<String, MathFunction> functionMap = new HashMap<>();
+            functionMap.put("identity", new IdentityFunction());
+            functionMap.put("constant", new ConstantFunction(1.0));
+            functionMap.put("sqr", new SqrFunction());
+
+            // Получаем функцию из Map по ключу
+            MathFunction mathFunction = functionMap.get(functionType);
+
+            if (mathFunction == null) {
+                logger.warn("Неподдерживаемый тип функции: {}. Доступные: {}", functionType, functionMap.keySet());
+                handleError(resp, 400, "Неподдерживаемый тип функции. Доступные: " + functionMap.keySet(),
+                        "/api/v1/points/generate/" + functionType + "/" + from + "/" + to + "/" + count);
+                return;
+            }
+
+            // Создаем табулированную функцию
+            ArrayTabulatedFunction tabulatedFunction = new ArrayTabulatedFunction(mathFunction, from, to, count);
+
+            // Формируем ответ в требуемом формате
+            List<Map<String, Double>> pointsList = new ArrayList<>();
+            for (int i = 0; i < tabulatedFunction.getCount(); i++) {
+                Map<String, Double> pointMap = new HashMap<>();
+                pointMap.put("xvalue", tabulatedFunction.getX(i));
+                pointMap.put("yvalue", tabulatedFunction.getY(i));
+                pointsList.add(pointMap);
+            }
+
+            Map<String, Object> response = new HashMap<>();
+            response.put("points", pointsList);
+
+            logger.info("Успешно сгенерировано {} точек для функции {}", pointsList.size(), functionType);
+            writeJson(resp, 200, response);
+
+        } catch (NumberFormatException e) {
+            logger.error("Неверный формат параметров: {}", pathSuffix, e);
+            handleError(resp, 400, "Неверный формат параметров", "/api/v1/points/generate/" + pathSuffix);
+        } catch (IllegalArgumentException e) {
+            logger.warn("Ошибка при генерации функции: {}", e.getMessage());
+            handleError(resp, 400, e.getMessage(), "/api/v1/points/generate/" + pathSuffix);
+        } catch (Exception e) {
+            logger.error("Ошибка при генерации точек функции: {}", e.getMessage(), e);
+            handleError(resp, 500, "Внутренняя ошибка сервера", "/api/v1/points/generate/" + pathSuffix);
+        }
+    }
+
+    // Новый метод для дифференцирования функции
+    private void handleDifferentiateFunction(String functionIdStr, HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        logger.info("Запрос на дифференцирование функции с ID: {}", functionIdStr);
+
+        try {
+            int functionId = Integer.parseInt(functionIdStr);
+            ValidationUtils.validateId(functionId, "функция");
+
+            User currentUser = AuthorizationService.getCurrentUser(req);
+            logger.info("Запрос на дифференцирование функции с ID: {} пользователем: {}", functionId, currentUser.getLogin());
+
+            // Проверка доступа к функции
+            Optional<Function> functionOpt = functionDAO.findById(functionId);
+            if (!functionOpt.isPresent()) {
+                logger.warn("Функция с ID {} не найдена", functionId);
+                handleError(resp, 404, "Функция не найдена", "/api/v1/points/differential/" + functionId);
+                return;
+            }
+
+            Function function = functionOpt.get();
+            if (!AuthorizationService.isAdmin(req) && !currentUser.getId().equals(function.getUserId())) {
+                logger.warn("Пользователь {} пытается дифференцировать чужую функцию {}",
+                        currentUser.getLogin(), functionId);
+                resp.sendError(HttpServletResponse.SC_FORBIDDEN, "Доступ запрещен к этой функции");
+                return;
+            }
+
+            // Получаем точки исходной функции
+            List<Point> originalPoints = pointDAO.findByFunctionId(functionId);
+            if (originalPoints.isEmpty()) {
+                logger.warn("Не найдены точки для функции с ID: {}", functionId);
+                handleError(resp, 400, "Для функции не найдены точки",
+                        "/api/v1/points/differential/" + functionId);
+                return;
+            }
+
+            // Сортируем точки по X для корректного создания ArrayTabulatedFunction
+            originalPoints.sort(Comparator.comparingDouble(Point::getXValue));
+
+            // Создаем массивы X и Y значений
+            double[] xValues = originalPoints.stream().mapToDouble(Point::getXValue).toArray();
+            double[] yValues = originalPoints.stream().mapToDouble(Point::getYValue).toArray();
+
+            // Создаем ArrayTabulatedFunction
+            ArrayTabulatedFunction originalFunction = new ArrayTabulatedFunction(xValues, yValues);
+
+            // Определяем шаг для дифференцирования
+            double step = xValues.length > 1 ? xValues[1] - xValues[0] : 1.0;
+            LeftSteppingDifferentialOperator diffOperator = new LeftSteppingDifferentialOperator(step);
+
+            // Применяем оператор дифференцирования
+            MathFunction differentiatedFunction = diffOperator.derive(originalFunction);
+
+            // Создаем новую функцию
+            Function newFunction = new Function();
+            newFunction.setName("Дифференцирование " + functionId);
+            newFunction.setSignature("d" + functionId + "/dx");
+            newFunction.setUserId(function.getUserId());
+            Function savedFunction = functionDAO.insert(newFunction);
+            if (savedFunction == null) {
+                logger.error("Не удалось создать функцию для результата дифференцирования");
+                handleError(resp, 500, "Не удалось создать функцию для результата дифференцирования",
+                        "/api/v1/points/differential/" + functionId);
+                return;
+            }
+
+            // Создаем точки для дифференцированной функции (пропускаем первую точку)
+            List<Point> diffPoints = new ArrayList<>();
+            for (int i = 1; i < originalFunction.getCount(); i++) {
+                double x = originalFunction.getX(i);
+                double y = differentiatedFunction.apply(x);
+
+                Point point = new Point();
+                point.setFunctionId(savedFunction.getId());
+                point.setXValue(x);
+                point.setYValue(y);
+                diffPoints.add(point);
+            }
+
+            // Сохраняем точки пакетно
+            pointDAO.insertBatch(diffPoints);
+
+            // Формируем ответ
+            Map<String, Object> response = new HashMap<>();
+            response.put("dfunctionId", functionId);
+            response.put("functionId", savedFunction.getId());
+
+            List<Map<String, Double>> pointsList = diffPoints.stream()
+                    .map(point -> {
+                        Map<String, Double> pointMap = new HashMap<>();
+                        pointMap.put("xvalue", point.getXValue());
+                        pointMap.put("yvalue", point.getYValue());
+                        return pointMap;
+                    })
+                    .collect(Collectors.toList());
+
+            response.put("points", pointsList);
+
+            logger.info("Успешно выполнено дифференцирование функции {}. Создана новая функция с ID: {}",
+                    functionId, savedFunction.getId());
+
+            writeJson(resp, 200, response);
+
+        } catch (NumberFormatException e) {
+            logger.error("Неверный формат ID функции: {}", functionIdStr, e);
+            handleError(resp, 400, "Неверный формат ID функции", "/api/v1/points/differential/" + functionIdStr);
+        } catch (Exception e) {
+            logger.error("Ошибка при дифференцировании функции с ID {}: {}", functionIdStr, e.getMessage(), e);
+            handleError(resp, 500, "Внутренняя ошибка сервера", "/api/v1/points/differential/" + functionIdStr);
         }
     }
 
@@ -620,5 +1027,161 @@ public class PointServlet extends BaseServlet {
         public void setYValue(Double yValue) {
             this.yValue = yValue;
         }
+    }
+    // Новый метод для массового обновления точек
+    private void handleUpdatePointsBatch(String functionIdStr, HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        logger.info("Запрос на массовое обновление точек для функции: {}", functionIdStr);
+
+        try {
+            int functionId = Integer.parseInt(functionIdStr);
+            ValidationUtils.validateId(functionId, "функция");
+
+            User currentUser = AuthorizationService.getCurrentUser(req);
+            logger.info("Запрос на массовое обновление точек для функции {} пользователем: {}",
+                    functionId, currentUser.getLogin());
+
+            // Проверка доступа к функции
+            Optional<Function> functionOpt = functionDAO.findById(functionId);
+            if (!functionOpt.isPresent()) {
+                logger.warn("Функция с ID {} не найдена", functionId);
+                handleError(resp, 404, "Функция не найдена", "/api/v1/points/update/batch/" + functionId);
+                return;
+            }
+
+            Function function = functionOpt.get();
+            if (!AuthorizationService.isAdmin(req) && !currentUser.getId().equals(function.getUserId())) {
+                logger.warn("Пользователь {} пытается обновлять точки чужой функции {}",
+                        currentUser.getLogin(), functionId);
+                resp.sendError(HttpServletResponse.SC_FORBIDDEN, "Доступ запрещен к этой функции");
+                return;
+            }
+
+            // Чтение тела запроса
+            UpdatePointsBatchRequest request = objectMapper.readValue(req.getInputStream(), UpdatePointsBatchRequest.class);
+
+            // Проверяем, что functionId в пути совпадает с functionId в теле запроса
+            if (functionId != request.getFunctionId()) {
+                logger.warn("Несоответствие functionId в пути ({}) и в теле ({})",
+                        functionId, request.getFunctionId());
+                handleError(resp, 400, "ID функции в пути и в теле запроса не совпадают",
+                        "/api/v1/points/update/batch/" + functionId);
+                return;
+            }
+
+            // Проверяем уникальность X значений в рамках одного запроса
+            Map<Double, Long> xValueCounts = request.getPoints().stream()
+                    .collect(Collectors.groupingBy(UpdatePointCoordinate::getXValue,
+                            Collectors.counting()));
+
+            List<Double> duplicateXValues = xValueCounts.entrySet().stream()
+                    .filter(entry -> entry.getValue() > 1)
+                    .map(Map.Entry::getKey)
+                    .collect(Collectors.toList());
+
+            if (!duplicateXValues.isEmpty()) {
+                logger.warn("Обнаружены дублирующиеся X значения в запросе: {}", duplicateXValues);
+                handleError(resp, 400, "Обнаружены дублирующиеся X значения: " + duplicateXValues,
+                        "/api/v1/points/update/batch/" + functionId);
+                return;
+            }
+
+            // Проверяем, не заняты ли новые X значения другими точками этой функции
+            List<Double> newXValues = request.getPoints().stream()
+                    .map(UpdatePointCoordinate::getXValue)
+                    .collect(Collectors.toList());
+
+            // Получаем существующие точки с такими X значениями (исключая обновляемые точки)
+            List<Integer> updatingPointIds = request.getPoints().stream()
+                    .map(UpdatePointCoordinate::getId)
+                    .collect(Collectors.toList());
+
+            List<Point> conflictingPoints = pointDAO.findByFunctionIdAndXInAndIdNotIn(
+                    functionId, newXValues, updatingPointIds);
+
+            if (!conflictingPoints.isEmpty()) {
+                List<Double> conflictingXValues = conflictingPoints.stream()
+                        .map(Point::getXValue)
+                        .collect(Collectors.toList());
+                logger.warn("Конфликтующие X значения: {}", conflictingXValues);
+                handleError(resp, 400, "Точки с такими X значениями уже существуют: " + conflictingXValues,
+                        "/api/v1/points/update/batch/" + functionId);
+                return;
+            }
+
+            // Выполняем массовое обновление
+            List<Point> updatedPoints = pointDAO.updatePointsBatch(functionId, request.getPoints());
+            List<PointDTO> pointDTOs = updatedPoints.stream()
+                    .map(PointMapper::toDTO)
+                    .collect(Collectors.toList());
+
+            logger.info("Успешно обновлено {} точек для функции {}", pointDTOs.size(), functionId);
+
+            writeJson(resp, 200, pointDTOs);
+
+        } catch (NumberFormatException e) {
+            logger.error("Неверный формат ID функции: {}", functionIdStr, e);
+            handleError(resp, 400, "Неверный формат ID функции", "/api/v1/points/update/batch/" + functionIdStr);
+        } catch (IOException e) {
+            logger.error("Ошибка при чтении тела запроса: {}", e.getMessage(), e);
+            handleError(resp, 400, "Ошибка при чтении тела запроса", "/api/v1/points/update/batch/" + functionIdStr);
+        } catch (IllegalArgumentException e) {
+            logger.warn("Ошибка при массовом обновлении точек: {}", e.getMessage());
+            handleError(resp, 400, e.getMessage(), "/api/v1/points/update/batch/" + functionIdStr);
+        } catch (Exception e) {
+            logger.error("Ошибка при массовом обновлении точек для функции {}: {}",
+                    functionIdStr, e.getMessage(), e);
+            handleError(resp, 500, "Внутренняя ошибка сервера", "/api/v1/points/update/batch/" + functionIdStr);
+        }
+    }
+
+    // Вспомогательные классы для массового обновления
+    private static class UpdatePointsBatchRequest {
+        private Integer functionId;
+        private List<UpdatePointCoordinate> points;
+
+        // Getters и setters
+        public Integer getFunctionId() { return functionId; }
+        public void setFunctionId(Integer functionId) { this.functionId = functionId; }
+        public List<UpdatePointCoordinate> getPoints() { return points; }
+        public void setPoints(List<UpdatePointCoordinate> points) { this.points = points; }
+    }
+
+    public static class UpdatePointCoordinate {
+        private Integer id;
+        private Double xValue;
+        private Double yValue;
+
+        // Getters и setters
+        public Integer getId() { return id; }
+        public void setId(Integer id) { this.id = id; }
+        public Double getXValue() { return xValue; }
+        public void setXValue(Double xValue) { this.xValue = xValue; }
+        public Double getYValue() { return yValue; }
+        public void setYValue(Double yValue) { this.yValue = yValue; }
+    }
+
+    private static class TabulatedPointDTO {
+        private double x;
+        private double y;
+
+        public TabulatedPointDTO(double x, double y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        // Getters
+        public double getX() { return x; }
+        public double getY() { return y; }
+    }
+
+    private static class TabulatedFunctionResponse {
+        private List<TabulatedPointDTO> points;
+
+        public TabulatedFunctionResponse(List<TabulatedPointDTO> points) {
+            this.points = points;
+        }
+
+        // Getters
+        public List<TabulatedPointDTO> getPoints() { return points; }
     }
 }
