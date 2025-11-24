@@ -4,27 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39e2e6aa-65c5-4953-ae88-51a1bbb00bae" name="Changes" comment="added readTabulatedFunction with BufferedInputStream, TabulatedFunctionFileInputStream(kind of a test cause contains main())">
-      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/api/api.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/api/auth.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/api/functions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/api/points.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/components/Layout.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/context/AuthContext.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/context/ThemeContext.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/DashboardPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/FunctionEditorPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/FunctionsPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/GraphViewerPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/LoginPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/OperationsPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/RegisterPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/ui/my-app/src/pages/SettingsPage.js" afterDir="false" />
+    <list default="true" id="39e2e6aa-65c5-4953-ae88-51a1bbb00bae" name="Changes" comment="first part of 7th lab">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lab2/logs/application.log" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/logs/application.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/auth/PasswordUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/auth/PasswordUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/web/UserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/java/ru/ssau/tk/cheefkeef/laba2/web/UserServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab2/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/lab2/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,42 +51,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.ArrayTabulatedFunctionSerialization.executor": "Run",
-    "Application.TabulatedFunctionFileInputStream.executor": "Run",
-    "Application.TabulatedFunctionFileOutputStream.executor": "Run",
-    "JUnit.AbstractTabulatedFunctionTest.executor": "Run",
-    "JUnit.AbstractTabulatedFunctionTest.testToString_ArrayTabulatedFunction.executor": "Run",
-    "JUnit.AbstractTabulatedFunctionTest.testToString_LinkedListTabulatedFunction.executor": "Run",
-    "JUnit.All in LabsOOP.executor": "Coverage",
-    "JUnit.ArrayTabulatedFunctionTest.getCount.executor": "Run",
-    "JUnit.ArrayTabulatedFunctionTest.getX.executor": "Run",
-    "JUnit.ArrayTabulatedFunctionTest.getXWithInvalidIndex.executor": "Run",
-    "JUnit.ArrayTabulatedFunctionTest.getY.executor": "Run",
-    "JUnit.LinkedListTabulatedFunctionTest.executor": "Run",
-    "JUnit.TabulatedDifferentialOperatorTest.executor": "Run",
-    "JUnit.TabulatedDifferentialOperatorTest.testDeriveSinglePoint.executor": "Run",
-    "JUnit.TabulatedDifferentialOperatorTest.testSetFactory.executor": "Run",
-    "JUnit.TabulatedFunctionFactoryTest.executor": "Run",
-    "JUnit.TabulatedFunctionOperationServiceTest.executor": "Run",
-    "JUnit.TabulatedFunctionOperationServiceTest.testGetFactory.executor": "Run",
-    "JUnit.TabulatedFunctionOperationServiceTest.testInconsistentCount.executor": "Run",
-    "JUnit.ru.ssau.tk.cheefkeef.laba2.functions in LabsOOP.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "manual",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Admin/IdeaProjects/LabsOOP",
-    "settings.editor.selected.configurable": "Errors"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.ArrayTabulatedFunctionSerialization.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TabulatedFunctionFileInputStream.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TabulatedFunctionFileOutputStream.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AbstractTabulatedFunctionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AbstractTabulatedFunctionTest.testToString_ArrayTabulatedFunction.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AbstractTabulatedFunctionTest.testToString_LinkedListTabulatedFunction.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.All in LabsOOP.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.ArrayTabulatedFunctionTest.getCount.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ArrayTabulatedFunctionTest.getX.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ArrayTabulatedFunctionTest.getXWithInvalidIndex.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ArrayTabulatedFunctionTest.getY.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LinkedListTabulatedFunctionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TabulatedDifferentialOperatorTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TabulatedDifferentialOperatorTest.testDeriveSinglePoint.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TabulatedDifferentialOperatorTest.testSetFactory.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TabulatedFunctionFactoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TabulatedFunctionOperationServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TabulatedFunctionOperationServiceTest.testGetFactory.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TabulatedFunctionOperationServiceTest.testInconsistentCount.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ru.ssau.tk.cheefkeef.laba2.functions in LabsOOP.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;manual&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/IdeaProjects/LabsOOP&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "JAVA"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;JAVA&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="ru.ssau.tk.cheefkeef.laba2.functions.factory" />
@@ -173,6 +155,7 @@
           <option name="version" value="9.0.111.0" />
         </TomcatInfo>
       </option>
+      <module name="lab2" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -193,6 +176,13 @@
         <item itemvalue="JUnit.All in LabsOOP" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.27397.103" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -370,7 +360,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760378080710</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="first part of 7th lab">
+      <option name="closed" value="true" />
+      <created>1763915863579</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1763915863579</updated>
+    </task>
+    <task id="LOCAL-00023" summary="first part of 7th lab">
+      <option name="closed" value="true" />
+      <created>1763916033333</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1763916033333</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -404,7 +410,8 @@
     <MESSAGE value="added multiply and divide in TabulatedFunctionOperationService and tests for them" />
     <MESSAGE value="added writeTabulatedFunction with BufferedOutputStream, TabulatedFunctionFileOutputStream(kind of a test cause contains main())" />
     <MESSAGE value="added readTabulatedFunction with BufferedInputStream, TabulatedFunctionFileInputStream(kind of a test cause contains main())" />
-    <option name="LAST_COMMIT_MESSAGE" value="added readTabulatedFunction with BufferedInputStream, TabulatedFunctionFileInputStream(kind of a test cause contains main())" />
+    <MESSAGE value="first part of 7th lab" />
+    <option name="LAST_COMMIT_MESSAGE" value="first part of 7th lab" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/LabsOOP$All_in_LabsOOP.ic" NAME="All in LabsOOP Coverage Results" MODIFIED="1760305022206" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
